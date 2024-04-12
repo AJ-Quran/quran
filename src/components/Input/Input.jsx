@@ -1,4 +1,4 @@
-import React, { useEffect, useRef, useState } from 'react'
+import React, { useRef, useState } from 'react'
 import Button from '../Button/Button'
 
 import './Input.css'
@@ -7,13 +7,7 @@ const Input = React.forwardRef(
   ({ label, value: iValue, areaProps, ...props }, ref) => {
     const inputRef = useRef(null)
     const [value, setValue] = useState(iValue || '')
-    const [labelActive, setLabelActive] = useState(false)
     const [seePassword, setSeePassword] = useState('visibility')
-
-    useEffect(() => {
-      if (!value) return setLabelActive(false)
-      if (!labelActive) setLabelActive(true)
-    }, [value, labelActive])
 
     function handleInputChange() {
       setValue(() => inputRef.current.value)
@@ -47,7 +41,7 @@ const Input = React.forwardRef(
         {...areaProps}
         className={`input_area list_x df_ai_ce ${areaProps?.className || ''}`}
       >
-        <label className={labelActive ? 'active' : ''}>{label}</label>
+        <label className={value ? 'active' : ''}>{label}</label>
         <input
           {...props}
           value={value}
