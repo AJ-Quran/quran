@@ -36,6 +36,40 @@ function isValidPassword(password) {
   return { msg: 'Valid password', ok: true }
 }
 
+function isValidEmail(email) {
+  if (!email) {
+    return { msg: 'Email is required', ok: false }
+  }
+
+  const parts = email.split('@')
+  if (parts.length !== 2) {
+    return { msg: 'Invalid email format', ok: false }
+  }
+
+  const localPart = parts[0]
+  const domainPart = parts[1]
+
+  if (localPart.length < 1) {
+    return { msg: 'Local part is missing', ok: false }
+  }
+
+  if (domainPart.length < 3 || domainPart.indexOf('.') === -1) {
+    return { msg: 'Invalid domain', ok: false }
+  }
+
+  const localRegex = /^[a-zA-Z0-9.!#$%&'*+/=?^_`{|}~-]+$/
+  if (!localRegex.test(localPart)) {
+    return { msg: 'Invalid characters in local part', ok: false }
+  }
+
+  const domainRegex = /^[a-zA-Z0-9.-]+$/
+  if (!domainRegex.test(domainPart)) {
+    return { msg: 'Invalid characters in domain', ok: false }
+  }
+
+  return { msg: 'Valid email', ok: true }
+}
+
 function localInitialData() {
   const hasData = loadLocal('quran')
 
@@ -58,6 +92,7 @@ function getLocalInitialData() {
 export {
   isValidUsername,
   isValidPassword,
+  isValidEmail,
   localInitialData,
   getLocalInitialData,
 }
