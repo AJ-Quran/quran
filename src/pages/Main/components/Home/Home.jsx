@@ -88,11 +88,37 @@ export default function Home() {
               📖✨
             </div>
           </div>
-          <div
-            className="con_bg_df con_ha welcome_down_btn df_f_ce"
-            onClick={scrollDown}
-          >
-            <span className="material-symbols-outlined">expand_more</span>
+          <div className="list_y df_ai_ce">
+            <div className="list_x facts">
+              <div className="con_bg_gradient">
+                <div className="con_bg_dr facts_bg"></div>
+                <div className="facts_con df_jc_sb">
+                  <b className="">Surahs</b>
+                  <div className="df_ai_end">
+                    <div></div>
+                    <div>144</div>
+                  </div>
+                </div>
+              </div>
+              <div className="con_bg_gradient">
+                <div className="con_bg_dr facts_bg"></div>
+                <div className="facts_con df_jc_sb">
+                  <b className="">Ayahs</b>
+                  <div className="df_ai_end">
+                    <div></div>
+                    <div>6 236</div>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div></div>
+            <div></div>
+            <div
+              className="con_bg_df con_ha welcome_down_btn df_f_ce"
+              onClick={scrollDown}
+            >
+              <span className="material-symbols-outlined">expand_more</span>
+            </div>
           </div>
         </div>
         <div className="list_y df_ai_ce">

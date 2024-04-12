@@ -8,6 +8,26 @@
   position: relative;
 }
 
+.facts > * {
+  width: 300px;
+  height: 100px;
+  position: relative;
+  isolation: isolate;
+  padding: var(--facts-bd-size);
+}
+
+.facts_bg {
+  height: 100%;
+}
+
+.facts_con {
+  position: absolute;
+  top: 0;
+  left: 0;
+  inset: var(--facts-bd-size);
+  padding: var(--pd-small);
+}
+
 .welcome_down_btn {
   width: 60px;
   aspect-ratio: 1/1;
@@ -40,4 +60,8 @@
   height: 40px;
   padding: var(--pd-small-very);
   border-radius: 50%;
+}
+
+:root {
+  --facts-bd-size: 1px;
 }
