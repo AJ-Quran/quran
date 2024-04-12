@@ -19,3 +19,10 @@
   width: 100%;
   aspect-ratio: 1/1;
 }
+
+.social_media > * {
+  width: 40px;
+  height: 40px;
+  padding: var(--pd-small-very);
+  border-radius: 50%;
+}
