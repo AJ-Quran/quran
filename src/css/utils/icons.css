@@ -1,0 +1,9 @@
+[class^='material-symbols'] {
+  max-width: 24px;
+  max-height: 24px;
+  pointer-events: none;
+}
+
+[class^='material-symbols'].fill {
+  font-variation-settings: 'FILL' 1, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+}

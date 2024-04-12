@@ -1,0 +1,24 @@
+.read_area {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: var(--bg-dark);
+  padding: var(--pd-small-very);
+}
+
+.read_area button {
+  border-radius: 50%;
+  aspect-ratio: 1/1;
+}
+
+.read_con {
+  min-width: 400px;
+  max-width: 800px;
+  height: calc(100% - 2 * var(--pd-small-very));
+  position: absolute;
+  top: var(--pd-small-very);
+  left: 50%;
+  transform: translate(-50%, 0);
+}

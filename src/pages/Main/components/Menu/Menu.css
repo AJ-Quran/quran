@@ -1,0 +1,21 @@
+.menu_area {
+  height: 100%;
+}
+
+.menu_con {
+  display: flex;
+  justify-content: space-between;
+  flex-direction: column;
+  border-radius: var(--bd-ra);
+  width: 100%;
+}
+
+.menu_area .option,
+.menu_area .chosen {
+  border-radius: 40%;
+}
+
+.menu_area .option {
+  width: 100%;
+  aspect-ratio: 1/1;
+}

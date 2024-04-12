@@ -1,0 +1,28 @@
+.last_read {
+  position: relative;
+  min-width: 100px;
+  max-width: 300px;
+  min-height: 100px;
+  overflow: hidden;
+}
+
+.last_read:hover {
+  & img {
+    scale: 1.05;
+  }
+}
+
+.last_read:active {
+  & img {
+    scale: 0.95;
+  }
+}
+
+.last_read img {
+  position: absolute;
+  bottom: -40px;
+  right: -20px;
+  width: 150px;
+  fill: var(--theme-color-not);
+  transition: all 0.3s ease;
+}

@@ -1,0 +1,36 @@
+.list_y,
+.list_y_big,
+.list_y_small {
+  display: flex;
+  flex-direction: column;
+}
+
+.list_y > *:not(:last-child) {
+  margin-bottom: var(--mar-small);
+}
+
+.list_y_big > *:not(:last-child) {
+  margin-bottom: var(--mar-big);
+}
+
+.list_y_small > *:not(:last-child) {
+  margin-bottom: var(--mar-small-very);
+}
+
+.list_x,
+.list_x_big,
+.list_x_small {
+  display: flex;
+}
+
+.list_x > *:not(:last-child) {
+  margin-right: var(--mar-small);
+}
+
+.list_x_big > *:not(:last-child) {
+  margin-right: var(--mar-big);
+}
+
+.list_x_small > *:not(:last-child) {
+  margin-right: var(--mar-small-very);
+}

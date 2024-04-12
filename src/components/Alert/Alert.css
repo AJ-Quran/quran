@@ -1,0 +1,40 @@
+.alert_area,
+.alert_bg {
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+}
+
+.alert_area {
+  position: fixed;
+  z-index: 1;
+}
+
+.alert_bg {
+  position: absolute;
+  background-color: var(--bg-opa);
+}
+
+.alert_con {
+  position: relative;
+  background-color: var(--bg);
+  border-radius: var(--bd-ra);
+  min-width: var(--alert-con-min-size);
+  max-width: var(--alert-con-max-size);
+  padding: var(--pd-small);
+  text-decoration: balance;
+}
+
+.alert_con .title {
+  font-size: 1.1em;
+}
+
+.alert_con_top button {
+  background-color: transparent;
+}
+
+:root {
+  --alert-con-min-size: 200px;
+  --alert-con-max-size: 400px;
+}

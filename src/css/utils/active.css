@@ -1,0 +1,25 @@
+.active_bg {
+  background-color: var(--main-color-dark);
+}
+
+.active_ha {
+  &:hover {
+    background-color: var(--main-color-hover);
+  }
+
+  &:active {
+    background-color: var(--main-color-active);
+  }
+}
+
+.active_h {
+  &:hover {
+    background-color: var(--main-color-hover);
+  }
+}
+
+.active_a {
+  &:active {
+    background-color: var(--main-color-active);
+  }
+}

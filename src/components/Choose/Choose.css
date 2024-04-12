@@ -1,0 +1,70 @@
+.choose_area {
+  position: relative;
+  padding: var(--pd-small-very) 0;
+  border-radius: var(--bd-ra-small);
+}
+
+.choose_area.y {
+  flex-direction: column;
+}
+
+.choose_con_area {
+  position: relative;
+}
+
+.choose_con {
+  display: flex;
+  position: relative;
+  overflow: hidden;
+}
+
+.option {
+  width: 100%;
+  height: 100%;
+  border-radius: var(--bd-ra-small);
+  padding: var(--pd-small);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+}
+
+.option:not(.active):hover {
+  background-color: var(--grey-hover);
+}
+
+.option:not(.active):active {
+  background-color: var(--grey-active);
+}
+
+.option > * {
+  pointer-events: none;
+}
+
+span {
+  pointer-events: none;
+  white-space: nowrap;
+}
+
+.chosen {
+  position: absolute;
+  top: 0;
+  left: 0;
+  border-radius: var(--bd-ra-small);
+  background-color: var(--main-color-light);
+  pointer-events: none;
+  opacity: 0;
+  transition: all 0.3s ease;
+  animation: opa 0.3s 0.3s ease-in forwards;
+}
+
+@keyframes opa {
+  to {
+    opacity: 1;
+  }
+}
+
+.choose_con button {
+  background-color: transparent !important;
+  padding: 0 !important;
+}

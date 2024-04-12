@@ -1,0 +1,25 @@
+.line_x,
+.line_y,
+.line_x_small {
+  background-color: var(--grey-light);
+  border-radius: 1em;
+}
+
+.line_x {
+  width: 100%;
+  height: var(--line-size);
+}
+
+.line_x_small {
+  width: 100%;
+  height: calc(var(--line-size) / 2);
+}
+
+.line_y {
+  width: var(--line-size);
+  height: 100%;
+}
+
+:root {
+  --line-size: 3px;
+}

@@ -1,0 +1,99 @@
+.message_area {
+  position: fixed;
+  left: 50%;
+  max-width: 90%;
+  z-index: 10;
+  background-color: var(--msg-bg);
+  padding: var(--pd-small) var(--pd);
+  border-radius: var(--bd-ra);
+  overflow: hidden;
+  padding-bottom: calc(var(--pd-small) + var(--msg-timeline-size));
+  animation: slideIn var(--msg-anim-time) cubic-bezier(0.25, 0.46, 0.45, 0.94)
+      forwards,
+    slideOut var(--msg-anim-time) cubic-bezier(0.55, 0.085, 0.68, 0.53)
+      var(--msg-show-time) forwards;
+}
+
+@keyframes slideIn {
+  from {
+    top: -100%;
+    transform: translate(-50%, -100%);
+  }
+  to {
+    top: var(--pd-small);
+    transform: translate(-50%, 0);
+  }
+}
+
+@keyframes slideOut {
+  from {
+    top: var(--pd-small);
+    transform: translate(-50%, 0);
+  }
+  to {
+    top: -100%;
+    transform: translate(-50%, -100%);
+  }
+}
+
+.message_area.success {
+  --msg-bg: var(--success-color);
+  --msg-bd: var(--success-color-border);
+}
+
+.message_area.error {
+  --msg-bg: var(--error-color-bg);
+  --msg-bd: var(--error-color-border);
+}
+
+.message_area.warning {
+  --msg-bg: var(--warning-color);
+  --msg-bd: var(--warning-color-border);
+}
+
+.message_area .icon {
+  animation: iconScale 0.5s ease 0.3s forwards;
+}
+
+@keyframes iconScale {
+  0% {
+    scale: 0;
+  }
+  40% {
+    scale: 1.2;
+  }
+  90% {
+    scale: 0.9;
+  }
+  100% {
+    scale: 1;
+  }
+}
+
+.message_timeline {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  height: var(--msg-timeline-size);
+  border-top-right-radius: var(--bd-ra);
+  background-color: var(--msg-bd);
+  animation: timeline var(--msg-show-time) linear forwards;
+}
+
+@keyframes timeline {
+  to {
+    width: 0;
+  }
+}
+
+:root {
+  --msg-bg: var(--grey);
+  --msg-bd: var(--grey-border);
+}
+
+:root {
+  --msg-show-time: 0;
+  --msg-anim-time: 0;
+  --msg-timeline-size: 4px;
+}

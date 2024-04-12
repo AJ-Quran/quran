@@ -1,0 +1,6 @@
+img {
+  user-select: none;
+  pointer-events: none;
+  border-radius: var(--bd-ra);
+  object-fit: cover;
+}

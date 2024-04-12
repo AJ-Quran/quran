@@ -1,0 +1,32 @@
+.txt_opa {
+  color: color-mix(
+    in srgb,
+    var(--theme-color-not) 40%,
+    var(--theme-color-not) 20%
+  );
+}
+
+.txt_gradient {
+  background: linear-gradient(
+    238deg,
+    rgb(42, 96, 196) 21%,
+    rgba(3, 120, 206, 1) 40%,
+    rgb(34 81 219) 56%,
+    rgb(24, 70, 207) 85%
+  );
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+.gender_male {
+  color: var(--gender-male-color);
+}
+
+.gender_female {
+  color: var(--gender-female-color);
+}
+
+.txt_ar {
+  text-align: right;
+  line-height: 1.2em;
+}

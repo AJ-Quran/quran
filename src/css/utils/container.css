@@ -1,0 +1,80 @@
+[class^='con'] {
+  border-radius: var(--bd-ra);
+  padding: var(--pd-small);
+}
+
+.con_ha {
+  &:hover {
+    background-color: var(--bg-hover);
+  }
+
+  &:active {
+    background-color: var(--bg-active);
+  }
+}
+
+.con_h {
+  &:hover {
+    background-color: var(--bg-hover);
+  }
+}
+
+.con_a {
+  &:active {
+    background-color: var(--bg-active);
+  }
+}
+
+.con_bg_df {
+  background-color: var(--bg);
+}
+
+.con_bg_dr {
+  background-color: var(--bg-dark) !important;
+}
+
+.con_bd_df {
+  border: 1px solid var(--grey-border) !important;
+}
+
+.con_bd_cl {
+  border: 1px solid var(--main-color-border) !important;
+}
+
+.con_bg_gradient {
+  background: linear-gradient(
+    238deg,
+    rgba(3, 123, 206, 1) 21%,
+    rgba(3, 120, 206, 1) 40%,
+    rgb(34 81 219) 56%,
+    rgb(28, 62, 164) 85%
+  );
+  background-size: 100%;
+  transition: all 0.3s ease;
+
+  &.con_a {
+    &:active {
+      background-size: 100%;
+      background-position: 0 0;
+    }
+  }
+
+  &.con_h {
+    &:hover {
+      background-size: 300%;
+      background-position: 50% 50%;
+    }
+  }
+
+  &.con_ha {
+    &:hover {
+      background-size: 300%;
+      background-position: 50% 50%;
+    }
+
+    &:active {
+      background-size: 100%;
+      background-position: 0 0;
+    }
+  }
+}

@@ -1,0 +1,19 @@
+.w_100 {
+  width: 100%;
+}
+
+.w_max {
+  width: max-content;
+}
+
+.h_100 {
+  height: 100%;
+}
+
+.h_max {
+  height: max-content;
+}
+
+.h_max_100 {
+  max-height: 100%;
+}
