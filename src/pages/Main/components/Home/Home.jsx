@@ -28,7 +28,7 @@ export default function Home() {
   function scrollDown() {
     const scrollHeight =
       homePage.current.querySelector('.scroll_area').clientHeight
-    homePage.current.scrollTop = scrollHeight
+    homePage.current.scrollTop += scrollHeight
   }
 
   async function autoFill() {
@@ -78,7 +78,7 @@ export default function Home() {
         <Message show={message.show} type={message.type}>
           {message.msg}
         </Message>
-        <div className="h_100 list_y df_ai_ce df_jc_sb scroll_area">
+        <div className="h_100 list_y df_ai_ce df_jc_sb scroll_area home_page_item">
           <div className="list_y df_ai_ce two_blur_balls">
             <b className="main_big_text">
               <span className="txt_gradient">AJ Quran</span>
@@ -87,6 +87,21 @@ export default function Home() {
               The Quran - Explore and collaborate on the holy book of Islam.
               📖✨
             </div>
+          </div>
+          <div className="list_y df_ai_ce">
+            <div
+              className="con_bg_df con_ha welcome_down_btn df_f_ce"
+              onClick={scrollDown}
+            >
+              <span className="material-symbols-outlined">expand_more</span>
+            </div>
+          </div>
+        </div>
+        <div className="h_100 list_y df_ai_ce df_jc_sb scroll_area home_page_item">
+          <div className="list_y df_ai_ce two_blur_balls">
+            <b className="main_big_text">
+              <span className="txt_gradient">Facts</span>
+            </b>
           </div>
           <div className="list_y df_ai_ce">
             <div className="list_x facts">
@@ -121,49 +136,43 @@ export default function Home() {
             </div>
           </div>
         </div>
-        <div className="list_y df_ai_ce">
-          <div className="list_y main_w">
-            <div className="list_x df_jc_sb">
-              <b className="fz_big">Feedback</b>
-              <div
-                className="con_bg_gradient con_ha bd_ra_big list_x"
-                onClick={autoFill}
+        <div className="h_100 list_y df_ai_ce df_jc_sb scroll_area home_page_item">
+          <div className="list_y df_ai_ce two_blur_balls">
+            <b className="main_big_text">
+              <span className="txt_gradient">Feedback</span>
+            </b>
+          </div>
+          <div className="list_y df_ai_ce">
+            <div className="list_y main_w">
+              <div className="list_x df_jc_sb">
+                <b className="fz_big">Feedback</b>
+                <div
+                  className="con_bg_gradient con_ha bd_ra_big list_x"
+                  onClick={autoFill}
+                >
+                  <span className="material-symbols-outlined fz_normal">
+                    draw
+                  </span>
+                  <span>Auto Fill</span>
+                </div>
+              </div>
+              <div ref={form} className="list_y">
+                <div className="list_x">
+                  <Input ref={nameInput} type="text" label="Name" />
+                  <Input ref={emailInput} type="text" label="Email" />
+                </div>
+                <Textarea ref={msgTextarea} label="Message" />
+              </div>
+              <Button
+                className="medium list_x df_f_ce"
+                colorful="true"
+                onClick={sendFeedback}
               >
                 <span className="material-symbols-outlined fz_normal">
-                  draw
+                  forward_to_inbox
                 </span>
-                <span>Auto Fill</span>
-              </div>
-            </div>
-            <div ref={form} className="list_y">
-              <div className="list_x">
-                <Input ref={nameInput} type="text" label="Name" />
-                <Input ref={emailInput} type="text" label="Email" />
-              </div>
-              <Textarea ref={msgTextarea} label="Message" />
-            </div>
-            <Button
-              className="medium list_x df_f_ce"
-              colorful="true"
-              onClick={sendFeedback}
-            >
-              <span className="material-symbols-outlined fz_normal">
-                forward_to_inbox
-              </span>
-              <span>Send</span>
-            </Button>
-          </div>
-          <div></div>
-          <div className="line_x"></div>
-          <div className="footer pd_small list_y">
-            <div className="list_x social_media df_f_ce">
-              <a
-                href="https://github.com/AJ-Quran"
-                rel="noreferrer"
-                className="con_bg_df con_ha df_f_ce"
-              >
-                <i className="fa-brands fa-github fz_big"></i>
-              </a>
+                <span>Send</span>
+              </Button>
             </div>
           </div>
         </div>

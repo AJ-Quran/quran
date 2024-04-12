@@ -2,6 +2,10 @@
   scroll-behavior: smooth;
 }
 
+.home_page_item {
+  overflow: hidden;
+}
+
 .main_big_text {
   font-size: 5em;
   text-shadow: 0px 0px 50px var(--main-color-light);
@@ -53,13 +57,6 @@
   50% {
     transform: translateY(-8px);
   }
-}
-
-.social_media > * {
-  width: 40px;
-  height: 40px;
-  padding: var(--pd-small-very);
-  border-radius: 50%;
 }
 
 :root {
