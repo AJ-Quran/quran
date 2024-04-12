@@ -1,7 +1,5 @@
 .scroll_y {
   overflow: hidden auto;
-  padding-right: var(--pd-small);
-  padding-left: var(--pd-small);
 }
 
 .scroll_y::-webkit-scrollbar {
@@ -10,8 +8,6 @@
 
 .scroll_x {
   overflow: auto hidden;
-  padding-top: var(--pd-small);
-  padding-bottom: var(--pd-small);
 }
 
 .scroll_x::-webkit-scrollbar {
