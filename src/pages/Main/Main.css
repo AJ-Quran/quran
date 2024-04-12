@@ -15,6 +15,10 @@
   flex: 1;
 }
 
+.main_area:has(.two_blur_balls) .menu {
+  z-index: 1;
+}
+
 :root {
   --menu-size: 70px;
 }
