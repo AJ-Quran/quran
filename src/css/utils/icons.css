@@ -7,3 +7,11 @@
 [class^='material-symbols'].fill {
   font-variation-settings: 'FILL' 1, 'wght' 400, 'GRAD' 0, 'opsz' 24;
 }
+
+i[class^='fa'] {
+  font-size: 1.2em;
+}
+
+i[class^='fa'].fz_big {
+  font-size: 2em !important;
+}
