@@ -23,6 +23,11 @@
   align-items: start;
 }
 
+.df_ai_end {
+  display: flex;
+  align-items: end;
+}
+
 .df_jc_ce {
   display: flex;
   justify-content: center;
