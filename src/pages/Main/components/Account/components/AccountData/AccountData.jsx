@@ -134,8 +134,8 @@ function AccountData() {
 
   if (editing) {
     return (
-      <div className='df_f_ce'>
-        <div className="con_bd_cl loading_area list_y" ref={form} style={{width: '500px'}}>
+      <div className="df_f_ce">
+        <div className="con_bd_cl loading_area list_y main_w_small" ref={form}>
           <Message show={message.show} type={message.type}>
             {message.msg}
           </Message>

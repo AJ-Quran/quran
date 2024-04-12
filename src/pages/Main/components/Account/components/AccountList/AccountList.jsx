@@ -44,12 +44,11 @@ export default function AccountList() {
           {accounts.map((account, i) => (
             <div
               key={i}
-              className="con_bd_df con_ha df_ai_ce_child df_jc_sb"
+              className="con_bd_df con_ha df_ai_ce_child df_jc_sb main_w_small"
               username={accounts[i]?.username}
               onClick={() =>
                 setSwitchAcc({ switch: true, account: accounts[i] })
               }
-              style={{ width: '500px' }}
             >
               <div className="list_x fz_small">
                 <Avatar
@@ -99,7 +98,7 @@ export default function AccountList() {
       )}
       {loading && (
         <div className="df_jc_ce">
-          <div className="con_bd_cl loading_area" style={{ width: '500px' }}>
+          <div className="con_bd_cl loading_area main_w_small">
             <Loading size="50px">Accounts list</Loading>
           </div>
         </div>
