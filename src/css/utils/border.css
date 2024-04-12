@@ -1,8 +1,13 @@
 .bd_ra {
-  border-radius: var(--bd-ra);
+  border-radius: var(--bd-ra) !important;
+}
+
+.bd_ra_big {
+  border-radius: var(--bd-ra-big) !important;
 }
 
 :root {
   --bd-ra: 10px;
   --bd-ra-small: 6px;
+  --bd-ra-big: 16px;
 }
