@@ -34,23 +34,16 @@ export default function Home({ surahI, setSurahI }) {
     setPageHeight(height)
   }, [])
 
-  function scroll(direction, wheel) {
+  function scroll(direction) {
     const scrollSize = homePage.current.scrollTop % pageHeight
 
     if (direction === 'up') {
-      if (wheel) {
-        if (scrollSize === 0) homePage.current.scrollTop -= pageHeight
-        if (scrollSize > 0) homePage.current.scrollTop -= scrollSize
-        return
-      }
-
-      homePage.current.scrollTop -= pageHeight
+      if (scrollSize === 0) homePage.current.scrollTop -= pageHeight
+      if (scrollSize > 0) homePage.current.scrollTop -= scrollSize
     }
 
     if (direction === 'down') {
-      if (wheel) return (homePage.current.scrollTop += pageHeight - scrollSize)
-
-      homePage.current.scrollTop += pageHeight
+      homePage.current.scrollTop += pageHeight - scrollSize
     }
 
     scrollDotActive(direction)
@@ -138,12 +131,12 @@ export default function Home({ surahI, setSurahI }) {
 
   function wheel(e) {
     if (e.deltaY < 0) {
-      scroll('up', (wheel = true))
+      scroll('up')
       scrollDotActive('up')
     }
 
     if (e.deltaY > 0) {
-      scroll('down', (wheel = true))
+      scroll('down')
       scrollDotActive('down')
     }
   }
