@@ -1,4 +1,4 @@
-import { useRef, useState } from 'react'
+import { useEffect, useRef, useState } from 'react'
 
 import Input from '../../../../components/Input/Input'
 import Button from '../../../../components/Button/Button'
@@ -21,16 +21,19 @@ export default function Home() {
   const msgTextarea = useRef()
   const homePage = useRef()
   const scrollBtns = useRef()
+  const [scrollHeight, setScrollHeight] = useState(0)
   const [message, setMessage] = useState({
     msg: '',
     type: 'default',
     show: false,
   })
 
-  function scroll(direction) {
-    const scrollHeight =
-      homePage.current?.querySelector('.scroll_area').clientHeight
+  useEffect(() => {
+    const height = homePage.current?.querySelector('.scroll_area').clientHeight
+    setScrollHeight(height)
+  }, [])
 
+  function scroll(direction) {
     if (direction === 'up') {
       homePage.current.scrollTop -= scrollHeight
     }
@@ -46,9 +49,6 @@ export default function Home() {
     if (btn.classList.contains('active')) return
 
     if (btn.classList.contains('scroll_dot_btn')) {
-      const scrollHeight =
-        homePage.current?.querySelector('.scroll_area').clientHeight
-
       const index = Array.from(scrollBtns.current.children).indexOf(btn)
       const activeDot = scrollBtns.current.querySelector('.active')
 
@@ -60,8 +60,6 @@ export default function Home() {
   }
 
   function scrollDotActive(direction) {
-    const scrollHeight =
-      homePage.current?.querySelector('.scroll_area').clientHeight
     const { children } = scrollBtns.current
 
     let scrollI = homePage.current.scrollTop / scrollHeight
@@ -130,17 +128,11 @@ export default function Home() {
 
   function wheel(e) {
     if (e.deltaY > 0) {
-      const scrollHeight =
-        homePage.current?.querySelector('.scroll_area').clientHeight
-
       homePage.current.scrollTop += scrollHeight
       scrollDotActive('down')
     }
 
     if (e.deltaY < 0) {
-      const scrollHeight =
-        homePage.current?.querySelector('.scroll_area').clientHeight
-
       homePage.current.scrollTop -= scrollHeight
       scrollDotActive('up')
     }
