@@ -35,8 +35,7 @@ export default function Home() {
 
   function scroll(direction) {
     if (direction === 'up') {
-      const scrollSize = homePage.current.scrollTop % pageHeight
-      homePage.current.scrollTop -= pageHeight + scrollSize
+      homePage.current.scrollTop -= pageHeight
     }
 
     if (direction === 'down') {
