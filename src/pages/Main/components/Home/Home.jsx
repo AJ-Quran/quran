@@ -169,6 +169,10 @@ export default function Home() {
             <b className="main_big_text">
               <span className="txt_gradient">Facts</span>
             </b>
+            <div className="txt_opa">
+              Discover the secrets of the Quran ✨ - Start your enlightening
+              journey! 📖
+            </div>
           </div>
           <div className="list_y df_ai_ce">
             <div className="list_x facts">
@@ -201,6 +205,9 @@ export default function Home() {
             <b className="main_big_text">
               <span className="txt_gradient">Feedback</span>
             </b>
+            <div className="txt_opa">
+              Dive into the Quran - Your insights are valued! 😊📖
+            </div>
           </div>
           <div className="list_y df_ai_ce">
             <div className="list_y main_w">
