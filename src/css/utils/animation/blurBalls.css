@@ -18,12 +18,12 @@
 
 .two_blur_balls::before {
   left: var(--left-pos);
-  animation: leftToRight 10s infinite;
+  animation: leftToRight 8s infinite;
 }
 
 .two_blur_balls::after {
   left: var(--right-pos);
-  animation: rightToLeft 10s infinite;
+  animation: rightToLeft 8s infinite;
 }
 
 @keyframes leftToRight {
