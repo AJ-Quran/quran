@@ -41,6 +41,7 @@ export default function Home() {
     if (direction === 'down') {
       homePage.current.scrollTop += scrollHeight
     }
+
     scrollDotActive(direction)
   }
 
@@ -127,14 +128,14 @@ export default function Home() {
   }
 
   function wheel(e) {
-    if (e.deltaY > 0) {
-      homePage.current.scrollTop += scrollHeight
-      scrollDotActive('down')
+    if (e.deltaY < 0) {
+      scroll('up')
+      scrollDotActive('up')
     }
 
-    if (e.deltaY < 0) {
-      homePage.current.scrollTop -= scrollHeight
-      scrollDotActive('up')
+    if (e.deltaY > 0) {
+      scroll('down')
+      scrollDotActive('down')
     }
   }
 
