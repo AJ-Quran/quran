@@ -48,18 +48,19 @@
 }
 
 .scroll_dot_btn.active {
-  width: 9px;
-  background-color: #fff;
+  width: 10px;
+  background-color: var(--main-color-bg);
+  box-shadow: 0 0 30px 5px var(--main-color);
 }
 
 .up_down_btn {
-  width: 30px;
+  width: 40px;
   aspect-ratio: 1/1;
   border-radius: 50%;
   padding: 0;
 
   span {
-    font-size: 1.2em;
+    font-size: 1.7em;
     display: flex;
     align-items: center;
     justify-content: center;
