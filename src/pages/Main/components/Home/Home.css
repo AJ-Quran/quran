@@ -81,6 +81,14 @@
   bottom: 80px;
 }
 
+.all_rights_txt {
+  position: absolute;
+  bottom: var(--pd-small);
+  right: var(--pd-small);
+  writing-mode: vertical-rl;
+  text-orientation: mixed;
+}
+
 .scroll_btns {
   position: absolute;
   top: 50%;
@@ -118,6 +126,28 @@
     align-items: center;
     justify-content: center;
   }
+}
+
+.subscribe_area > * {
+  width: 200px;
+  aspect-ratio: 2/1;
+  border: 2px solid currentColor;
+
+  &:hover {
+    box-shadow: 0 0 10px 2px currentColor;
+  }
+
+  &:active {
+    box-shadow: 0 0 5px 1px currentColor;
+  }
+}
+
+.subscribe_area .github {
+  color: #010409;
+}
+
+.subscribe_area .telegram {
+  color: #25a3e1;
 }
 
 :root {
