@@ -33,14 +33,23 @@ export default function Home() {
     setPageHeight(height)
   }, [])
 
-  function scroll(direction) {
+  function scroll(direction, wheel) {
+    const scrollSize = homePage.current.scrollTop % pageHeight
+
     if (direction === 'up') {
+      if (wheel) {
+        if (scrollSize === 0) homePage.current.scrollTop -= pageHeight
+        if (scrollSize > 0) homePage.current.scrollTop -= scrollSize
+        return
+      }
+
       homePage.current.scrollTop -= pageHeight
     }
 
     if (direction === 'down') {
-      const scrollSize = homePage.current.scrollTop % pageHeight
-      homePage.current.scrollTop += pageHeight - scrollSize
+      if (wheel) return (homePage.current.scrollTop += pageHeight - scrollSize)
+
+      homePage.current.scrollTop += pageHeight
     }
 
     scrollDotActive(direction)
@@ -128,12 +137,12 @@ export default function Home() {
 
   function wheel(e) {
     if (e.deltaY < 0) {
-      scroll('up')
+      scroll('up', (wheel = true))
       scrollDotActive('up')
     }
 
     if (e.deltaY > 0) {
-      scroll('down')
+      scroll('down', (wheel = true))
       scrollDotActive('down')
     }
   }
