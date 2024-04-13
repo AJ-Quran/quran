@@ -31,15 +31,18 @@ export default function Home() {
   useEffect(() => {
     const height = homePage.current?.querySelector('.scroll_area').clientHeight
     setScrollHeight(height)
+    homePage.current.scrollTop = 100
   }, [])
 
   function scroll(direction) {
     if (direction === 'up') {
-      homePage.current.scrollTop -= scrollHeight
+      const scrollSize = homePage.current.scrollTop % scrollHeight
+      homePage.current.scrollTop -= scrollHeight + scrollSize
     }
 
     if (direction === 'down') {
-      homePage.current.scrollTop += scrollHeight
+      const scrollSize = homePage.current.scrollTop % scrollHeight
+      homePage.current.scrollTop += scrollHeight - scrollSize
     }
 
     scrollDotActive(direction)
@@ -70,12 +73,10 @@ export default function Home() {
     activeDot.classList.remove('active')
 
     if (direction === 'up') {
-      homePage.current.scrollTop -= scrollHeight
       children[scrollI].classList.add('active')
     }
 
     if (direction === 'down') {
-      homePage.current.scrollTop += scrollHeight
       children[scrollI + 1].classList.add('active')
     }
   }
