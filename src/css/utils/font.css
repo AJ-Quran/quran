@@ -9,3 +9,7 @@
 .fz_big {
   font-size: 1.2em !important;
 }
+
+.fz_mono {
+  font-family: monospace !important;
+}
