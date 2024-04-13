@@ -19,16 +19,41 @@ export default function Home() {
   const emailInput = useRef()
   const msgTextarea = useRef()
   const homePage = useRef()
+  const scrollBtns = useRef()
   const [message, setMessage] = useState({
     msg: '',
     type: 'default',
     show: false,
   })
 
-  function scrollDown() {
+  function scroll(direction) {
     const scrollHeight =
-      homePage.current.querySelector('.scroll_area').clientHeight
-    homePage.current.scrollTop += scrollHeight
+      homePage.current?.querySelector('.scroll_area').clientHeight
+
+    if (direction === 'up') {
+      homePage.current.scrollTop -= scrollHeight
+    }
+    if (direction === 'down') {
+      homePage.current.scrollTop += scrollHeight
+    }
+  }
+
+  function scrollDotBtn(e) {
+    const btn = e.target
+    if (btn.classList.contains('active')) return
+
+    if (btn.classList.contains('scroll_dot_btn')) {
+      const scrollHeight =
+        homePage.current?.querySelector('.scroll_area').clientHeight
+
+      const index = Array.from(scrollBtns.current.children).indexOf(btn)
+      const activeDot = scrollBtns.current.querySelector('.active')
+
+      activeDot.classList.remove('active')
+      btn.classList.add('active')
+
+      homePage.current.scrollTop = index * scrollHeight
+    }
   }
 
   async function autoFill() {
@@ -74,7 +99,7 @@ export default function Home() {
 
   return (
     <>
-      <div className="h_100 scroll_y home_page" ref={homePage}>
+      <div className="h_100 home_page" ref={homePage}>
         <Message show={message.show} type={message.type}>
           {message.msg}
         </Message>
@@ -86,14 +111,6 @@ export default function Home() {
             <div className="txt_opa">
               The Quran - Explore and collaborate on the holy book of Islam.
               📖✨
-            </div>
-          </div>
-          <div className="list_y df_ai_ce">
-            <div
-              className="con_bg_df con_ha welcome_down_btn df_f_ce"
-              onClick={scrollDown}
-            >
-              <span className="material-symbols-outlined">expand_more</span>
             </div>
           </div>
         </div>
@@ -127,13 +144,6 @@ export default function Home() {
               </div>
             </div>
             <div></div>
-            <div></div>
-            <div
-              className="con_bg_df con_ha welcome_down_btn df_f_ce"
-              onClick={scrollDown}
-            >
-              <span className="material-symbols-outlined">expand_more</span>
-            </div>
           </div>
         </div>
         <div className="h_100 list_y df_ai_ce df_jc_sb scroll_area home_page_item">
@@ -174,6 +184,26 @@ export default function Home() {
                 <span>Send</span>
               </Button>
             </div>
+            <div></div>
+          </div>
+        </div>
+        <div className="scroll_btns list_y df_ai_ce_child">
+          <div
+            className="con_bg_df con_ha up_down_btn df_f_ce"
+            onClick={() => scroll('up')}
+          >
+            <span className="material-symbols-outlined">expand_less</span>
+          </div>
+          <div ref={scrollBtns} className="list_y" onClick={scrollDotBtn}>
+            <div className="con_bg_df con_ha scroll_dot_btn active"></div>
+            <div className="con_bg_df con_ha scroll_dot_btn"></div>
+            <div className="con_bg_df con_ha scroll_dot_btn"></div>
+          </div>
+          <div
+            className="con_bg_df con_ha up_down_btn df_f_ce"
+            onClick={() => scroll('down')}
+          >
+            <span className="material-symbols-outlined">expand_more</span>
           </div>
         </div>
       </div>

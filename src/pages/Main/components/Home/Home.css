@@ -1,5 +1,6 @@
 .home_page {
   scroll-behavior: smooth;
+  overflow: hidden;
 }
 
 .home_page_item {
@@ -32,30 +33,36 @@
   padding: var(--pd-small);
 }
 
-.welcome_down_btn {
-  width: 60px;
+.scroll_btns {
+  position: absolute;
+  top: 50%;
+  right: var(--pd-small);
+  transform: translateY(-50%);
+}
+
+.scroll_dot_btn {
+  width: 5px;
   aspect-ratio: 1/1;
   border-radius: 50%;
   padding: 0;
-  margin-bottom: var(--mar-big);
-  transform: translateY(0);
-  animation: upAndDown 2s alternate infinite;
+}
 
-  &:hover {
-    animation-play-state: paused;
-  }
+.scroll_dot_btn.active {
+  width: 9px;
+  background-color: #fff;
+}
+
+.up_down_btn {
+  width: 30px;
+  aspect-ratio: 1/1;
+  border-radius: 50%;
+  padding: 0;
 
   span {
-    font-size: 3em;
+    font-size: 1.2em;
     display: flex;
     align-items: center;
     justify-content: center;
-  }
-}
-
-@keyframes upAndDown {
-  50% {
-    transform: translateY(-8px);
   }
 }
 
