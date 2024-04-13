@@ -31,7 +31,6 @@ export default function Home() {
   useEffect(() => {
     const height = homePage.current?.querySelector('.scroll_area').clientHeight
     setScrollHeight(height)
-    homePage.current.scrollTop = 100
   }, [])
 
   function scroll(direction) {
