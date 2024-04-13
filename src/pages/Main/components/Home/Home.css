@@ -4,6 +4,7 @@
 }
 
 .home_page_item {
+  position: relative;
   overflow: hidden;
 }
 
@@ -52,6 +53,31 @@
   left: 0;
   inset: var(--facts-bd-size);
   padding: var(--pd-small);
+}
+
+.about_us_area > * {
+  width: auto;
+  min-width: 200px;
+  height: auto;
+}
+
+.about_us_area .avatar {
+  position: relative;
+  width: 100px;
+  overflow: hidden;
+
+  img {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+  }
+}
+
+.mission_txt {
+  position: absolute;
+  bottom: 80px;
 }
 
 .scroll_btns {

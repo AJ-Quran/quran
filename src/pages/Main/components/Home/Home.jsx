@@ -211,6 +211,54 @@ export default function Home({ surahI, setSurahI }) {
         <div className="h_100 list_y df_ai_ce df_jc_sb scroll_area home_page_item">
           <div className="list_y df_ai_ce two_blur_balls">
             <b className="main_big_text">
+              <span className="txt_gradient">About us</span>
+            </b>
+            <div className="txt_opa">
+              We are the developers of AJ Quran 🧑‍💻📖
+            </div>
+          </div>
+          <div className="list_y df_ai_ce">
+            <div className="list_x facts about_us_area">
+              <div className="con_bg_gradient">
+                <div className="con_bg_dr facts_bg list_y df_ai_ce">
+                  <div className="avatar df_f_ce">
+                    <img
+                      src="https://avatars.githubusercontent.com/u/100585930?s=400&u=b1b25433ac6308a722ecb4d6a0343b65b8abf2a3&v=4"
+                      alt="CEO"
+                    />
+                    <span>AJ</span>
+                  </div>
+                  <b className="fz_big">Akbar Jorayev</b>
+                  <div className="txt_opa fz_small">CEO • Founder</div>
+                  <div className="social_media list_x">
+                    <a
+                      href="https://github.com/akbarjorayev"
+                      rel="noreferrer"
+                      className="con_bg_df con_ha df_f_ce"
+                    >
+                      <i className="fa-brands fa-github fz_big"></i>
+                    </a>
+                    <a
+                      href="https://t.me/akbarjorayevAJ"
+                      rel="noreferrer"
+                      className="con_bg_df con_ha df_f_ce"
+                    >
+                      <i className="fa-brands fa-telegram fz_big"></i>
+                    </a>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div className="txt_opa fz_mono mission_txt">
+            Our mission is to enable access to the Quran for all, anytime,
+            anywhere
+          </div>
+          <div></div>
+        </div>
+        <div className="h_100 list_y df_ai_ce df_jc_sb scroll_area home_page_item">
+          <div className="list_y df_ai_ce two_blur_balls">
+            <b className="main_big_text">
               <span className="txt_gradient">Feedback</span>
             </b>
             <div className="txt_opa">
@@ -266,6 +314,7 @@ export default function Home({ surahI, setSurahI }) {
           </div>
           <div ref={scrollBtns} className="list_y" onClick={scrollDotBtn}>
             <div className="con_bg_df con_ha scroll_dot_btn active"></div>
+            <div className="con_bg_df con_ha scroll_dot_btn"></div>
             <div className="con_bg_df con_ha scroll_dot_btn"></div>
             <div className="con_bg_df con_ha scroll_dot_btn"></div>
           </div>
