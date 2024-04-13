@@ -219,7 +219,7 @@ export default function Home({ surahI, setSurahI }) {
           </div>
           <div className="list_y df_ai_ce">
             <div className="list_x facts about_us_area">
-              <div className="con_bg_gradient">
+              <div className="con_bg_gradient active_bg_anim active">
                 <div className="con_bg_dr facts_bg list_y df_ai_ce">
                   <div className="avatar df_f_ce">
                     <img
@@ -251,7 +251,7 @@ export default function Home({ surahI, setSurahI }) {
             </div>
           </div>
           <div className="txt_opa fz_mono mission_txt">
-            Our mission is to enable access to the Quran for all, anytime,
+            Our mission is to enable access to the <b>Quran</b> for all, anytime,
             anywhere
           </div>
           <div></div>
