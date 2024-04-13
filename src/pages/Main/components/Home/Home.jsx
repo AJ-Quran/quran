@@ -12,6 +12,7 @@ import { msgData } from '../../../../js/utils/message'
 
 import './Home.css'
 import { send } from '../../../../js/utils/feedback'
+import { wait } from '@testing-library/user-event/dist/utils'
 
 export default function Home() {
   const form = useRef()
@@ -58,13 +59,19 @@ export default function Home() {
 
   async function autoFill() {
     if (nameInput.current.value) return
+    const nameParent = nameInput.current.parentElement
+    nameParent.classList.add('active')
 
     const username = loadLocal('quran').accounts.active
     const account = await getAccount(username)
+    await wait(1000)
 
-    const nameLabel = nameInput.current.parentElement.querySelector('label')
+    const nameLabel = nameParent.querySelector('label')
+
     nameInput.current.value = account.name
+
     nameLabel.classList.add('active')
+    nameParent.classList.remove('active')
     nameInput.current.classList.remove('error')
   }
 
@@ -168,7 +175,12 @@ export default function Home() {
               </div>
               <div ref={form} className="list_y">
                 <div className="list_x">
-                  <Input ref={nameInput} type="text" label="Name" />
+                  <Input
+                    ref={nameInput}
+                    type="text"
+                    label="Name"
+                    areaProps={{ className: 'active_bg_anim' }}
+                  />
                   <Input ref={emailInput} type="text" label="Email" />
                 </div>
                 <Textarea ref={msgTextarea} label="Message" />
