@@ -14,7 +14,6 @@ import { txtCapitalizeFirstLetter } from '../../js/utils/txt'
 import './Main.css'
 
 const pages = {
-  home: <Home />,
   quran: <Quran />,
   search: <Search />,
   account: <Account />,
@@ -33,9 +32,12 @@ function Main() {
   return (
     <div className="main_area">
       <div className="menu">
-        <Menu setActievPage={setActievPage} />
+        <Menu activePage={activePage} setActievPage={setActievPage} />
       </div>
-      <div className="main">{pages[activePage]}</div>
+      <div className="main">
+        {activePage === 'home' && <Home setActievPage={setActievPage} />}
+        {pages[activePage]}
+      </div>
     </div>
   )
 }

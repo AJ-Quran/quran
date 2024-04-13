@@ -13,6 +13,27 @@
   position: relative;
 }
 
+.main_btn {
+  --facts-bd-size: 2px;
+  width: 200px !important;
+  height: 70px !important;
+  margin-bottom: var(--mar-big);
+  font-size: 1.5em;
+}
+
+.main_btn,
+.main_btn > * {
+  border-radius: 100px;
+}
+
+.main_btn:hover {
+  box-shadow: 0 0 20px 3px var(--main-color);
+}
+
+.main_btn:active {
+  box-shadow: 0 0 10px 1px var(--main-color);
+}
+
 .facts > * {
   width: 300px;
   height: 100px;

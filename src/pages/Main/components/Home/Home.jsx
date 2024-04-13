@@ -14,7 +14,7 @@ import './Home.css'
 import { send } from '../../../../js/utils/feedback'
 import { wait } from '@testing-library/user-event/dist/utils'
 
-export default function Home() {
+export default function Home({ setActievPage }) {
   const form = useRef()
   const nameInput = useRef()
   const emailInput = useRef()
@@ -147,6 +147,10 @@ export default function Home() {
     }
   }
 
+  function readQuran() {
+    setActievPage('quran')
+  }
+
   return (
     <>
       <div className="h_100 home_page" ref={homePage} onWheel={wheel}>
@@ -161,6 +165,16 @@ export default function Home() {
             <div className="txt_opa">
               The Quran - Explore and collaborate on the holy book of Islam.
               📖✨
+            </div>
+          </div>
+          <div className="facts">
+            <div
+              className="con_bg_gradient main_btn active_bg_anim active"
+              onClick={readQuran}
+            >
+              <div className="con_bg_dr con_ha facts_bg df_f_ce">
+                <b className="txt_gradient">Read Quran</b>
+              </div>
             </div>
           </div>
         </div>
