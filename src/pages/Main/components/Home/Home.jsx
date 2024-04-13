@@ -9,10 +9,10 @@ import { getAccount } from '../../../../js/account/account'
 import { loadLocal } from '../../../../js/db/localStorage'
 import { getData } from '../../../../js/utils/form'
 import { msgData } from '../../../../js/utils/message'
-
-import './Home.css'
 import { send } from '../../../../js/utils/feedback'
 import { wait } from '@testing-library/user-event/dist/utils'
+
+import './Home.css'
 
 export default function Home({ setActievPage }) {
   const form = useRef()
