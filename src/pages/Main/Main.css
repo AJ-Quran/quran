@@ -22,6 +22,10 @@
   z-index: 1;
 }
 
+.main_area:has(.read_area) .menu {
+  z-index: auto;
+}
+
 .main_area:has(.home_page) .main {
   padding-top: 0;
 }

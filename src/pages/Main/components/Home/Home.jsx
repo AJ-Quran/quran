@@ -4,6 +4,7 @@ import Input from '../../../../components/Input/Input'
 import Button from '../../../../components/Button/Button'
 import Textarea from '../../../../components/Textarea/Textarea'
 import Message from '../../../../components/Message/Message'
+import ReadArea from '../Quran/ReadArea/ReadArea'
 
 import { getAccount } from '../../../../js/account/account'
 import { loadLocal } from '../../../../js/db/localStorage'
@@ -14,7 +15,7 @@ import { wait } from '@testing-library/user-event/dist/utils'
 
 import './Home.css'
 
-export default function Home({ setActievPage }) {
+export default function Home({ surahI, setSurahI }) {
   const form = useRef()
   const nameInput = useRef()
   const emailInput = useRef()
@@ -148,7 +149,7 @@ export default function Home({ setActievPage }) {
   }
 
   function readQuran() {
-    setActievPage('quran')
+    setSurahI(1)
   }
 
   return (
@@ -283,6 +284,7 @@ export default function Home({ setActievPage }) {
           </div>
         </div>
       </div>
+      {surahI > 0 && <ReadArea index={surahI} setSurahI={setSurahI} />}
     </>
   )
 }

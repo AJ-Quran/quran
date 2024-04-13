@@ -14,7 +14,6 @@ import { txtCapitalizeFirstLetter } from '../../js/utils/txt'
 import './Main.css'
 
 const pages = {
-  quran: <Quran />,
   search: <Search />,
   account: <Account />,
   settings: <Settings />,
@@ -22,6 +21,7 @@ const pages = {
 
 function Main() {
   const [activePage, setActievPage] = useState('home')
+  const [surahI, setSurahI] = useState(0)
   const [title, setTitle] = useTitle(activePage)
 
   useEffect(() => {
@@ -35,7 +35,12 @@ function Main() {
         <Menu activePage={activePage} setActievPage={setActievPage} />
       </div>
       <div className="main">
-        {activePage === 'home' && <Home setActievPage={setActievPage} />}
+        {activePage === 'home' && (
+          <Home surahI={surahI} setSurahI={setSurahI} />
+        )}
+        {activePage === 'quran' && (
+          <Quran surahI={surahI} setSurahI={setSurahI} />
+        )}
         {pages[activePage]}
       </div>
     </div>
