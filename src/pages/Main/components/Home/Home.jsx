@@ -21,7 +21,7 @@ export default function Home() {
   const msgTextarea = useRef()
   const homePage = useRef()
   const scrollBtns = useRef()
-  const [scrollHeight, setScrollHeight] = useState(0)
+  const [pageHeight, setPageHeight] = useState(0)
   const [message, setMessage] = useState({
     msg: '',
     type: 'default',
@@ -30,18 +30,18 @@ export default function Home() {
 
   useEffect(() => {
     const height = homePage.current?.querySelector('.scroll_area').clientHeight
-    setScrollHeight(height)
+    setPageHeight(height)
   }, [])
 
   function scroll(direction) {
     if (direction === 'up') {
-      const scrollSize = homePage.current.scrollTop % scrollHeight
-      homePage.current.scrollTop -= scrollHeight + scrollSize
+      const scrollSize = homePage.current.scrollTop % pageHeight
+      homePage.current.scrollTop -= pageHeight + scrollSize
     }
 
     if (direction === 'down') {
-      const scrollSize = homePage.current.scrollTop % scrollHeight
-      homePage.current.scrollTop += scrollHeight - scrollSize
+      const scrollSize = homePage.current.scrollTop % pageHeight
+      homePage.current.scrollTop += pageHeight - scrollSize
     }
 
     scrollDotActive(direction)
@@ -58,14 +58,14 @@ export default function Home() {
       activeDot.classList.remove('active')
       btn.classList.add('active')
 
-      homePage.current.scrollTop = index * scrollHeight
+      homePage.current.scrollTop = index * pageHeight
     }
   }
 
   function scrollDotActive(direction) {
     const { children } = scrollBtns.current
 
-    let scrollI = homePage.current.scrollTop / scrollHeight
+    let scrollI = homePage.current.scrollTop / pageHeight
     scrollI = Math.floor(scrollI)
 
     const activeDot = scrollBtns.current.querySelector('.active')
