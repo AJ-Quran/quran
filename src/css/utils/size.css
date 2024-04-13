@@ -3,7 +3,7 @@
 }
 
 .w_max {
-  width: max-content !important;
+  width: max-content;
 }
 
 .h_100 {
@@ -11,7 +11,7 @@
 }
 
 .h_max {
-  height: max-content !important;
+  height: max-content;
 }
 
 .h_max_100 {
