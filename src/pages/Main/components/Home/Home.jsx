@@ -30,23 +30,15 @@ export default function Home() {
   function scroll(direction) {
     const scrollHeight =
       homePage.current?.querySelector('.scroll_area').clientHeight
-    const { children } = scrollBtns.current
-
-    let scrollI = homePage.current.scrollTop / scrollHeight
-    scrollI = Math.floor(scrollI)
-
-    const activeDot = scrollBtns.current.querySelector('.active')
-    activeDot.classList.remove('active')
 
     if (direction === 'up') {
       homePage.current.scrollTop -= scrollHeight
-      children[scrollI].classList.add('active')
     }
 
     if (direction === 'down') {
       homePage.current.scrollTop += scrollHeight
-      children[scrollI + 1].classList.add('active')
     }
+    scrollDotActive(direction)
   }
 
   function scrollDotBtn(e) {
@@ -64,6 +56,28 @@ export default function Home() {
       btn.classList.add('active')
 
       homePage.current.scrollTop = index * scrollHeight
+    }
+  }
+
+  function scrollDotActive(direction) {
+    const scrollHeight =
+      homePage.current?.querySelector('.scroll_area').clientHeight
+    const { children } = scrollBtns.current
+
+    let scrollI = homePage.current.scrollTop / scrollHeight
+    scrollI = Math.floor(scrollI)
+
+    const activeDot = scrollBtns.current.querySelector('.active')
+    activeDot.classList.remove('active')
+
+    if (direction === 'up') {
+      homePage.current.scrollTop -= scrollHeight
+      children[scrollI].classList.add('active')
+    }
+
+    if (direction === 'down') {
+      homePage.current.scrollTop += scrollHeight
+      children[scrollI + 1].classList.add('active')
     }
   }
 
@@ -114,9 +128,27 @@ export default function Home() {
     textAreaLabel.classList.remove('active')
   }
 
+  function wheel(e) {
+    if (e.deltaY > 0) {
+      const scrollHeight =
+        homePage.current?.querySelector('.scroll_area').clientHeight
+
+      homePage.current.scrollTop += scrollHeight
+      scrollDotActive('down')
+    }
+
+    if (e.deltaY < 0) {
+      const scrollHeight =
+        homePage.current?.querySelector('.scroll_area').clientHeight
+
+      homePage.current.scrollTop -= scrollHeight
+      scrollDotActive('up')
+    }
+  }
+
   return (
     <>
-      <div className="h_100 home_page" ref={homePage}>
+      <div className="h_100 home_page" ref={homePage} onWheel={wheel}>
         <Message show={message.show} type={message.type}>
           {message.msg}
         </Message>
