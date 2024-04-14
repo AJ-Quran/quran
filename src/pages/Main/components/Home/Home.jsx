@@ -54,8 +54,9 @@ export default function Home({ surahI, setSurahI }) {
     checkPeopleArea(direction)
   }
 
-  function checkPeopleArea(direction) {
+  function checkPeopleArea(direction, dontCheck) {
     if (people.length > 0) return
+    if (dontCheck) return loadData()
 
     let { scrollTop } = homePage.current
     if (direction === 'up') scrollTop -= pageHeight
@@ -65,12 +66,11 @@ export default function Home({ surahI, setSurahI }) {
       pageHeight * aboutUsI <= scrollTop &&
       scrollTop < pageHeight * (aboutUsI + 1)
     ) {
-      async function loadData() {
-        const data = await load(`dev/people`)
-        setPeople(data)
-      }
-
       loadData()
+    }
+    async function loadData() {
+      const data = await load(`dev/people`)
+      setPeople(data)
     }
   }
 
@@ -81,6 +81,7 @@ export default function Home({ surahI, setSurahI }) {
     if (btn.classList.contains('scroll_dot_btn')) {
       const index = Array.from(scrollBtns.current.children).indexOf(btn)
 
+      if (index === aboutUsI) checkPeopleArea('', true)
       removeActiveDot()
       btn.classList.add('active')
 
@@ -255,7 +256,7 @@ export default function Home({ surahI, setSurahI }) {
           <div className="list_y df_ai_ce">
             <div className="list_x facts about_us_area">
               {people.length === 0 && (
-                <div className="loading_area bd_ra bg_none">
+                <div className="loading_area bd_ra">
                   <Loading className="bg_none">People are loading</Loading>
                 </div>
               )}
