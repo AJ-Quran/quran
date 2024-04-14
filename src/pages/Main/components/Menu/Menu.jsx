@@ -21,9 +21,6 @@ function Menu({ setActievPage }) {
           <Button className="active" option="home" onClick={activeClick}>
             <span className="material-symbols-outlined">home</span>
           </Button>
-          <Button option="search" onClick={activeClick}>
-            <span className="material-symbols-outlined">search</span>
-          </Button>
           <Button option="quran" onClick={activeClick}>
             <span className="material-symbols-outlined">menu_book</span>
           </Button>
