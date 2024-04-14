@@ -197,7 +197,7 @@ export default function Home({ surahI, setSurahI }) {
               <div className="con_bg_gradient">
                 <div className="con_bg_dr facts_bg"></div>
                 <div className="facts_con df_jc_sb">
-                  <b className="">Surahs</b>
+                  <b>Surahs</b>
                   <div className="df_ai_end">
                     <div></div>
                     <div>144</div>
@@ -207,7 +207,7 @@ export default function Home({ surahI, setSurahI }) {
               <div className="con_bg_gradient">
                 <div className="con_bg_dr facts_bg"></div>
                 <div className="facts_con df_jc_sb">
-                  <b className="">Ayahs</b>
+                  <b>Ayahs</b>
                   <div className="df_ai_end">
                     <div></div>
                     <div>6 236</div>
