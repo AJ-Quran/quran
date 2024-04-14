@@ -391,7 +391,7 @@ function getPerson(person, i) {
     <div className="con_bg_gradient active_bg_anim active" key={i}>
       <div className="con_bg_dr facts_bg list_y df_ai_ce">
         <div className="avatar df_f_ce">
-          <img src={person.img} alt={person.title} />
+          <img src={person.img.img} alt={person.title} />
           <span>AJ</span>
         </div>
         <b className="fz_big">{person.name}</b>
