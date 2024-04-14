@@ -2,7 +2,6 @@ import React, { useEffect, useState } from 'react'
 
 import Menu from './components/Menu/Menu'
 import Settings from './components/Settings/Settings'
-import Search from './components/Search/Search'
 import Quran from './components/Quran/Quran'
 import Home from './components/Home/Home'
 import Account from './components/Account/Account'
@@ -20,7 +19,6 @@ function Main() {
   const pages = {
     home: <Home surahI={surahI} setSurahI={setSurahI} />,
     quran: <Quran surahI={surahI} setSurahI={setSurahI} />,
-    search: <Search />,
     account: <Account />,
     settings: <Settings />,
   }
