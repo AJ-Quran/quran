@@ -31,19 +31,11 @@ export default function Home({ surahI, setSurahI }) {
     type: 'default',
     show: false,
   })
+  const aboutUsI = 2
 
   useEffect(() => {
     const height = homePage.current?.querySelector('.scroll_area').clientHeight
     setPageHeight(height)
-  }, [])
-
-  useEffect(() => {
-    async function loadData() {
-      const data = await load(`dev/people`)
-      setPeople(data)
-    }
-
-    loadData()
   }, [])
 
   function scroll(direction) {
@@ -59,6 +51,27 @@ export default function Home({ surahI, setSurahI }) {
     }
 
     scrollDotActive(direction)
+    checkPeopleArea(direction)
+  }
+
+  function checkPeopleArea(direction) {
+    if (people.length > 0) return
+
+    let { scrollTop } = homePage.current
+    if (direction === 'up') scrollTop -= pageHeight
+    if (direction === 'down') scrollTop += pageHeight
+
+    if (
+      pageHeight * aboutUsI <= scrollTop &&
+      scrollTop < pageHeight * (aboutUsI + 1)
+    ) {
+      async function loadData() {
+        const data = await load(`dev/people`)
+        setPeople(data)
+      }
+
+      loadData()
+    }
   }
 
   function scrollDotBtn(e) {
