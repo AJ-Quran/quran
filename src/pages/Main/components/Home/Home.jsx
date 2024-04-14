@@ -68,10 +68,11 @@ export default function Home({ surahI, setSurahI }) {
     ) {
       loadData()
     }
-    async function loadData() {
-      const data = await load(`dev/people`)
-      setPeople(data)
-    }
+  }
+
+  async function loadData() {
+    const data = await load(`dev/people`)
+    setPeople(data)
   }
 
   function scrollDotBtn(e) {
