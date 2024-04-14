@@ -13,17 +13,17 @@ import { txtCapitalizeFirstLetter } from '../../js/utils/txt'
 
 import './Main.css'
 
-const pages = {
-  home: <Home />,
-  quran: <Quran />,
-  search: <Search />,
-  account: <Account />,
-  settings: <Settings />,
-}
-
 function Main() {
   const [activePage, setActievPage] = useState('home')
+  const [surahI, setSurahI] = useState(0)
   const [title, setTitle] = useTitle(activePage)
+  const pages = {
+    home: <Home surahI={surahI} setSurahI={setSurahI} />,
+    quran: <Quran surahI={surahI} setSurahI={setSurahI} />,
+    search: <Search />,
+    account: <Account />,
+    settings: <Settings />,
+  }
 
   useEffect(() => {
     const newTitle = txtCapitalizeFirstLetter(activePage)
@@ -33,7 +33,7 @@ function Main() {
   return (
     <div className="main_area">
       <div className="menu">
-        <Menu setActievPage={setActievPage} />
+        <Menu activePage={activePage} setActievPage={setActievPage} />
       </div>
       <div className="main">{pages[activePage]}</div>
     </div>

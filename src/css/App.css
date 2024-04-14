@@ -15,8 +15,13 @@
 @import url('./utils/scroll.css');
 @import url('./utils/active.css');
 @import url('./utils/bg.css');
+@import url('./utils/link.css');
+
+@import url('./utils/animation/blurBalls.css');
+@import url('./utils/animation/activeBg.css');
 
 @import url('https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200');
+@import url('https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css');
 
 *,
 *::before,
@@ -29,6 +34,7 @@
   font-size: inherit;
   color: inherit;
   user-select: none;
+  cursor: default;
   line-height: 100%;
 }
 
@@ -40,10 +46,7 @@ body {
   background-color: var(--bg-dark);
   color: var(--theme-color-not);
   height: 100%;
-}
-
-body {
-  padding: var(--pd-small-very);
+  overflow: hidden;
 }
 
 #root {

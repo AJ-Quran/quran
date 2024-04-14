@@ -1,0 +1,44 @@
+.two_blur_balls {
+  isolation: isolate;
+  position: relative;
+}
+
+.two_blur_balls::before,
+.two_blur_balls::after {
+  content: '';
+  position: absolute;
+  top: 0;
+  transform: translateX(-50%);
+  width: 0;
+  height: 0;
+  background-color: transparent;
+  z-index: -1;
+  box-shadow: 0 0 700px 200px var(--main-color);
+}
+
+.two_blur_balls::before {
+  left: var(--left-pos);
+  animation: leftToRight 8s infinite;
+}
+
+.two_blur_balls::after {
+  left: var(--right-pos);
+  animation: rightToLeft 8s infinite;
+}
+
+@keyframes leftToRight {
+  to {
+    left: var(--right-pos);
+  }
+}
+
+@keyframes rightToLeft {
+  to {
+    left: var(--left-pos);
+  }
+}
+
+:root {
+  --left-pos: 30%;
+  --right-pos: 70%;
+}

@@ -1,0 +1,49 @@
+.textarea_area {
+  position: relative;
+  background-color: var(--bg);
+  border-radius: var(--bd-ra-small);
+  padding: var(--pd-small);
+  overflow: hidden;
+  width: 100%;
+}
+
+.textarea_area:hover {
+  background-color: var(--grey-hover);
+}
+
+.textarea_area:focus-within {
+  background-color: var(--grey-active);
+}
+
+.textarea_area:has(.error) {
+  background-color: var(--error-color-bg);
+  color: var(--error-color);
+}
+
+.textarea_area:has(.error) input {
+  caret-color: var(--error-color);
+}
+
+.textarea_area label {
+  position: absolute;
+  pointer-events: none;
+  top: var(--pd-small);
+  left: var(--pd-small);
+  transition: all 0.2s ease-in-out;
+}
+
+.textarea_area label.active {
+  left: calc(3 * var(--pd-small));
+  opacity: 0;
+}
+
+textarea {
+  padding: var(--pd-small-very) 0;
+  padding-left: var(--pd-small);
+  width: 100%;
+  background: none;
+  border: none;
+  min-height: 100px;
+  padding: 0;
+  resize: none;
+}

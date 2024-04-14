@@ -8,11 +8,41 @@
   width: var(--menu-size);
   position: absolute;
   height: 100%;
+  padding: var(--pd-small-very);
+  padding-right: 0;
 }
 
 .main {
-  margin-left: calc(var(--menu-size) + var(--mar-small));
+  margin-left: var(--menu-size);
+  padding: var(--pd-small);
   flex: 1;
+}
+
+.main_area:has(.two_blur_balls) .menu {
+  z-index: 1;
+}
+
+.main_area:has(.read_area) .menu {
+  z-index: auto;
+}
+
+.main_area:has(.home_page) .main {
+  padding-top: 0;
+}
+
+.main_w {
+  width: 800px;
+}
+
+.main_w_small {
+  width: 500px;
+}
+
+.social_media > * {
+  width: 40px;
+  aspect-ratio: 1;
+  padding: var(--pd-small-very);
+  border-radius: 50%;
 }
 
 :root {

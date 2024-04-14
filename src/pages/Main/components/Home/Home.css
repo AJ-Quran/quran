@@ -1,0 +1,155 @@
+.home_page {
+  scroll-behavior: smooth;
+  overflow: hidden;
+}
+
+.home_page_item {
+  position: relative;
+  overflow: hidden;
+}
+
+.main_big_text {
+  font-size: 5em;
+  text-shadow: 0px 0px 50px var(--main-color-light);
+  position: relative;
+}
+
+.main_btn {
+  --facts-bd-size: 2px;
+  width: 200px !important;
+  height: 70px !important;
+  margin-bottom: var(--mar-big);
+  font-size: 1.5em;
+}
+
+.main_btn,
+.main_btn > * {
+  border-radius: 100px;
+}
+
+.main_btn:hover {
+  box-shadow: 0 0 20px 3px var(--main-color);
+}
+
+.main_btn:active {
+  box-shadow: 0 0 10px 1px var(--main-color);
+}
+
+.facts > * {
+  width: 300px;
+  height: 100px;
+  position: relative;
+  isolation: isolate;
+  padding: var(--facts-bd-size);
+}
+
+.facts_bg {
+  height: 100%;
+}
+
+.facts_con {
+  position: absolute;
+  top: 0;
+  left: 0;
+  inset: var(--facts-bd-size);
+  padding: var(--pd-small);
+}
+
+.about_us_area > * {
+  --facts-bd-size: 2px;
+  width: auto;
+  min-width: 200px;
+  height: auto;
+}
+
+.about_us_area .avatar {
+  position: relative;
+  width: 100px;
+  overflow: hidden;
+
+  img {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+  }
+}
+
+.mission_txt {
+  position: absolute;
+  bottom: 80px;
+}
+
+.all_rights_txt {
+  position: absolute;
+  bottom: var(--pd-small);
+  right: var(--pd-small);
+  writing-mode: vertical-rl;
+  text-orientation: mixed;
+}
+
+.scroll_btns {
+  position: absolute;
+  top: 50%;
+  right: var(--pd-small);
+  transform: translateY(-50%);
+  opacity: 0.7;
+
+  &:hover {
+    opacity: 1;
+  }
+}
+
+.scroll_dot_btn {
+  width: 5px;
+  aspect-ratio: 1/1;
+  border-radius: 50%;
+  padding: 0;
+}
+
+.scroll_dot_btn.active {
+  width: 10px;
+  background-color: var(--main-color-bg);
+  box-shadow: 0 0 30px 5px var(--main-color);
+}
+
+.up_down_btn {
+  width: 30px;
+  aspect-ratio: 1/1;
+  border-radius: 50%;
+  padding: 0;
+
+  span {
+    font-size: 1.3em;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+}
+
+.subscribe_area > * {
+  width: 200px;
+  aspect-ratio: 2/1;
+  border: 2px solid currentColor;
+
+  &:hover {
+    box-shadow: 0 0 10px 2px currentColor;
+  }
+
+  &:active {
+    box-shadow: 0 0 5px 1px currentColor;
+  }
+}
+
+.subscribe_area .github {
+  color: #010409;
+}
+
+.subscribe_area .telegram {
+  color: #25a3e1;
+}
+
+:root {
+  --facts-bd-size: 1px;
+}

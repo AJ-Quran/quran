@@ -1,3 +1,7 @@
+.pd_small {
+  padding: var(--pd-small);
+}
+
 :root {
   --pd: 10px;
   --pd-small: 6px;

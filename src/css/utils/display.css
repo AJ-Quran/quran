@@ -2,6 +2,11 @@
   display: flex;
 }
 
+.df_fd_cl {
+  display: flex;
+  flex-direction: column;
+}
+
 .df_f_ce {
   display: flex;
   align-items: center;
@@ -21,6 +26,11 @@
 .df_ai_st {
   display: flex;
   align-items: start;
+}
+
+.df_ai_end {
+  display: flex;
+  align-items: end;
 }
 
 .df_jc_ce {

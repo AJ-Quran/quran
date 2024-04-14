@@ -1,4 +1,4 @@
-import { isValidUsername, isValidPassword } from './checkers'
+import { isValidUsername, isValidPassword, isValidEmail } from './checkers'
 
 function getData(form) {
   const allHaveValue = checkValues(form)
@@ -17,7 +17,10 @@ function getData(form) {
 }
 
 function checkValues(form) {
-  const inputs = form.querySelectorAll('input:not([type="file"])')
+  const inputs = [
+    ...form.querySelectorAll('input:not([type="file"])'),
+    ...form.querySelectorAll('textarea'),
+  ]
   const values = {}
 
   for (let input of inputs) {
@@ -43,6 +46,9 @@ function checkValue(value, label) {
   }
   if (label === 'password') {
     return isValidPassword(value)
+  }
+  if (label === 'email') {
+    return isValidEmail(value)
   }
   return { ok: true }
 }

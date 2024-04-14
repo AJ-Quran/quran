@@ -1,0 +1,18 @@
+.active_bg_anim.active {
+  background: linear-gradient(
+    201deg,
+    rgb(39, 153, 173) 11%,
+    rgb(15, 141, 231) 32%,
+    rgb(44, 196, 219) 54%,
+    rgb(32, 77, 212) 86%
+  );
+  background-size: 400% 400%;
+  background-position: 0% 50%;
+  animation: activeBg 5s ease infinite;
+}
+
+@keyframes activeBg {
+  50% {
+    background-position: 100% 50%;
+  }
+}

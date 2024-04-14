@@ -9,8 +9,7 @@ import Choose from '../../../../components/Choose/Choose'
 import { loadLocal } from '../../../../js/db/localStorage'
 import { load } from '../../../../js/db/db'
 
-function Quran() {
-  const [surahI, setSurahI] = useState(0)
+function Quran({ surahI, setSurahI }) {
   const [shownList, setShownList] = useState('surahsList')
   const [savedList, setSavedList] = useState([])
 
