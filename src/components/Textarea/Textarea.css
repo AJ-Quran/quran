@@ -46,4 +46,5 @@ textarea {
   min-height: 100px;
   padding: 0;
   resize: none;
+  cursor: text;
 }
