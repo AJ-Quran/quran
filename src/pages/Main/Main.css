@@ -38,6 +38,13 @@
   width: 500px;
 }
 
+.social_media > * {
+  width: 40px;
+  aspect-ratio: 1;
+  padding: var(--pd-small-very);
+  border-radius: 50%;
+}
+
 :root {
   --menu-size: 70px;
 }
