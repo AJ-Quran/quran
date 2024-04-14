@@ -5,6 +5,7 @@ import Button from '../../../../components/Button/Button'
 import Textarea from '../../../../components/Textarea/Textarea'
 import Message from '../../../../components/Message/Message'
 import ReadArea from '../Quran/ReadArea/ReadArea'
+import Loading from '../../../../components/Loading/Loading'
 
 import { getAccount } from '../../../../js/account/account'
 import { loadLocal } from '../../../../js/db/localStorage'
@@ -12,6 +13,7 @@ import { getData } from '../../../../js/utils/form'
 import { msgData } from '../../../../js/utils/message'
 import { send } from '../../../../js/utils/feedback'
 import { wait } from '@testing-library/user-event/dist/utils'
+import { load } from '../../../../js/db/db'
 
 import './Home.css'
 
@@ -23,6 +25,7 @@ export default function Home({ surahI, setSurahI }) {
   const homePage = useRef()
   const scrollBtns = useRef()
   const [pageHeight, setPageHeight] = useState(0)
+  const [people, setPeople] = useState([])
   const [message, setMessage] = useState({
     msg: '',
     type: 'default',
@@ -32,6 +35,15 @@ export default function Home({ surahI, setSurahI }) {
   useEffect(() => {
     const height = homePage.current?.querySelector('.scroll_area').clientHeight
     setPageHeight(height)
+  }, [])
+
+  useEffect(() => {
+    async function loadData() {
+      const data = await load(`dev/people`)
+      setPeople(data)
+    }
+
+    loadData()
   }, [])
 
   function scroll(direction) {
@@ -229,35 +241,12 @@ export default function Home({ surahI, setSurahI }) {
           </div>
           <div className="list_y df_ai_ce">
             <div className="list_x facts about_us_area">
-              <div className="con_bg_gradient active_bg_anim active">
-                <div className="con_bg_dr facts_bg list_y df_ai_ce">
-                  <div className="avatar df_f_ce">
-                    <img
-                      src="https://avatars.githubusercontent.com/u/100585930?s=400&u=b1b25433ac6308a722ecb4d6a0343b65b8abf2a3&v=4"
-                      alt="CEO"
-                    />
-                    <span>AJ</span>
-                  </div>
-                  <b className="fz_big">Akbar Jorayev</b>
-                  <div className="txt_opa fz_small">CEO • Founder</div>
-                  <div className="social_media list_x">
-                    <a
-                      href="https://github.com/akbarjorayev"
-                      rel="noreferrer"
-                      className="con_bg_df con_ha df_f_ce"
-                    >
-                      <i className="fa-brands fa-github fz_big"></i>
-                    </a>
-                    <a
-                      href="https://t.me/akbarjorayevAJ"
-                      rel="noreferrer"
-                      className="con_bg_df con_ha df_f_ce"
-                    >
-                      <i className="fa-brands fa-telegram fz_big"></i>
-                    </a>
-                  </div>
+              {people.length === 0 && (
+                <div className="loading_area bd_ra bg_none">
+                  <Loading className="bg_none">People are loading</Loading>
                 </div>
-              </div>
+              )}
+              {people?.map((person, i) => getPerson(person, i))}
             </div>
           </div>
           <div className="txt_opa fz_mono mission_txt">
@@ -394,5 +383,34 @@ export default function Home({ surahI, setSurahI }) {
       </div>
       {surahI > 0 && <ReadArea index={surahI} setSurahI={setSurahI} />}
     </>
+  )
+}
+
+function getPerson(person, i) {
+  return (
+    <div className="con_bg_gradient active_bg_anim active" key={i}>
+      <div className="con_bg_dr facts_bg list_y df_ai_ce">
+        <div className="avatar df_f_ce">
+          <img src={person.img} alt={person.title} />
+          <span>AJ</span>
+        </div>
+        <b className="fz_big">{person.name}</b>
+        <div className="txt_opa fz_small">{person.title}</div>
+        <div className="social_media list_x">
+          {person.socialMedia.map((social, j) => {
+            return (
+              <a
+                href={social.link}
+                rel="noreferrer"
+                className="con_bg_df con_ha df_f_ce"
+                key={j}
+              >
+                <i className={`${social.logo} fz_big`}></i>
+              </a>
+            )
+          })}
+        </div>
+      </div>
+    </div>
   )
 }
