@@ -61,6 +61,7 @@ input {
   width: 100%;
   background: none;
   border: none;
+  cursor: text;
 }
 
 .input_area button {
