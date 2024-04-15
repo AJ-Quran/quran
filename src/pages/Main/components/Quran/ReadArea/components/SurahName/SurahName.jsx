@@ -42,7 +42,7 @@ export default function SurahName({ surahI, surahData }) {
         <div className="txt_opa fz_small list_x">
           <div>{surahData?.revelationType}</div>
           <div>•</div>
-          <div>{surahData?.numberOfAyahs} verses</div>
+          <div>{surahData?.numberOfAyahs || 0} verses</div>
         </div>
       </div>
       <Button

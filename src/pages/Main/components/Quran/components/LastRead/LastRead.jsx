@@ -45,7 +45,7 @@ export default function LastRead({ setSurahI }) {
         <div className="list_y">
           <b>{lastReadSurah?.englishName}</b>
           <div className="fz_small txt_opa">
-            {lastRead.ayah} verses read • {floor(percent)}%
+            {lastRead.ayah} verses read • {floor(percent) || 0}%
           </div>
         </div>
         <img className="logo" src={logo} alt="Quran" />

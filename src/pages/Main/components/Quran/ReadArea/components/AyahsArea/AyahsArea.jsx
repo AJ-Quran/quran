@@ -21,10 +21,10 @@ export default function AyahsArea({ arAyahs, engAyahs, surahI, setSurahI }) {
       <div className="list_y">
         <div className="ayahs_area_info list_y mar_ce">
           <div className="list_y_small">
-            <ProgressBar value={surahI.ayah} max={arAyahs?.length} />
+            <ProgressBar value={surahI.ayah} max={arAyahs?.length || 0} />
             <div className="df_jc_sb fz_small">
               <div>
-                {surahI.ayah}/{arAyahs?.length}
+                {surahI.ayah}/{arAyahs?.length || 0}
               </div>
               <div>{floor(progress) || 0}%</div>
             </div>
@@ -44,7 +44,7 @@ export default function AyahsArea({ arAyahs, engAyahs, surahI, setSurahI }) {
               <span>I'm done</span>
             </Button>
             <Button
-              disabled={surahI.ayah === arAyahs?.length}
+              disabled={surahI.ayah === (arAyahs?.length || 0)}
               className="bd_btn list_x"
               onClick={() => setSurahI({ ...surahI, ayah: surahI.ayah + 1 })}
             >
@@ -55,7 +55,7 @@ export default function AyahsArea({ arAyahs, engAyahs, surahI, setSurahI }) {
             </Button>
           </div>
         </div>
-        {surahI.ayah < arAyahs?.length && (
+        {surahI.ayah < (arAyahs?.length || 0) && (
           <div className="list_y">
             <div className="con_bg_df ayahs_text_area df_f_ce">
               <p className="txt_ar w_100">{arAyahs[surahI.ayah]?.text}</p>
