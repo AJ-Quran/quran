@@ -1,3 +1,7 @@
+.mar_ce {
+  margin: 0 auto;
+}
+
 :root {
   --mar: 10px;
   --mar-small: 6px;
