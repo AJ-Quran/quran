@@ -86,7 +86,10 @@ function getLocalInitialData() {
       active: '',
     },
     quran: {
-      lastRead: {},
+      lastRead: {
+        ayah: 0,
+        surah: 1,
+      },
     },
   }
   return initialData
