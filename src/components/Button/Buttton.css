@@ -54,3 +54,16 @@ button.red {
     background-color: var(--red-color-active);
   }
 }
+
+button.bd_btn {
+  background-color: transparent;
+  border: 1px solid var(--grey-border);
+
+  &:hover {
+    border-color: var(--bg-hover);
+  }
+
+  &:active {
+    border-color: var(--bg-active);
+  }
+}
