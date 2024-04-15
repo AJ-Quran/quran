@@ -85,6 +85,9 @@ function getLocalInitialData() {
       usernames: [],
       active: '',
     },
+    quran: {
+      lastRead: {},
+    },
   }
   return initialData
 }
