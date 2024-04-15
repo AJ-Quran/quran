@@ -65,4 +65,11 @@ async function deleteData(path) {
   }
 }
 
-export { save, load, edit, deleteData }
+async function saveOrEdit(path, data) {
+  const d = await load(path)
+
+  if (!d) await save(path, data)
+  if (d) await edit(path, data)
+}
+
+export { save, load, edit, deleteData, saveOrEdit }
