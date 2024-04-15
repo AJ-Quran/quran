@@ -5,7 +5,6 @@ import useFetch from '../../../../../../../hooks/useFetch'
 import { wait } from '../../../../../../../js/utils/wait'
 import { load } from '../../../../../../../js/db/db'
 import { loadLocal } from '../../../../../../../js/db/localStorage'
-import { openSurah } from '../util/openSurah'
 
 import shape from '../numShape.svg'
 
@@ -48,7 +47,7 @@ export default function SurahsList({ surahI, setSurahI }) {
               <div className="list_y" key={i}>
                 <div
                   className="con_ha surah df_ai_ce_child df_jc_sb"
-                  onClick={() => openSurah(i + 1, setSurahI)}
+                  onClick={() => setSurahI({ ...surahI, surah: i + 1 })}
                 >
                   <div className="list_x">
                     <div className="number df_f_ce">
