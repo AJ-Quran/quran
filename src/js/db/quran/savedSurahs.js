@@ -14,7 +14,6 @@ async function toggleSurah(index) {
     savedArr.splice(savedI, 1)
   }
 
-  savedArr.sort((a, b) => a - b)
   await save(`accounts/${username}/quran/saved`, savedArr)
 }
 

@@ -11,14 +11,16 @@ import '../List.css'
 
 export default function SurahsList({ setSurahI }) {
   const [loading, setLoading] = useState(true)
-  const [savedList, setSavedList] = useState([])
+  const [savedI, setSavedI] = useState([])
   const { data: surahs } = useFetch('https://api.alquran.cloud/v1/surah')
 
   useEffect(() => {
     async function loadData() {
       const username = loadLocal('quran').accounts.active
       const data = await load(`accounts/${username}/quran/saved`)
-      setSavedList(data)
+      const indexes = data.map((i) => i.surah).sort((a, b) => a - b)
+
+      setSavedI(indexes)
     }
     loadData()
   }, [])
@@ -37,7 +39,7 @@ export default function SurahsList({ setSurahI }) {
     <>
       <div className="list_y">
         {surahs.data?.map((surah, i) => {
-          if (savedList.includes(i + 1))
+          if (savedI.includes(i + 1))
             return (
               <div className="list_y" key={i}>
                 <div
@@ -61,7 +63,7 @@ export default function SurahsList({ setSurahI }) {
                   </div>
                   <b className="txt_gradient">{surah.name}</b>
                 </div>
-                {savedList.at(-1) !== i + 1 && (
+                {savedI.at(-1) !== i + 1 && (
                   <div className="line_x_small"></div>
                 )}
               </div>
