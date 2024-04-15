@@ -35,7 +35,7 @@
   color: inherit;
   user-select: none;
   cursor: default;
-  line-height: inherit;
+  line-height: 100%;
 }
 
 html,
@@ -46,7 +46,6 @@ body {
   background-color: var(--bg-dark);
   color: var(--theme-color-not);
   height: 100%;
-  line-height: 100%;
   overflow: hidden;
 }
 
