@@ -18,7 +18,7 @@ export default function SurahsList({ setSurahI }) {
     async function loadData() {
       const username = loadLocal('quran').accounts.active
       const data = await load(`accounts/${username}/quran/saved`)
-      const indexes = data.map((i) => i.surah).sort((a, b) => a - b)
+      const indexes = data?.map((i) => i.surah).sort((a, b) => a - b)
 
       setSavedI(indexes)
     }

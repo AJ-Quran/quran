@@ -1,3 +1,10 @@
 .surah_name {
+  position: relative;
   width: 400px;
+}
+
+.save_surah_btn {
+  position: absolute;
+  top: var(--pd-small);
+  right: var(--pd-small);
 }

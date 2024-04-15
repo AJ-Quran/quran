@@ -396,7 +396,7 @@ export default function Home({ surahI, setSurahI }) {
           </div>
         </div>
       </div>
-      {surahI.surah > 0 && <ReadArea index={surahI} setSurahI={setSurahI} />}
+      {surahI.surah > 0 && <ReadArea surahI={surahI} setSurahI={setSurahI} />}
     </>
   )
 }

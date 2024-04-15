@@ -26,7 +26,7 @@ function Quran({ surahI, setSurahI }) {
     <>
       <div className="list_y h_max_100 scroll_y">
         <LastRead surah="Al-Faatiha" verse="1" />
-        {(savedList || savedList.lenght > 0) && (
+        {savedList.length > 0 && (
           <div className="quran_choose_area con_bg_dr">
             <Choose axe="x" iOption="surahsList">
               <div
@@ -61,7 +61,7 @@ function Quran({ surahI, setSurahI }) {
           )}
         </div>
         <div></div>
-        {surahI.surah > 0 && <ReadArea index={surahI} setSurahI={setSurahI} />}
+        {surahI.surah > 0 && <ReadArea surahI={surahI} setSurahI={setSurahI} />}
       </div>
     </>
   )

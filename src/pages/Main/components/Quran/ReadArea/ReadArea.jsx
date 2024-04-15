@@ -6,20 +6,16 @@ import SurahName from './components/SurahName/SurahName'
 
 import useFetch from '../../../../../hooks/useFetch'
 import { wait } from '../../../../../js/utils/wait'
-import { toggleSurah } from '../../../../../js/db/quran/savedSurahs'
-import { loadLocal } from '../../../../../js/db/localStorage'
-import { load } from '../../../../../js/db/db'
 
 import './ReadArea.css'
 
-export default function ReadArea({ index, setSurahI }) {
+export default function ReadArea({ surahI, setSurahI }) {
   const [loading, setLoading] = useState(true)
-  const [savedSurahs, setSavedSurahs] = useState([])
   const { data: arData } = useFetch(
-    `https://api.alquran.cloud/v1/surah/${index.surah}/ar.alafasy`
+    `https://api.alquran.cloud/v1/surah/${surahI.surah}/ar.alafasy`
   )
   const { data: engData } = useFetch(
-    `https://api.alquran.cloud/v1/surah/${index.surah}/en.asad`
+    `https://api.alquran.cloud/v1/surah/${surahI.surah}/en.asad`
   )
 
   useEffect(() => {
@@ -30,24 +26,7 @@ export default function ReadArea({ index, setSurahI }) {
     waiting()
   }, [])
 
-  useEffect(() => {
-    async function loadData() {
-      const username = loadLocal('quran').accounts.active
-      const data = await load(`accounts/${username}/quran/saved`)
-      setSavedSurahs(data)
-    }
-    loadData()
-  }, [])
-
-  async function saveSurah(e) {
-    const btn = e.target
-    const icon = btn.firstChild
-
-    icon.classList.toggle('fill')
-    toggleSurah(index)
-  }
-
-  if (!index.surah) return null
+  if (!surahI.surah) return null
   const arSurahData = arData?.data
   const engSurahData = engData?.data
 
@@ -64,34 +43,14 @@ export default function ReadArea({ index, setSurahI }) {
             {loading && (
               <Loading className="bd_ra">Surah's data is loading</Loading>
             )}
-            {!loading && (
-              <div className="list_x df_jc_sb w_100">
-                <div></div>
-                <SurahName surahData={arSurahData} />
-                <div className="con_bg_df con_ha h_max" onClick={saveSurah}>
-                  <span
-                    className={`material-symbols-outlined ${
-                      savedSurahs.length > 0 && savedSurahs.includes(index)
-                        ? 'fill'
-                        : ''
-                    }`}
-                  >
-                    bookmark
-                  </span>
-                </div>
-              </div>
-            )}
+            {!loading && <SurahName surahI={surahI} surahData={arSurahData} />}
           </div>
-          <div className="loading_area bd_ra">
-            {loading && <Loading className="bd_ra">Ayahs are loading</Loading>}
-            {!loading && (
-              <AyahsList
-                arAyahs={arSurahData?.ayahs}
-                engAyahs={engSurahData?.ayahs}
-              />
-            )}
-            <div></div>
-          </div>
+          {!loading && (
+            <AyahsList
+              arAyahs={arSurahData?.ayahs}
+              engAyahs={engSurahData?.ayahs}
+            />
+          )}
         </div>
       </div>
     </>

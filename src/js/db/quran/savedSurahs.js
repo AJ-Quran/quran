@@ -1,15 +1,15 @@
 import { load, save } from '../db'
 import { loadLocal } from '../localStorage'
 
-async function toggleSurah(index) {
+async function toggleSurah(indexData) {
   const username = loadLocal('quran').accounts.active
-  const account = await load(`accounts/${username}`)
+  const quran = await load(`accounts/${username}/quran`)
 
-  const savedArr = account.quran?.saved || []
-  const savedI = savedArr.indexOf(index)
+  const savedArr = quran?.saved || []
+  const savedI = savedArr?.map((i) => i.surah).indexOf(indexData.surah)
 
   if (savedI === -1) {
-    savedArr.push(index)
+    savedArr.push(indexData)
   } else {
     savedArr.splice(savedI, 1)
   }
