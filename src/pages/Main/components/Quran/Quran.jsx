@@ -9,6 +9,8 @@ import Choose from '../../../../components/Choose/Choose'
 import { loadLocal } from '../../../../js/db/localStorage'
 import { load } from '../../../../js/db/db'
 
+import './Quran.css'
+
 function Quran({ surahI, setSurahI }) {
   const [shownList, setShownList] = useState('surahsList')
   const [savedList, setSavedList] = useState([])
@@ -24,7 +26,7 @@ function Quran({ surahI, setSurahI }) {
 
   return (
     <>
-      <div className="list_y h_max_100 scroll_y">
+      <div className="quran_area list_y h_max_100 scroll_y">
         <LastRead setSurahI={setSurahI} />
         {savedList.length > 0 && (
           <div className="quran_choose_area con_bg_dr">
