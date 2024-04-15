@@ -13,7 +13,7 @@ import { txtCapitalizeFirstLetter } from '../../js/utils/txt'
 import './Main.css'
 
 function Main() {
-  const [activePage, setActievPage] = useState('home')
+  const [activePage, setActievPage] = useState('quran')
   const [surahI, setSurahI] = useState({ surah: 0, ayah: 1 })
   const [title, setTitle] = useTitle(activePage)
   const pages = {
