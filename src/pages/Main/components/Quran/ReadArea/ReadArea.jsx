@@ -58,12 +58,6 @@ export default function ReadArea({ index, setSurahI }) {
           <Button className="bg_none medium" onClick={() => setSurahI(0)}>
             <span className="material-symbols-outlined fz_big">close</span>
           </Button>
-          {arSurahData && (
-            <b className="txt_gradient fz_big list_x">
-              <div>{arSurahData?.number}.</div>
-              <div>{arSurahData?.englishName}</div>
-            </b>
-          )}
         </div>
         <div className="read_con list_y_big scroll_y">
           <div className="loading_area bd_ra df_jc_ce">
