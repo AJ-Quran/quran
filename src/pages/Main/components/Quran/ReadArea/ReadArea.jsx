@@ -4,6 +4,7 @@ import Button from '../../../../../components/Button/Button'
 import Loading from '../../../../../components/Loading/Loading'
 import AyahsArea from './components/AyahsArea/AyahsArea'
 import SurahName from './components/SurahName/SurahName'
+import UserHasRead from './components/UserHasRead/UserHasRead'
 
 import useFetch from '../../../../../hooks/useFetch'
 import { wait } from '../../../../../js/utils/wait'
@@ -37,6 +38,10 @@ export default function ReadArea({ surahI, setSurahI }) {
   const arSurahData = arData?.data
   const engSurahData = engData?.data
 
+  const userHasRead =
+    surahI.surah === arSurahData?.number &&
+    surahI.ayah === arSurahData?.numberOfAyahs
+
   return (
     <>
       <div className="read_area df_jc_sb">
@@ -52,13 +57,16 @@ export default function ReadArea({ surahI, setSurahI }) {
             )}
             {!loading && <SurahName surahI={surahI} surahData={arSurahData} />}
           </div>
-          {!loading && (
+          {!loading && !userHasRead && (
             <AyahsArea
               arAyahs={arSurahData?.ayahs}
               engAyahs={engSurahData?.ayahs}
               surahI={surahI}
               setSurahI={setSurahI}
             />
+          )}
+          {!loading && userHasRead && (
+            <UserHasRead surahI={surahI} setSurahI={setSurahI} />
           )}
         </div>
       </div>
