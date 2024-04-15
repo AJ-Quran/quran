@@ -3,7 +3,7 @@ import ProgressBar from '../ProgressBar/ProgressBar'
 
 import { floor } from '../../../../../../../js/math/number'
 import { progressPercent } from '../../../../../../../js/math/percent'
-import { wait } from '@testing-library/user-event/dist/utils'
+import { readDone } from '../../util/readDone'
 
 import './AyahsArea.css'
 
@@ -13,8 +13,7 @@ export default function AyahsArea({ arAyahs, engAyahs, surahI, setSurahI }) {
   if (progress === 100) done()
 
   async function done() {
-    await wait(100)
-    setSurahI({ ...surahI, surah: 0 })
+    await readDone(surahI, setSurahI)
   }
 
   return (
@@ -41,10 +40,7 @@ export default function AyahsArea({ arAyahs, engAyahs, surahI, setSurahI }) {
               </span>
               <span>Back</span>
             </Button>
-            <Button
-              className="con_bg_gradient con_ha"
-              onClick={() => setSurahI({ ...surahI, surah: 0 })}
-            >
+            <Button className="con_bg_gradient con_ha" onClick={done}>
               <span>I'm done</span>
             </Button>
             <Button

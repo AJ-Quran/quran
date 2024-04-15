@@ -25,7 +25,7 @@ function Quran({ surahI, setSurahI }) {
   return (
     <>
       <div className="list_y h_max_100 scroll_y">
-        <LastRead surah="Al-Faatiha" verse="1" />
+        <LastRead setSurahI={setSurahI} />
         {savedList.length > 0 && (
           <div className="quran_choose_area con_bg_dr">
             <Choose axe="x" iOption="surahsList">

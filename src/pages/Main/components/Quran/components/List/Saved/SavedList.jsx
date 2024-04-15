@@ -5,6 +5,8 @@ import useFetch from '../../../../../../../hooks/useFetch'
 import { wait } from '../../../../../../../js/utils/wait'
 import { load } from '../../../../../../../js/db/db'
 import { loadLocal } from '../../../../../../../js/db/localStorage'
+import { openSurah } from '../util/openSurah'
+
 import shape from '../numShape.svg'
 
 import '../List.css'
@@ -18,9 +20,11 @@ export default function SurahsList({ surahI, setSurahI }) {
     async function loadData() {
       const username = loadLocal('quran').accounts.active
       const data = await load(`accounts/${username}/quran/saved`)
-      const indexes = data?.map((i) => i.surah).sort((a, b) => a - b)
 
-      setSavedI(indexes)
+      if (data) {
+        const indexes = data?.map((i) => i.surah).sort((a, b) => a - b)
+        setSavedI(indexes)
+      }
     }
     loadData()
   }, [])
@@ -44,7 +48,7 @@ export default function SurahsList({ surahI, setSurahI }) {
               <div className="list_y" key={i}>
                 <div
                   className="con_ha surah df_ai_ce_child df_jc_sb"
-                  onClick={() => setSurahI({ ...surahI, surah: i + 1 })}
+                  onClick={() => openSurah(i + 1, setSurahI)}
                 >
                   <div className="list_x">
                     <div className="number df_f_ce">

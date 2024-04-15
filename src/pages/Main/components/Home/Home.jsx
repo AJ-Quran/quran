@@ -14,6 +14,7 @@ import { msgData } from '../../../../js/utils/message'
 import { send } from '../../../../js/utils/feedback'
 import { wait } from '@testing-library/user-event/dist/utils'
 import { load } from '../../../../js/db/db'
+import { openLastReadSurah } from '../Quran/components/List/util/openSurah'
 
 import './Home.css'
 
@@ -178,10 +179,6 @@ export default function Home({ surahI, setSurahI }) {
     }
   }
 
-  function readQuran() {
-    setSurahI({ ...surahI, surah: 1 })
-  }
-
   return (
     <>
       <div className="h_100 home_page" ref={homePage} onWheel={wheel}>
@@ -201,7 +198,7 @@ export default function Home({ surahI, setSurahI }) {
           <div className="facts">
             <div
               className="con_bg_gradient main_btn active_bg_anim active"
-              onClick={readQuran}
+              onClick={() => openLastReadSurah(setSurahI)}
             >
               <div className="con_bg_dr con_ha facts_bg df_f_ce">
                 <b className="txt_gradient">Read Quran</b>

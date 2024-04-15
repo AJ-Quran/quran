@@ -7,6 +7,7 @@ import SurahName from './components/SurahName/SurahName'
 
 import useFetch from '../../../../../hooks/useFetch'
 import { wait } from '../../../../../js/utils/wait'
+import { readDone } from './util/readDone'
 
 import './ReadArea.css'
 
@@ -27,7 +28,12 @@ export default function ReadArea({ surahI, setSurahI }) {
     waiting()
   }, [])
 
+  async function close() {
+    await readDone(surahI, setSurahI)
+  }
+
   if (!surahI.surah) return null
+
   const arSurahData = arData?.data
   const engSurahData = engData?.data
 
@@ -35,10 +41,7 @@ export default function ReadArea({ surahI, setSurahI }) {
     <>
       <div className="read_area df_jc_sb">
         <div className="list_x df_jc_sb h_max">
-          <Button
-            className="bg_none medium"
-            onClick={() => setSurahI({ ...surahI, surah: 0 })}
-          >
+          <Button className="bg_none medium" onClick={close}>
             <span className="material-symbols-outlined fz_big">close</span>
           </Button>
         </div>
