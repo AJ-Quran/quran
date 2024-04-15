@@ -54,10 +54,10 @@ function Quran({ surahI, setSurahI }) {
         )}
         <div className="loading_area bd_ra">
           {shownList === 'surahsList' && (
-            <SurahsList setSurahI={setSurahI}></SurahsList>
+            <SurahsList surahI={surahI} setSurahI={setSurahI}></SurahsList>
           )}
           {shownList === 'savedList' && (
-            <SavedList setSurahI={setSurahI}></SavedList>
+            <SavedList surahI={surahI} setSurahI={setSurahI}></SavedList>
           )}
         </div>
         <div></div>

@@ -179,7 +179,7 @@ export default function Home({ surahI, setSurahI }) {
   }
 
   function readQuran() {
-    setSurahI({ surah: 1, ayah: 0 })
+    setSurahI({ ...surahI, surah: 1 })
   }
 
   return (
