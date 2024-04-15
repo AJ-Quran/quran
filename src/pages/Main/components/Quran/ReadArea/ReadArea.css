@@ -14,11 +14,14 @@
 }
 
 .read_con {
-  min-width: 400px;
-  max-width: 800px;
+  width: 500px;
   height: calc(100% - 2 * var(--pd-small-very));
   position: absolute;
   top: var(--pd-small-very);
   left: 50%;
   transform: translate(-50%, 0);
+}
+
+.read_con .loading_area {
+  width: 400px;
 }

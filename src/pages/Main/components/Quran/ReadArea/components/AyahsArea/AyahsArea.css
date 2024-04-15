@@ -1,0 +1,21 @@
+.ayahs_area_info {
+  width: 400px;
+}
+
+.ayahs_area_info > * {
+  width: 100%;
+}
+
+.ayahs_area button {
+  border-radius: var(--bd-ra-big) !important;
+  aspect-ratio: auto !important;
+  padding: var(--pd-small) var(--pd);
+}
+
+.ayahs_text_area {
+  padding: var(--pd-big) var(--pd);
+}
+
+.ayahs_eng_area {
+  line-height: 140%;
+}
