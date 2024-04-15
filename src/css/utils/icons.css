@@ -2,6 +2,7 @@
   max-width: 24px;
   max-height: 24px;
   pointer-events: none;
+  overflow: hidden;
 }
 
 [class^='material-symbols'].fill {
