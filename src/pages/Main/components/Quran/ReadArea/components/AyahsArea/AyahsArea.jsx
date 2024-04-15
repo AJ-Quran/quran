@@ -26,7 +26,7 @@ export default function AyahsArea({ arAyahs, engAyahs, surahI, setSurahI }) {
               <div>
                 {surahI.ayah}/{arAyahs?.length}
               </div>
-              <div>{floor(progress)}%</div>
+              <div>{floor(progress) || 0}%</div>
             </div>
           </div>
           <div className="df_jc_sb df_ai_ce_child list_x">
