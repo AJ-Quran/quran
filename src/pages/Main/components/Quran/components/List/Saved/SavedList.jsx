@@ -47,7 +47,9 @@ export default function SurahsList({ surahI, setSurahI }) {
               <div className="list_y" key={i}>
                 <div
                   className="con_ha surah df_ai_ce_child df_jc_sb"
-                  onClick={() => setSurahI({ ...surahI, surah: i + 1 })}
+                  onClick={() =>
+                    setSurahI({ ...surahI, surah: i + 1, ayah: 0 })
+                  }
                 >
                   <div className="list_x">
                     <div className="number df_f_ce">
