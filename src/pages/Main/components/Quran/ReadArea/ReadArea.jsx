@@ -16,10 +16,10 @@ export default function ReadArea({ index, setSurahI }) {
   const [loading, setLoading] = useState(true)
   const [savedSurahs, setSavedSurahs] = useState([])
   const { data: arData } = useFetch(
-    `https://api.alquran.cloud/v1/surah/${index}/ar.alafasy`
+    `https://api.alquran.cloud/v1/surah/${index.surah}/ar.alafasy`
   )
   const { data: engData } = useFetch(
-    `https://api.alquran.cloud/v1/surah/${index}/en.asad`
+    `https://api.alquran.cloud/v1/surah/${index.surah}/en.asad`
   )
 
   useEffect(() => {
@@ -47,7 +47,7 @@ export default function ReadArea({ index, setSurahI }) {
     toggleSurah(index)
   }
 
-  if (!index) return null
+  if (!index.surah) return null
   const arSurahData = arData?.data
   const engSurahData = engData?.data
 

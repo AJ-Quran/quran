@@ -61,7 +61,7 @@ function Quran({ surahI, setSurahI }) {
           )}
         </div>
         <div></div>
-        {surahI > 0 && <ReadArea index={surahI} setSurahI={setSurahI} />}
+        {surahI.surah > 0 && <ReadArea index={surahI} setSurahI={setSurahI} />}
       </div>
     </>
   )

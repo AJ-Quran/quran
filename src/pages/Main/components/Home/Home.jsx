@@ -179,7 +179,7 @@ export default function Home({ surahI, setSurahI }) {
   }
 
   function readQuran() {
-    setSurahI(1)
+    setSurahI({ surah: 1, ayah: 1 })
   }
 
   return (
@@ -396,7 +396,7 @@ export default function Home({ surahI, setSurahI }) {
           </div>
         </div>
       </div>
-      {surahI > 0 && <ReadArea index={surahI} setSurahI={setSurahI} />}
+      {surahI.surah > 0 && <ReadArea index={surahI} setSurahI={setSurahI} />}
     </>
   )
 }

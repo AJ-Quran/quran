@@ -29,7 +29,7 @@ export default function SurahsList({ setSurahI }) {
             <div className="list_y" key={i}>
               <div
                 className="con_ha surah df_ai_ce_child df_jc_sb"
-                onClick={() => setSurahI(i + 1)}
+                onClick={() => setSurahI({ surah: i + 1, ayah: 1 })}
               >
                 <div className="list_x">
                   <div className="number df_f_ce">
