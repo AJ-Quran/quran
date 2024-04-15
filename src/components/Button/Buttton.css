@@ -67,3 +67,8 @@ button.bd_btn {
     border-color: var(--bg-active);
   }
 }
+
+button:disabled {
+  opacity: 0.5 !important;
+  border: 1px solid var(--grey-border) !important;
+}
