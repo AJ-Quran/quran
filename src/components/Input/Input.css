@@ -36,7 +36,7 @@
 .input_area:has(.error) button {
   background-color: color-mix(
     in srgb,
-    var(--error-color) 80%,
+    var(--error-color-bg) 80%,
     var(--theme-color-not) 20%
   );
 }
