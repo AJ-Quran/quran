@@ -18,6 +18,8 @@ export default function AyahsArea({ arAyahs, engAyahs, surahI, setSurahI }) {
 
   useEffect(() => {
     function handleKeydown(e) {
+      if (e.key === 'Enter' || e.code === 'Space') done()
+
       if (e.key === 'ArrowLeft') back()
       if (e.key === 'ArrowRight') next()
     }
