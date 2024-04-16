@@ -5,10 +5,10 @@
   }
 
   :root {
-    --bg: #4f4f4f;
+    --bg: #414141;
     --bg-dark: #232323;
-    --bg-hover: #636363;
-    --bg-active: #3a3a3a;
+    --bg-hover: #373737;
+    --bg-active: #2c2c2c;
     --bg-opa: #191a1e75;
   }
 
@@ -41,10 +41,10 @@
   }
 
   :root {
-    --error-color: #ba3737;
+    --error-color: #d16666;
     --error-color-bg: #681212;
-    --error-color-hover: #de6363;
-    --error-color-active: #6d2525;
+    --error-color-hover: #bb1b1b;
+    --error-color-active: #801919;
     --error-color-border: #dc8787;
   }
 
@@ -72,7 +72,7 @@
 
   :root {
     --scrollbar-bg: #222254;
-    --scrollbar-thumb-bg: #80809c;
+    --scrollbar-thumb-bg: #7070ae;
   }
 }
 
