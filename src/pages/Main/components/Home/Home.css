@@ -12,6 +12,7 @@
   font-size: 5em;
   text-shadow: 0px 0px 50px var(--main-color-light);
   position: relative;
+  filter: drop-shadow(0px 0px 10px var(--theme-color));
 }
 
 .main_btn {
