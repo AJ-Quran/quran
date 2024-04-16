@@ -9,10 +9,10 @@
 .txt_gradient {
   background: linear-gradient(
     238deg,
-    rgb(42, 96, 196) 21%,
-    rgba(3, 120, 206, 1) 40%,
-    rgb(34 81 219) 56%,
-    rgb(24, 70, 207) 85%
+    var(--gradient-1) 21%,
+    var(--gradient-2) 40%,
+    var(--gradient-3) 56%,
+    var(--gradient-4) 85%
   );
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;

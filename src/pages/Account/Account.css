@@ -1,5 +1,5 @@
 .account_area {
-  background-color: var(--grey);
   padding: var(--pd);
+  border: 2px solid var(--grey-border);
   border-radius: var(--bd-ra);
 }

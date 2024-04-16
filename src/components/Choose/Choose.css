@@ -30,11 +30,11 @@
 }
 
 .option:not(.active):hover {
-  background-color: var(--grey-hover);
+  background-color: var(--bg-hover);
 }
 
 .option:not(.active):active {
-  background-color: var(--grey-active);
+  background-color: var(--bg-active);
 }
 
 .option > * {

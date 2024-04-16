@@ -1,7 +1,7 @@
 .line_x,
 .line_y,
 .line_x_small {
-  background-color: var(--grey-light);
+  background-color: var(--bg);
   border-radius: 1em;
 }
 

@@ -44,10 +44,10 @@
 .con_bg_gradient {
   background: linear-gradient(
     238deg,
-    rgba(3, 123, 206, 1) 21%,
-    rgba(3, 120, 206, 1) 40%,
-    rgb(34 81 219) 56%,
-    rgb(28, 62, 164) 85%
+    var(--gradient-1) 21%,
+    var(--gradient-2) 40%,
+    var(--gradient-3) 56%,
+    var(--gradient-4) 85%
   );
   background-size: 100%;
   transition: all 0.3s ease;

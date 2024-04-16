@@ -8,11 +8,11 @@
 }
 
 .textarea_area:hover {
-  background-color: var(--grey-hover);
+  background-color: var(--bg-hover);
 }
 
 .textarea_area:focus-within {
-  background-color: var(--grey-active);
+  background-color: var(--bg-active);
 }
 
 .textarea_area:has(.error) {

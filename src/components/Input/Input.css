@@ -9,16 +9,24 @@
 }
 
 .input_area:hover {
-  background-color: var(--grey-hover);
+  background-color: var(--bg-hover);
 }
 
 .input_area:focus-within {
-  background-color: var(--grey-active);
+  background-color: var(--bg-active);
 }
 
 .input_area:has(.error) {
   background-color: var(--error-color-bg);
   color: var(--error-color);
+
+  &:hover {
+    background-color: var(--error-color-hover);
+  }
+
+  &:focus-within {
+    background-color: var(--error-color-active);
+  }
 }
 
 .input_area:has(.error) input {
