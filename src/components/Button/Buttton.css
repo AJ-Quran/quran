@@ -60,11 +60,11 @@ button.bd_btn {
   border: 1px solid var(--grey-border);
 
   &:hover {
-    border-color: var(--bg-hover);
+    border-color: var(--grey-border-hover);
   }
 
   &:active {
-    border-color: var(--bg-active);
+    border-color: var(--grey-border-active);
   }
 }
 
