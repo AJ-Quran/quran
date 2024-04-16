@@ -1,3 +1,5 @@
+import { useEffect } from 'react'
+
 import Button from '../../../../../../../components/Button/Button'
 import ProgressBar from '../ProgressBar/ProgressBar'
 
@@ -12,6 +14,27 @@ export default function AyahsArea({ arAyahs, engAyahs, surahI, setSurahI }) {
 
   async function done() {
     await readDone(surahI, setSurahI)
+  }
+
+  useEffect(() => {
+    function handleKeydown(e) {
+      if (e.key === 'ArrowLeft') back()
+      if (e.key === 'ArrowRight') next()
+    }
+
+    document.addEventListener('keydown', handleKeydown)
+    return () => {
+      document.removeEventListener('keydown', handleKeydown)
+    }
+  }, [surahI])
+
+  function back() {
+    if (surahI.ayah <= 0) return
+    setSurahI({ ...surahI, ayah: surahI.ayah - 1 })
+  }
+
+  function next() {
+    setSurahI({ ...surahI, ayah: surahI.ayah + 1 })
   }
 
   return (
@@ -31,7 +54,7 @@ export default function AyahsArea({ arAyahs, engAyahs, surahI, setSurahI }) {
             <Button
               disabled={surahI.ayah === 0}
               className="bd_btn list_x"
-              onClick={() => setSurahI({ ...surahI, ayah: surahI.ayah - 1 })}
+              onClick={back}
             >
               <span className="material-symbols-outlined fz_normal">
                 chevron_left
@@ -44,7 +67,7 @@ export default function AyahsArea({ arAyahs, engAyahs, surahI, setSurahI }) {
             <Button
               disabled={surahI.ayah === (arAyahs?.length || 0)}
               className="bd_btn list_x"
-              onClick={() => setSurahI({ ...surahI, ayah: surahI.ayah + 1 })}
+              onClick={next}
             >
               <span>Next</span>
               <span className="material-symbols-outlined fz_normal">
