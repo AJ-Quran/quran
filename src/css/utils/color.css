@@ -19,6 +19,8 @@
     --grey-hover: #626262;
     --grey-active: #2e2e2e;
     --grey-border: #9c9c9c;
+    --grey-border-hover: #dbdbdb;
+    --grey-border-active: #5c5c5c;
   }
 
   :root {

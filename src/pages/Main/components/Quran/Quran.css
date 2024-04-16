@@ -1,0 +1,13 @@
+.quran_choose_area {
+  position: sticky;
+  top: 0;
+  z-index: 1;
+}
+
+.quran_area:has(.read_area) {
+  overflow: hidden;
+
+  .quran_choose_area {
+    z-index: auto;
+  }
+}

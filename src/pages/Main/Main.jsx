@@ -14,7 +14,7 @@ import './Main.css'
 
 function Main() {
   const [activePage, setActievPage] = useState('home')
-  const [surahI, setSurahI] = useState(0)
+  const [surahI, setSurahI] = useState({ surah: 0, ayah: 0 })
   const [title, setTitle] = useTitle(activePage)
   const pages = {
     home: <Home surahI={surahI} setSurahI={setSurahI} />,

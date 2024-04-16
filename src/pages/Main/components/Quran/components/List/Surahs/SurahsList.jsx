@@ -3,11 +3,12 @@ import Loading from '../../../../../../../components/Loading/Loading'
 
 import useFetch from '../../../../../../../hooks/useFetch'
 import { wait } from '../../../../../../../js/utils/wait'
+
 import shape from '../numShape.svg'
 
 import '../List.css'
 
-export default function SurahsList({ setSurahI }) {
+export default function SurahsList({ surahI, setSurahI }) {
   const [loading, setLoading] = useState(true)
   const { data: surahs } = useFetch('https://api.alquran.cloud/v1/surah')
 
@@ -29,7 +30,7 @@ export default function SurahsList({ setSurahI }) {
             <div className="list_y" key={i}>
               <div
                 className="con_ha surah df_ai_ce_child df_jc_sb"
-                onClick={() => setSurahI(i + 1)}
+                onClick={() => setSurahI({ ...surahI, surah: i + 1, ayah: 0 })}
               >
                 <div className="list_x">
                   <div className="number df_f_ce">

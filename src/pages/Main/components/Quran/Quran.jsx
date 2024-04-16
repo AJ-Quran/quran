@@ -9,6 +9,8 @@ import Choose from '../../../../components/Choose/Choose'
 import { loadLocal } from '../../../../js/db/localStorage'
 import { load } from '../../../../js/db/db'
 
+import './Quran.css'
+
 function Quran({ surahI, setSurahI }) {
   const [shownList, setShownList] = useState('surahsList')
   const [savedList, setSavedList] = useState([])
@@ -24,9 +26,9 @@ function Quran({ surahI, setSurahI }) {
 
   return (
     <>
-      <div className="list_y h_max_100 scroll_y">
-        <LastRead surah="Al-Faatiha" verse="1" />
-        {(savedList || savedList.lenght > 0) && (
+      <div className="quran_area list_y h_max_100 scroll_y">
+        <LastRead setSurahI={setSurahI} />
+        {savedList.length > 0 && (
           <div className="quran_choose_area con_bg_dr">
             <Choose axe="x" iOption="surahsList">
               <div
@@ -54,14 +56,14 @@ function Quran({ surahI, setSurahI }) {
         )}
         <div className="loading_area bd_ra">
           {shownList === 'surahsList' && (
-            <SurahsList setSurahI={setSurahI}></SurahsList>
+            <SurahsList surahI={surahI} setSurahI={setSurahI}></SurahsList>
           )}
           {shownList === 'savedList' && (
-            <SavedList setSurahI={setSurahI}></SavedList>
+            <SavedList surahI={surahI} setSurahI={setSurahI}></SavedList>
           )}
         </div>
         <div></div>
-        {surahI > 0 && <ReadArea index={surahI} setSurahI={setSurahI} />}
+        {surahI.surah > 0 && <ReadArea surahI={surahI} setSurahI={setSurahI} />}
       </div>
     </>
   )

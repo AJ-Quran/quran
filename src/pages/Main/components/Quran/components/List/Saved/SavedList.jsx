@@ -5,20 +5,25 @@ import useFetch from '../../../../../../../hooks/useFetch'
 import { wait } from '../../../../../../../js/utils/wait'
 import { load } from '../../../../../../../js/db/db'
 import { loadLocal } from '../../../../../../../js/db/localStorage'
+
 import shape from '../numShape.svg'
 
 import '../List.css'
 
-export default function SurahsList({ setSurahI }) {
+export default function SurahsList({ surahI, setSurahI }) {
   const [loading, setLoading] = useState(true)
-  const [savedList, setSavedList] = useState([])
+  const [savedI, setSavedI] = useState([])
   const { data: surahs } = useFetch('https://api.alquran.cloud/v1/surah')
 
   useEffect(() => {
     async function loadData() {
       const username = loadLocal('quran').accounts.active
       const data = await load(`accounts/${username}/quran/saved`)
-      setSavedList(data)
+
+      if (data) {
+        const indexes = data?.map((i) => i.surah).sort((a, b) => a - b)
+        setSavedI(indexes)
+      }
     }
     loadData()
   }, [])
@@ -37,12 +42,14 @@ export default function SurahsList({ setSurahI }) {
     <>
       <div className="list_y">
         {surahs.data?.map((surah, i) => {
-          if (savedList.includes(i + 1))
+          if (savedI.includes(i + 1))
             return (
               <div className="list_y" key={i}>
                 <div
                   className="con_ha surah df_ai_ce_child df_jc_sb"
-                  onClick={() => setSurahI(i + 1)}
+                  onClick={() =>
+                    setSurahI({ ...surahI, surah: i + 1, ayah: 0 })
+                  }
                 >
                   <div className="list_x">
                     <div className="number df_f_ce">
@@ -61,7 +68,7 @@ export default function SurahsList({ setSurahI }) {
                   </div>
                   <b className="txt_gradient">{surah.name}</b>
                 </div>
-                {savedList.at(-1) !== i + 1 && (
+                {savedI.at(-1) !== i + 1 && (
                   <div className="line_x_small"></div>
                 )}
               </div>
