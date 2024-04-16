@@ -10,8 +10,6 @@ import './AyahsArea.css'
 export default function AyahsArea({ arAyahs, engAyahs, surahI, setSurahI }) {
   const progress = progressPercent(surahI.ayah, arAyahs?.length)
 
-  if (progress === 100) done()
-
   async function done() {
     await readDone(surahI, setSurahI)
   }
