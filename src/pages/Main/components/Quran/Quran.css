@@ -4,6 +4,10 @@
   z-index: 1;
 }
 
-.quran_area:has(.read_area) .quran_choose_area {
-  z-index: auto;
+.quran_area:has(.read_area) {
+  overflow: hidden;
+
+  .quran_choose_area {
+    z-index: auto;
+  }
 }
