@@ -144,11 +144,11 @@
 }
 
 .subscribe_area .github {
-  color: #010409;
+  color: var(--github-color);
 }
 
 .subscribe_area .telegram {
-  color: #25a3e1;
+  color: var(--telegram-color);
 }
 
 :root {
