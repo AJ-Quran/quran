@@ -45,13 +45,11 @@ export default function ReadArea({ surahI, setSurahI }) {
               <Loading className="bd_ra">Surah's data is loading</Loading>
             )}
             {!loading && (
-              <div className="list_x">
-                <SurahName
-                  surahI={surahI}
-                  setSurahI={setSurahI}
-                  surahData={arSurahData}
-                />
-              </div>
+              <SurahName
+                surahI={surahI}
+                setSurahI={setSurahI}
+                surahData={arSurahData}
+              />
             )}
           </div>
           {!loading && !userHasRead && (
