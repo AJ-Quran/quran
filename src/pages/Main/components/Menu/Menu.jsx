@@ -1,11 +1,12 @@
 import { useRef } from 'react'
+
 import Button from '../../../../components/Button/Button'
 import Avatar from '../Account/components/utils/Avatar'
-
-import './Menu.css'
 import Choose from '../../../../components/Choose/Choose'
 
-function Menu({ setActievPage }) {
+import './Menu.css'
+
+export default function Menu({ setActievPage }) {
   const menu = useRef(null)
 
   function activeClick(btn) {
@@ -45,5 +46,3 @@ function Menu({ setActievPage }) {
     </div>
   )
 }
-
-export default Menu

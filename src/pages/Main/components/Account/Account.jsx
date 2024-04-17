@@ -1,7 +1,7 @@
 import AccountData from './components/AccountData/AccountData'
 import AccountList from './components/AccountList/AccountList'
 
-function Account() {
+export default function Account() {
   return (
     <div className="list_y">
       <AccountData />
@@ -10,5 +10,3 @@ function Account() {
     </div>
   )
 }
-
-export default Account

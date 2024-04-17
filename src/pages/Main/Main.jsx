@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react'
+import { useEffect, useState } from 'react'
 
 import Menu from './components/Menu/Menu'
 import Settings from './components/Settings/Settings'
@@ -7,12 +7,11 @@ import Home from './components/Home/Home'
 import Account from './components/Account/Account'
 
 import useTitle from '../../hooks/useTitle'
-
 import { txtCapitalizeFirstLetter } from '../../js/utils/txt'
 
 import './Main.css'
 
-function Main() {
+export default function Main() {
   const [activePage, setActievPage] = useState('home')
   const [surahI, setSurahI] = useState({ surah: 0, ayah: 0 })
   const [title, setTitle] = useTitle(activePage)
@@ -37,5 +36,3 @@ function Main() {
     </div>
   )
 }
-
-export default Main

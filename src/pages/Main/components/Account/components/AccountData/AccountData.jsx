@@ -1,4 +1,4 @@
-import React, { useEffect, useRef, useState } from 'react'
+import { useEffect, useRef, useState } from 'react'
 
 import Button from '../../../../../../components/Button/Button'
 import Input from '../../../../../../components/Input/Input'
@@ -6,6 +6,7 @@ import Choose from '../../../../../../components/Choose/Choose'
 import Loading from '../../../../../../components/Loading/Loading'
 import Message from '../../../../../../components/Message/Message'
 import Avatar from '../utils/Avatar'
+import Alert from '../../../../../../components/Alert/Alert'
 
 import { loadLocal } from '../../../../../../js/db/localStorage'
 import {
@@ -17,10 +18,9 @@ import {
 import { getData } from '../../../../../../js/utils/form'
 import { msgData } from '../../../../../../js/utils/message'
 import { elText } from '../../../../../../js/utils/copy'
-import Alert from '../../../../../../components/Alert/Alert'
 import { load } from '../../../../../../js/db/db'
 
-function AccountData() {
+export default function AccountData() {
   const form = useRef(null)
   const nameRef = useRef(null)
   const usernameRef = useRef(null)
@@ -323,5 +323,3 @@ function AccountData() {
     </>
   )
 }
-
-export default AccountData

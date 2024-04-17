@@ -1,14 +1,12 @@
-function saveLocal(name, data) {
+export function saveLocal(name, data) {
   localStorage.setItem(name, JSON.stringify(data))
 }
 
-function loadLocal(name) {
+export function loadLocal(name) {
   if (localStorage.getItem(name)) return JSON.parse(localStorage.getItem(name))
   return false
 }
 
-function removeLocal(name) {
+export function removeLocal(name) {
   localStorage.removeItem(name)
 }
-
-export { saveLocal, loadLocal, removeLocal }

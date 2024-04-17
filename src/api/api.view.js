@@ -1,4 +1,4 @@
-const API = {
+export const API = {
   firebase: {
     apiKey: 'https://firebase.google.com',
     authDomain: 'https://firebase.google.com',
@@ -9,5 +9,3 @@ const API = {
     measurementId: 'https://firebase.google.com',
   },
 }
-
-export { API }

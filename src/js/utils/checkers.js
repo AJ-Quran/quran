@@ -1,6 +1,6 @@
 import { loadLocal, saveLocal } from '../db/localStorage'
 
-function isValidUsername(username) {
+export function isValidUsername(username) {
   if (username.length < 2) {
     return { msg: 'Write more than 1 characters', ok: false }
   }
@@ -23,7 +23,7 @@ function isValidUsername(username) {
   return { msg: 'Valid username', ok: true }
 }
 
-function isValidPassword(password) {
+export function isValidPassword(password) {
   if (password.length < 4) {
     return { msg: 'Write more than 3 characters', ok: false }
   }
@@ -36,7 +36,7 @@ function isValidPassword(password) {
   return { msg: 'Valid password', ok: true }
 }
 
-function isValidEmail(email) {
+export function isValidEmail(email) {
   if (!email) {
     return { msg: 'Email is required', ok: false }
   }
@@ -70,7 +70,7 @@ function isValidEmail(email) {
   return { msg: 'Valid email', ok: true }
 }
 
-function localInitialData() {
+export function localInitialData() {
   const hasData = loadLocal('quran')
 
   if (!hasData) {
@@ -79,7 +79,7 @@ function localInitialData() {
   }
 }
 
-function getLocalInitialData() {
+export function getLocalInitialData() {
   const initialData = {
     accounts: {
       usernames: [],
@@ -96,12 +96,4 @@ function getLocalInitialData() {
     },
   }
   return initialData
-}
-
-export {
-  isValidUsername,
-  isValidPassword,
-  isValidEmail,
-  localInitialData,
-  getLocalInitialData,
 }

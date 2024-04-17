@@ -14,7 +14,7 @@ import {
 const app = initializeApp(API.firebase)
 const db = getDatabase()
 
-async function save(path, data) {
+export async function save(path, data) {
   try {
     await set(ref(db, path), data)
     return true
@@ -23,7 +23,7 @@ async function save(path, data) {
   }
 }
 
-async function load(path) {
+export async function load(path) {
   try {
     const dbRef = ref(db)
     const snapshot = await get(child(dbRef, path))
@@ -37,7 +37,7 @@ async function load(path) {
   }
 }
 
-async function edit(path, newData) {
+export async function edit(path, newData) {
   try {
     const snapshot = await load(path)
 
@@ -51,7 +51,7 @@ async function edit(path, newData) {
   }
 }
 
-async function deleteData(path) {
+export async function deleteData(path) {
   try {
     const snapshot = await load(path)
 
@@ -65,11 +65,9 @@ async function deleteData(path) {
   }
 }
 
-async function saveOrEdit(path, data) {
+export async function saveOrEdit(path, data) {
   const d = await load(path)
 
   if (!d) await save(path, data)
   if (d) await edit(path, data)
 }
-
-export { save, load, edit, deleteData, saveOrEdit }

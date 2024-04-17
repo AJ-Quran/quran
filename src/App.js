@@ -13,7 +13,7 @@ const Login = React.lazy(() => import('./pages/Account/Login/Login'))
 localInitialData()
 checkTheme()
 
-function App() {
+export default function App() {
   return (
     <>
       <BrowserRouter>
@@ -26,5 +26,3 @@ function App() {
     </>
   )
 }
-
-export default App

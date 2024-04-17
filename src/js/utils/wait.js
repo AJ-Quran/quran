@@ -1,5 +1,3 @@
-function wait(time) {
+export function wait(time) {
   return new Promise((res) => setTimeout(res, time))
 }
-
-export { wait }

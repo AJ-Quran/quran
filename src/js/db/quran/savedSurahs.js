@@ -1,7 +1,7 @@
 import { load, save } from '../db'
 import { loadLocal } from '../localStorage'
 
-async function toggleSurah(indexData) {
+export async function toggleSurah(indexData) {
   const username = loadLocal('quran').accounts.active
   const quran = await load(`accounts/${username}/quran`)
 
@@ -16,5 +16,3 @@ async function toggleSurah(indexData) {
 
   await save(`accounts/${username}/quran/saved`, savedArr)
 }
-
-export { toggleSurah }

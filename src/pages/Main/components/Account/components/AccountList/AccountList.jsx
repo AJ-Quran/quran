@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react'
+import { useEffect, useState } from 'react'
 
 import Avatar from '../utils/Avatar'
 import Loading from '../../../../../../components/Loading/Loading'

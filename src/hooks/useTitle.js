@@ -1,6 +1,6 @@
 import { useEffect, useState } from 'react'
 
-function useTitle(initialTitle) {
+export default function useTitle(initialTitle) {
   const [title, setTitle] = useState(initialTitle)
 
   useEffect(() => {
@@ -9,5 +9,3 @@ function useTitle(initialTitle) {
 
   return [title, setTitle]
 }
-
-export default useTitle

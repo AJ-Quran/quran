@@ -1,7 +1,10 @@
+import { useRef, useState } from 'react'
+
 import Button from '../../../components/Button/Button'
 import Input from '../../../components/Input/Input'
 import Choose from '../../../components/Choose/Choose'
 import Loading from '../../../components/Loading/Loading'
+import Message from '../../../components/Message/Message'
 
 import * as FORM from '../../../js/utils/form'
 import { getLocalAccounts, signup } from '../../../js/account/account'
@@ -9,11 +12,8 @@ import { msgData } from '../../../js/utils/message'
 import useTitle from '../../../hooks/useTitle'
 
 import '../Account.css'
-import React, { useRef, useState } from 'react'
 
-const Message = React.lazy(() => import('../../../components/Message/Message'))
-
-function Signup() {
+export default function Signup() {
   const [signing, setSigning] = useState(false)
   const [message, setMessage] = useState({
     msg: '',
@@ -131,5 +131,3 @@ function Signup() {
     </div>
   )
 }
-
-export default Signup

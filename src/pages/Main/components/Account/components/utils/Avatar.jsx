@@ -12,7 +12,7 @@ async function getName() {
   return name[0]
 }
 
-function Avatar({ style, letter }) {
+export default function Avatar({ style, letter }) {
   const [name, setName] = useState(() => '')
 
   useEffect(() => {
@@ -33,5 +33,3 @@ function Avatar({ style, letter }) {
     </div>
   )
 }
-
-export default Avatar
