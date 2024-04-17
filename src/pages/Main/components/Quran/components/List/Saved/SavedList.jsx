@@ -5,10 +5,14 @@ import useFetch from '../../../../../../../hooks/useFetch'
 import { wait } from '../../../../../../../js/utils/wait'
 import { load } from '../../../../../../../js/db/db'
 import { loadLocal } from '../../../../../../../js/db/localStorage'
+import { isDarkTheme } from '../../../../../../../js/utils/theme'
 
-import shape from '../numShape.svg'
+import shapeDark from '../numShape/numShapeDark.svg'
+import shapeLight from '../numShape/numShapeLight.svg'
 
 import '../List.css'
+
+const shape = isDarkTheme() ? shapeLight : shapeDark
 
 export default function SurahsList({ surahI, setSurahI }) {
   const [loading, setLoading] = useState(true)

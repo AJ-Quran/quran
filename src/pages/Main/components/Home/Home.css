@@ -12,6 +12,7 @@
   font-size: 5em;
   text-shadow: 0px 0px 50px var(--main-color-light);
   position: relative;
+  filter: drop-shadow(0px 0px 10px var(--theme-color));
 }
 
 .main_btn {
@@ -143,11 +144,11 @@
 }
 
 .subscribe_area .github {
-  color: #010409;
+  color: var(--github-color);
 }
 
 .subscribe_area .telegram {
-  color: #25a3e1;
+  color: var(--telegram-color);
 }
 
 :root {
