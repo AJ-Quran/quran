@@ -7,10 +7,14 @@ import { wait } from '@testing-library/user-event/dist/utils'
 import { abPercent } from '../../../../../../js/math/percent'
 import { floor } from '../../../../../../js/math/number'
 import { openLastReadSurah } from '../List/util/openSurah'
+import { isDarkTheme } from '../../../../../../js/utils/theme'
 
-import logo from '../../../../../../img/logo/bookLight.svg'
+import bookDark from '../../../../../../img/logo/bookDark.svg'
+import bookLight from '../../../../../../img/logo/bookLight.svg'
 
 import './LastRead.css'
+
+const bookLogo = isDarkTheme() ? bookLight : bookDark
 
 export default function LastRead({ setSurahI }) {
   const [loading, setLoading] = useState(true)
@@ -48,7 +52,7 @@ export default function LastRead({ setSurahI }) {
             {lastRead.ayah} verses read • {floor(percent) || 0}%
           </div>
         </div>
-        <img className="logo" src={logo} alt="Quran" />
+        <img className="logo" src={bookLogo} alt="Quran" />
       </div>
     </>
   )
