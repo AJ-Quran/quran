@@ -1,7 +1,7 @@
 import React from 'react'
 import { BrowserRouter, Routes, Route } from 'react-router-dom'
 
-import { localInitialData } from './js/utils/checkers'
+import { checkUserAccount, localInitialData } from './js/utils/checkers'
 import { checkTheme } from './js/utils/theme'
 
 import './css/App.css'
@@ -12,6 +12,7 @@ const Login = React.lazy(() => import('./pages/Account/Login/Login'))
 
 localInitialData()
 checkTheme()
+checkUserAccount()
 
 export default function App() {
   return (
