@@ -97,3 +97,10 @@ export function getLocalInitialData() {
   }
   return initialData
 }
+
+export function checkUserAccount() {
+  if (window.location.href.includes('account')) return
+
+  const { active } = loadLocal('quran').accounts
+  if (!active) window.location.href = 'account/signup'
+}
