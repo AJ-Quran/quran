@@ -85,8 +85,8 @@
   :root {
     --bg: #c8c8c8;
     --bg-dark: #eeeeee;
-    --bg-hover: #a4a4a4;
-    --bg-active: #858585;
+    --bg-hover: #bebebe;
+    --bg-active: #b1b1b1;
     --bg-opa: #bec5e675;
   }
 
@@ -103,9 +103,9 @@
 
   :root {
     --red-color: #ba3737;
-    --red-color-bg: #961919;
-    --red-color-hover: #bb2d2d;
-    --red-color-active: #681414;
+    --red-color-bg: #cd2222;
+    --red-color-hover: #dc6060;
+    --red-color-active: #b72b2b;
   }
 
   :root {
