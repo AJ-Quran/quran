@@ -33,6 +33,7 @@ export default function Home({ surahI, setSurahI }) {
     show: false,
   })
   const aboutUsI = 2
+  const hasAccount = loadLocal('quran').accounts.active
 
   useEffect(() => {
     const height = homePage.current?.querySelector('.scroll_area').clientHeight
@@ -194,6 +195,8 @@ export default function Home({ surahI, setSurahI }) {
     }
   }
 
+  console.log(hasAccount)
+
   return (
     <>
       <div className="h_100 home_page" ref={homePage} onWheel={wheel}>
@@ -210,6 +213,43 @@ export default function Home({ surahI, setSurahI }) {
               📖✨
             </div>
           </div>
+          {!hasAccount && (
+            <div className="con warning_account_msg list_y_big">
+              <div className="list_y">
+                <div className="list_x df_ai_ce fz_big">
+                  <span className="material-symbols-outlined fz_big">
+                    warning
+                  </span>
+                  <span className="fz_big">Warning</span>
+                </div>
+                <div className="line_x_small"></div>
+              </div>
+              <div className="list_y_small">
+                <p>We will not synce your data.</p>
+                <p>You can lost them if you change your device.</p>
+              </div>
+              <div className="list_x">
+                <div
+                  className="con_bg_gradient con_ha list_x df_f_ce bd_ra_big w_100"
+                  onClick={() => (window.location.href = 'account/signup')}
+                >
+                  <span className="material-symbols-outlined fz_normal">
+                    person_add
+                  </span>
+                  <span>Sign up</span>
+                </div>
+                <Button
+                  className="bd_btn list_x df_f_ce bd_ra_big w_100"
+                  onClick={() => (window.location.href = 'account/login')}
+                >
+                  <span className="material-symbols-outlined fz_normal">
+                    login
+                  </span>
+                  <span>Log in</span>
+                </Button>
+              </div>
+            </div>
+          )}
           <div className="facts">
             <div
               className="con_bg_gradient main_btn active_bg_anim active"
