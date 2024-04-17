@@ -10,9 +10,7 @@ const Main = React.lazy(() => import('./pages/Main/Main'))
 const Signup = React.lazy(() => import('./pages/Account/Signup/Signup'))
 const Login = React.lazy(() => import('./pages/Account/Login/Login'))
 
-localInitialData()
-checkTheme()
-checkUserAccount()
+checkApp()
 
 export default function App() {
   return (
@@ -26,4 +24,10 @@ export default function App() {
       </BrowserRouter>
     </>
   )
+}
+
+function checkApp() {
+  localInitialData()
+  checkTheme()
+  checkUserAccount()
 }
