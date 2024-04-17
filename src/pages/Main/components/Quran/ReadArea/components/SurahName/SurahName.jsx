@@ -5,10 +5,11 @@ import Button from '../../../../../../../components/Button/Button'
 import { toggleSurah } from '../../../../../../../js/db/quran/savedSurahs'
 import { loadLocal } from '../../../../../../../js/db/localStorage'
 import { load } from '../../../../../../../js/db/db'
+import { readDone } from '../../util/readDone'
 
 import './SurahName.css'
 
-export default function SurahName({ surahI, surahData }) {
+export default function SurahName({ surahI, setSurahI, surahData }) {
   const [savedI, setSavedI] = useState([])
 
   async function saveSurah(e) {
@@ -31,8 +32,15 @@ export default function SurahName({ surahI, surahData }) {
     loadData()
   }, [])
 
+  async function close() {
+    await readDone(surahI, setSurahI)
+  }
+
   return (
     <div className="con_bg_gradient con_h df_jc_ce surah_name">
+      <Button className="close_surah_btn con_ha bg_none h_max" onClick={close}>
+        <span className="material-symbols-outlined fz_big">close</span>
+      </Button>
       <div className="df_ai_ce list_y">
         <b>
           {surahData?.number}. {surahData?.englishName}
@@ -50,7 +58,7 @@ export default function SurahName({ surahI, surahData }) {
         onClick={saveSurah}
       >
         <span
-          className={`material-symbols-outlined ${
+          className={`material-symbols-outlined fz_big ${
             savedI.length > 0 && savedI.includes(surahI.surah) ? 'fill' : ''
           }`}
         >
