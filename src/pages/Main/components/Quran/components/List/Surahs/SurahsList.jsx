@@ -5,8 +5,8 @@ import useFetch from '../../../../../../../hooks/useFetch'
 import { wait } from '../../../../../../../js/utils/wait'
 import { isDarkTheme } from '../../../../../../../js/utils/theme'
 
-import shapeLight from '../numShape/numShapeLight.svg'
 import shapeDark from '../numShape/numShapeDark.svg'
+import shapeLight from '../numShape/numShapeLight.svg'
 
 import '../List.css'
 

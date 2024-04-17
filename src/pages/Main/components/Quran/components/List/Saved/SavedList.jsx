@@ -7,8 +7,8 @@ import { load } from '../../../../../../../js/db/db'
 import { loadLocal } from '../../../../../../../js/db/localStorage'
 import { isDarkTheme } from '../../../../../../../js/utils/theme'
 
-import shapeLight from '../numShape/numShapeLight.svg'
 import shapeDark from '../numShape/numShapeDark.svg'
+import shapeLight from '../numShape/numShapeLight.svg'
 
 import '../List.css'
 
