@@ -91,6 +91,9 @@ function getLocalInitialData() {
         surah: 1,
       },
     },
+    settings: {
+      theme: 'auto',
+    },
   }
   return initialData
 }

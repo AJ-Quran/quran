@@ -2,6 +2,11 @@
   padding: var(--pd-small);
 }
 
+.pd_tb_none {
+  padding-top: 0 !important;
+  padding-bottom: 0 !important;
+}
+
 :root {
   --pd: 10px;
   --pd-small: 6px;
