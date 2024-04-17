@@ -3,7 +3,7 @@ import { useEffect } from 'react'
 import Button from '../../../../../../../components/Button/Button'
 import ProgressBar from '../ProgressBar/ProgressBar'
 
-import { floor } from '../../../../../../../js/math/number'
+import { ceil } from '../../../../../../../js/math/number'
 import { progressPercent } from '../../../../../../../js/math/percent'
 import { readDone } from '../../util/readDone'
 
@@ -49,7 +49,7 @@ export default function AyahsArea({ arAyahs, engAyahs, surahI, setSurahI }) {
               <div>
                 {surahI.ayah}/{arAyahs?.length || 0}
               </div>
-              <div>{floor(progress) || 0}%</div>
+              <div>{ceil(progress) || 0}%</div>
             </div>
           </div>
           <div className="df_jc_sb df_ai_ce_child list_x">
