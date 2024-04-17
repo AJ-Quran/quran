@@ -26,7 +26,7 @@ function Quran({ surahI, setSurahI }) {
 
   return (
     <>
-      <div className="quran_area list_y h_max_100 scroll_y">
+      <div className="quran_area list_y h_max_100 scroll_y main_w mar_ce">
         <LastRead setSurahI={setSurahI} />
         {savedList.length > 0 && (
           <div className="quran_choose_area con_bg_dr">
@@ -62,7 +62,6 @@ function Quran({ surahI, setSurahI }) {
             <SavedList surahI={surahI} setSurahI={setSurahI}></SavedList>
           )}
         </div>
-        <div></div>
         {surahI.surah > 0 && <ReadArea surahI={surahI} setSurahI={setSurahI} />}
       </div>
     </>
