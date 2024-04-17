@@ -1,0 +1,15 @@
+.theme_choose_area {
+  border-radius: 2em !important;
+}
+
+.theme_choose_area .choose_con_area {
+  .option,
+  .chosen {
+    border-radius: 50%;
+  }
+
+  .option {
+    height: 30px;
+    aspect-ratio: 1/1;
+  }
+}
