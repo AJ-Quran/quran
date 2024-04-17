@@ -29,7 +29,7 @@ export default function Avatar({ style, letter }) {
 
   return (
     <div className="avatar df_f_ce con_bd_cl" style={style}>
-      <span>{name.toUpperCase()}</span>
+      <span>{name?.toUpperCase() || 'A'}</span>
     </div>
   )
 }

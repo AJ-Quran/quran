@@ -138,11 +138,6 @@ export async function getAccount(username) {
   return account
 }
 
-export function getLocalAccounts() {
-  const { usernames } = loadLocal('quran').accounts
-  return usernames
-}
-
 export function changeAccount(username) {
   const localData = loadLocal('quran')
   if (localData.accounts.usernames.includes(username))
