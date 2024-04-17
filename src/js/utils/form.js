@@ -1,6 +1,6 @@
 import { isValidUsername, isValidPassword, isValidEmail } from './checkers'
 
-function getData(form) {
+export function getData(form) {
   const allHaveValue = checkValues(form)
   if (!allHaveValue.ok) {
     allHaveValue.input.classList.add('error')
@@ -67,5 +67,3 @@ function checkChooseArea(form) {
 
   return res
 }
-
-export { getData }

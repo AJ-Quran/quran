@@ -1,4 +1,5 @@
 import { useEffect, useRef, useState } from 'react'
+
 import './Choose.css'
 
 function getLeft(element) {
@@ -13,7 +14,7 @@ function getTop(element) {
   return rect.top - parentRect.top
 }
 
-function Choose({ axe, label, children, iOption }) {
+export default function Choose({ axe, label, children, iOption }) {
   const chooseArea = useRef(null)
   const [chosenStyle, setChosenStyle] = useState(() => ({
     width: '0',
@@ -105,5 +106,3 @@ function Choose({ axe, label, children, iOption }) {
     </div>
   )
 }
-
-export default Choose

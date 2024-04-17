@@ -1,7 +1,7 @@
 import { load, save } from '../db/db'
 import { loadLocal } from '../db/localStorage'
 
-async function send(feedbackData) {
+export async function send(feedbackData) {
   const username = loadLocal('quran').accounts.active
   const dbArr = (await load(`feedbacks/${username}`)) || []
 
@@ -9,5 +9,3 @@ async function send(feedbackData) {
   dbArr.push(feedbackData)
   await save(`feedbacks/${username}`, dbArr)
 }
-
-export { send }

@@ -1,6 +1,6 @@
 import './Loading.css'
 
-function Loading({ children, size, ...props }) {
+export default function Loading({ children, size, ...props }) {
   return (
     <div className={`loading_con con_bg_df df_f_ce list_y ${props.className}`}>
       <div className="loading_spinners" style={{ '--loading-size': size }}>
@@ -25,5 +25,3 @@ function Loading({ children, size, ...props }) {
     </div>
   )
 }
-
-export default Loading

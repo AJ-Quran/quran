@@ -2,7 +2,7 @@ import { save, load, edit as editDB, deleteData } from '../db/db'
 import { loadLocal, saveLocal } from '../db/localStorage'
 import { getLocalInitialData } from '../utils/checkers'
 
-async function signup(data) {
+export async function signup(data) {
   if (!data) return { msg: 'Wrong data', ok: false }
 
   const user = {
@@ -23,12 +23,12 @@ async function signup(data) {
   return { ok: true }
 }
 
-async function deleteAccount(username) {
+export async function deleteAccount(username) {
   await deleteData(`accounts/${username}`)
   logout(username)
 }
 
-async function login(data) {
+export async function login(data) {
   if (!data.ok) return { msg: 'Wrong data', ok: false }
 
   const user = {
@@ -65,7 +65,7 @@ async function login(data) {
   return { ok: true }
 }
 
-function logout(username) {
+export function logout(username) {
   const localData = loadLocal('quran')
 
   const usernames = localData.accounts.usernames.filter(
@@ -86,7 +86,7 @@ function logout(username) {
   return true
 }
 
-async function editUser(username, newData) {
+export async function editUser(username, newData) {
   if (!newData.ok) return { msg: 'Wrong data', ok: false }
 
   const user = {
@@ -131,34 +131,23 @@ async function editUser(username, newData) {
   return { msg: `User's data has changed`, msgType: 'success', ok: true }
 }
 
-async function getAccount(username) {
+export async function getAccount(username) {
   const account = await load(`accounts/${username}/user`)
   if (!account) return null
 
   return account
 }
 
-function getLocalAccounts() {
+export function getLocalAccounts() {
   const { usernames } = loadLocal('quran').accounts
   return usernames
 }
 
-function changeAccount(username) {
+export function changeAccount(username) {
   const localData = loadLocal('quran')
   if (localData.accounts.usernames.includes(username))
     localData.accounts.active = username
 
   saveLocal('quran', localData)
   window.location.reload()
-}
-
-export {
-  signup,
-  deleteAccount,
-  login,
-  logout,
-  getAccount,
-  getLocalAccounts,
-  editUser,
-  changeAccount,
 }

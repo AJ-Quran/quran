@@ -1,9 +1,9 @@
+import { play } from '../../js/utils/audio'
+
 import defaultAudio from '../../sounds/message/default.mp3'
 import errorAudio from '../../sounds/message/error.mp3'
 import warningAudio from '../../sounds/message/warning.mp3'
 import successAudio from '../../sounds/message/success.mp3'
-
-import { play } from '../../js/utils/audio'
 
 import './Message.css'
 
@@ -25,7 +25,7 @@ function getIcon(type) {
   return <span className="material-symbols-outlined icon">{icons[type]}</span>
 }
 
-function Message({ children, type = 'default', show }) {
+export default function Message({ children, type = 'default', show }) {
   if (!show && !children) return null
   const icon = getIcon(type)
 
@@ -38,5 +38,3 @@ function Message({ children, type = 'default', show }) {
     </div>
   )
 }
-
-export default Message

@@ -11,7 +11,7 @@ import { load } from '../../../../js/db/db'
 
 import './Quran.css'
 
-function Quran({ surahI, setSurahI }) {
+export default function Quran({ surahI, setSurahI }) {
   const [shownList, setShownList] = useState('surahsList')
   const [savedList, setSavedList] = useState([])
 
@@ -67,5 +67,3 @@ function Quran({ surahI, setSurahI }) {
     </>
   )
 }
-
-export default Quran
