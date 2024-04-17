@@ -1,7 +1,7 @@
 import React from 'react'
 import { BrowserRouter, Routes, Route } from 'react-router-dom'
 
-import { checkUserAccount, localInitialData } from './js/utils/checkers'
+import { localInitialData } from './js/utils/checkers'
 import { checkTheme } from './js/utils/theme'
 
 import './css/App.css'
@@ -29,5 +29,4 @@ export default function App() {
 function checkApp() {
   localInitialData()
   checkTheme()
-  checkUserAccount()
 }

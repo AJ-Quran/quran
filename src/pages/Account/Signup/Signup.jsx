@@ -7,7 +7,7 @@ import Loading from '../../../components/Loading/Loading'
 import Message from '../../../components/Message/Message'
 
 import * as FORM from '../../../js/utils/form'
-import { getLocalAccounts, signup } from '../../../js/account/account'
+import { signup } from '../../../js/account/account'
 import { msgData } from '../../../js/utils/message'
 import useTitle from '../../../hooks/useTitle'
 
@@ -51,8 +51,6 @@ export default function Signup() {
       return
     }
   }
-
-  const hasAccount = getLocalAccounts().length > 0
 
   return (
     <div className="h_100 df_f_ce">
@@ -116,16 +114,14 @@ export default function Signup() {
             </Button>
           </div>
         </div>
-        {hasAccount && (
-          <Button
-            className="medium list_x df_f_ce"
-            colorful="true"
-            onClick={() => (window.location.href = '/')}
-          >
-            <span className="material-symbols-outlined fz_normal">home</span>
-            <span>Main page</span>
-          </Button>
-        )}
+        <Button
+          className="medium list_x df_f_ce"
+          colorful="true"
+          onClick={() => (window.location.href = '/')}
+        >
+          <span className="material-symbols-outlined fz_normal">home</span>
+          <span>Main page</span>
+        </Button>
         {signing && <Loading size="50px">Signing up</Loading>}
       </div>
     </div>

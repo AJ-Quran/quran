@@ -126,6 +126,21 @@ export default function Home({ surahI, setSurahI }) {
     nameParent.classList.add('active')
 
     const username = loadLocal('quran').accounts.active
+    if (!username) {
+      nameParent.classList.remove('active')
+
+      setMessage({
+        msg: 'You do not have an account',
+        type: 'warning',
+        show: true,
+      })
+      setTimeout(
+        () => setMessage({ ...message, show: false }),
+        msgData.time * 1000
+      )
+      return
+    }
+
     const account = await getAccount(username)
     await wait(1000)
 
