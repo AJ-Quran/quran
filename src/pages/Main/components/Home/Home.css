@@ -18,9 +18,15 @@
 .warning_account_msg {
   position: absolute;
   bottom: 200px;
-  background-color: var(--warning-color);
   border: 1px solid var(--warning-color-border);
   max-width: 350px;
+}
+
+.warning_icon {
+  font-size: 4em;
+  overflow: visible;
+  max-width: max-content;
+  max-height: max-content;
 }
 
 .main_btn {

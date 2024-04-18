@@ -216,17 +216,22 @@ export default function Home({ surahI, setSurahI }) {
           {!hasAccount && (
             <div className="con warning_account_msg list_y_big">
               <div className="list_y">
-                <div className="list_x df_ai_ce fz_big">
-                  <span className="material-symbols-outlined fz_big">
+                <div className="list_y df_ai_ce fz_big txt_yellow">
+                  <span className="material-symbols-outlined warning_icon">
                     warning
                   </span>
-                  <span className="fz_big">Warning</span>
+                  <b className="fz_big">Warning</b>
                 </div>
                 <div className="line_x_small"></div>
               </div>
-              <div className="list_y_small">
-                <p>We will not synce your data.</p>
-                <p>You can lost them if you change your device.</p>
+              <div className="list_y_small df_ai_ce">
+                <p>
+                  We will not <b className="txt_yellow">synce</b> your data.
+                </p>
+                <p>
+                  You can <b className="txt_yellow">lost</b> them if you change
+                  your device.
+                </p>
               </div>
               <div className="list_x">
                 <div
