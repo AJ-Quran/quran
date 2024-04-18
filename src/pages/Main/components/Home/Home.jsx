@@ -195,8 +195,6 @@ export default function Home({ surahI, setSurahI }) {
     }
   }
 
-  console.log(hasAccount)
-
   return (
     <>
       <div className="h_100 home_page" ref={homePage} onWheel={wheel}>
