@@ -1,0 +1,16 @@
+.wrong_path_area::before,
+.wrong_path_area::after {
+  box-shadow: 0 0 500px 100px var(--yellow-color);
+}
+
+.warning_con {
+  width: 250px;
+  border-color: var(--yellow-color-border) !important;
+}
+
+.warning_icon {
+  font-size: 4em;
+  overflow: visible;
+  max-width: max-content;
+  max-height: max-content;
+}

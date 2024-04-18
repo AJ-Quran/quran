@@ -18,6 +18,10 @@
   -webkit-text-fill-color: transparent;
 }
 
+.txt_yellow {
+  color: var(--yellow-color);
+}
+
 .gender_male {
   color: var(--gender-male-color);
 }
