@@ -20,6 +20,8 @@ import { msgData } from '../../../../../../js/utils/message'
 import { elText } from '../../../../../../js/utils/copy'
 import { load } from '../../../../../../js/db/db'
 
+import './AccountData.css'
+
 export default function AccountData() {
   const form = useRef(null)
   const nameRef = useRef(null)
@@ -155,6 +157,34 @@ export default function AccountData() {
               <span className="material-symbols-outlined fz_normal">login</span>
               <span>Log in</span>
             </div>
+          </div>
+          <div className="df_fd_cl w_100 df_ai_ce">
+            <div className="title">Reasons</div>
+            <div className="line_x"></div>
+          </div>
+          <div className="reasons_area">
+            <div className="con_bg_df">
+              1. Account deleted due to inactivity.
+            </div>
+            <div className="con_bg_df">
+              2. Mistaken deletion during maintenance.
+            </div>
+            <div className="con_bg_df">3. Technical error during creation.</div>
+            <div className="con_bg_df">4. Flagged for suspicious activity.</div>
+            <div className="con_bg_df">
+              5. Data corruption or loss incident.
+            </div>
+            <div className="con_bg_df">6. System upgrade complications.</div>
+            <div className="con_bg_df">
+              7. Intentional removal for policy violation.
+            </div>
+            <div className="con_bg_df">
+              8. Account archived during restructuring.
+            </div>
+            <div className="con_bg_df">
+              9. Inadvertent loss during data transfer.
+            </div>
+            <div className="con_bg_df">10. Security breach precautions.</div>
           </div>
         </div>
       </>

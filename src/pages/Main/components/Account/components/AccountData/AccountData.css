@@ -1,0 +1,9 @@
+.reasons_area {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+
+  & > * {
+    margin: var(--mar-small-very);
+  }
+}
