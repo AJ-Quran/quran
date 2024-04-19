@@ -41,29 +41,33 @@ export default function AccountList() {
       {accounts.length === 0 && null}
       {accounts.length > 0 && (
         <div className="df_f_ce list_y">
-          {accounts.map((account, i) => (
-            <div
-              key={i}
-              className="con_bd_df con_ha df_ai_ce_child df_jc_sb main_w_small"
-              username={accounts[i]?.username}
-              onClick={() =>
-                setSwitchAcc({ switch: true, account: accounts[i] })
-              }
-            >
-              <div className="list_x fz_small">
-                <Avatar
-                  style={{ height: 30, fontSize: '14px' }}
-                  letter={account?.name[0]}
-                />
-                <span>{account?.name}</span>
+          {accounts.map((account, i) => {
+            if (!account) return null
+
+            return (
+              <div
+                key={i}
+                className="con_bd_df con_ha df_ai_ce_child df_jc_sb main_w_small"
+                username={accounts[i]?.username}
+                onClick={() =>
+                  setSwitchAcc({ switch: true, account: accounts[i] })
+                }
+              >
+                <div className="list_x fz_small">
+                  <Avatar
+                    style={{ height: 30, fontSize: '14px' }}
+                    letter={account?.name[0]}
+                  />
+                  <span>{account?.name}</span>
+                </div>
+                <div>
+                  <span className="material-symbols-outlined fz_big">
+                    change_circle
+                  </span>
+                </div>
               </div>
-              <div>
-                <span className="material-symbols-outlined fz_big">
-                  change_circle
-                </span>
-              </div>
-            </div>
-          ))}
+            )
+          })}
           {switchAcc.switch && (
             <Alert
               title="Switch account"
