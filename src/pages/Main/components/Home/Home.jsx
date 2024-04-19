@@ -143,6 +143,21 @@ export default function Home({ surahI, setSurahI }) {
     }
 
     const account = await getAccount(username)
+    if (!account) {
+      nameParent.classList.remove('active')
+
+      setMessage({
+        msg: 'Your account has been deleted',
+        type: 'error',
+        show: true,
+      })
+      setTimeout(
+        () => setMessage({ ...message, show: false }),
+        msgData.time * 1000
+      )
+      return
+    }
+
     await wait(1000)
 
     const nameLabel = nameParent.querySelector('label')
