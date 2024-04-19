@@ -72,6 +72,10 @@ input {
   cursor: text;
 }
 
+input[type='file'] {
+  display: none;
+}
+
 .input_area button {
   width: 20px;
   aspect-ratio: 1/1;
