@@ -17,7 +17,7 @@
 }
 
 .input_area:has(.error) {
-  background-color: var(--error-color-bg);
+  background-color: var(--error-color-bg) !important;
   color: var(--error-color);
 
   &:hover {
