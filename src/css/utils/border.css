@@ -6,6 +6,10 @@
   border-radius: var(--bd-ra-big) !important;
 }
 
+.bd_ra_50 {
+  border-radius: 50% !important;
+}
+
 :root {
   --bd-ra: 10px;
   --bd-ra-small: 6px;
