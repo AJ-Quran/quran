@@ -90,3 +90,7 @@ input {
 .input_area button span {
   font-size: 0.8em;
 }
+
+input[type='file'] {
+  display: none;
+}
