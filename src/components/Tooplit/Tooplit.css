@@ -1,0 +1,10 @@
+.tooplit_area .alert_bg {
+  background: none;
+}
+
+.tooplit_con {
+  position: absolute;
+  min-width: auto;
+  width: max-content;
+  padding: var(--pd-small-very);
+}
