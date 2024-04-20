@@ -5,6 +5,23 @@
   background: linear-gradient(#fff -100%, var(--main-color));
 }
 
+.avatar_edit_btns {
+  position: absolute;
+  right: 0;
+  bottom: 0;
+
+  & > * {
+    height: 30px;
+    aspect-ratio: 1/1;
+    padding: 0;
+  }
+
+  & span {
+    overflow: visible;
+    font-size: 0.5em;
+  }
+}
+
 :root {
   --avatar-size: 0;
 }

@@ -7,6 +7,7 @@ import Loading from '../../../../../../components/Loading/Loading'
 import Message from '../../../../../../components/Message/Message'
 import Avatar from '../utils/Avatar'
 import Alert from '../../../../../../components/Alert/Alert'
+import Tooplit from '../../../../../../components/Tooplit/Tooplit'
 
 import { loadLocal } from '../../../../../../js/db/localStorage'
 import {
@@ -33,6 +34,8 @@ export default function AccountData() {
   const [saving, setSaving] = useState(false)
   const [logingout, setLogingout] = useState(false)
   const [deleting, setDeleting] = useState(false)
+  const [showTooplit, setShowTooplit] = useState(false)
+  const [tooplitPos, setTooplitPos] = useState({ x: 0, y: 0 })
   const [message, setMessage] = useState({
     text: '',
     type: 'error',
@@ -132,6 +135,13 @@ export default function AccountData() {
     dbDeleteAccount(username)
   }
 
+  function showUpTooplit(e) {
+    const { clientX: x, clientY: y } = e
+
+    setTooplitPos({ x, y })
+    setShowTooplit(true)
+  }
+
   if (account === null)
     return (
       <>
@@ -221,7 +231,35 @@ export default function AccountData() {
             </div>
           </div>
           <div className="list_x df_ai_ce">
-            <Avatar style={{ height: '70px', fontSize: '35px' }}></Avatar>
+            <Avatar style={{ height: '70px', fontSize: '35px' }}>
+              <div className="avatar_edit_btns">
+                <div
+                  className="con_bg_df con_ha bd_ra_50 df_f_ce"
+                  onClick={showUpTooplit}
+                >
+                  <span className="material-symbols-outlined">edit</span>
+                </div>
+              </div>
+            </Avatar>
+            {showTooplit && (
+              <Tooplit onHide={() => setShowTooplit(false)} pos={tooplitPos}>
+                <div className="list_y_small">
+                  <div className="con_ha list_x df_ai_ce txt_main">
+                    <span className="material-symbols-outlined fz_normal">
+                      cloud_upload
+                    </span>
+                    <span>Upload</span>
+                    <input type="file" />
+                  </div>
+                  <div className="con_ha list_x df_ai_ce txt_red">
+                    <span className="material-symbols-outlined fz_normal">
+                      delete
+                    </span>
+                    <span>Delete</span>
+                  </div>
+                </div>
+              </Tooplit>
+            )}
             <div className="list_y w_100 df_ai_ce_child">
               <div className="list_x">
                 <span className="material-symbols-outlined">person</span>

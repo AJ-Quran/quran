@@ -12,7 +12,7 @@ async function getName() {
   return name[0]
 }
 
-export default function Avatar({ style, letter }) {
+export default function Avatar({ style, letter, children }) {
   const [name, setName] = useState(() => '')
 
   useEffect(() => {
@@ -30,6 +30,7 @@ export default function Avatar({ style, letter }) {
   return (
     <div className="avatar df_f_ce con_bd_cl" style={style}>
       <span>{name?.toUpperCase() || 'A'}</span>
+      {children}
     </div>
   )
 }
