@@ -20,6 +20,7 @@ import { getData } from '../../../../../../js/utils/form'
 import { msgData } from '../../../../../../js/utils/message'
 import { elText } from '../../../../../../js/utils/copy'
 import { load } from '../../../../../../js/db/db'
+import { getImgBlob } from '../../../../../../js/utils/img'
 
 import './AccountData.css'
 
@@ -36,6 +37,7 @@ export default function AccountData() {
   const [deleting, setDeleting] = useState(false)
   const [showTooplit, setShowTooplit] = useState(false)
   const [tooplitPos, setTooplitPos] = useState({ x: 0, y: 0 })
+  const [profileImg, setProfileImg] = useState('')
   const [message, setMessage] = useState({
     text: '',
     type: 'error',
@@ -147,6 +149,19 @@ export default function AccountData() {
     fileInput?.click()
   }
 
+  async function uploadFile(e) {
+    const fileInput = e.target
+    if (!fileInput) return
+
+    const file = fileInput.files[0]
+    const blob = await getImgBlob(file)
+
+    setProfileImg(blob)
+    setShowTooplit(false)
+
+    fileInput.value = ''
+  }
+
   if (account === null)
     return (
       <>
@@ -236,7 +251,10 @@ export default function AccountData() {
             </div>
           </div>
           <div className="list_x df_ai_ce">
-            <Avatar style={{ height: '70px', fontSize: '35px' }}>
+            <Avatar
+              style={{ height: '70px', fontSize: '35px' }}
+              img={profileImg}
+            >
               <div className="avatar_edit_btns">
                 <div
                   className="con_bg_df con_ha bd_ra_50 df_f_ce"
@@ -257,7 +275,7 @@ export default function AccountData() {
                       cloud_upload
                     </span>
                     <span>Upload</span>
-                    <input type="file" accept="image/*" />
+                    <input type="file" accept="image/*" onChange={uploadFile} />
                   </div>
                   <div className="con_ha list_x df_ai_ce txt_red">
                     <span className="material-symbols-outlined fz_normal">
