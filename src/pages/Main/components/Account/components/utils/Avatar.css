@@ -28,6 +28,10 @@
   border-radius: inherit;
 }
 
+.avatar:has(img) {
+  background: none !important;
+}
+
 :root {
   --avatar-size: 0;
 }
