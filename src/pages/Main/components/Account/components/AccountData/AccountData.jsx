@@ -142,6 +142,11 @@ export default function AccountData() {
     setShowTooplit(true)
   }
 
+  function clickFileInput(e) {
+    const fileInput = e.target?.querySelector('input[type="file"]')
+    fileInput?.click()
+  }
+
   if (account === null)
     return (
       <>
@@ -244,12 +249,15 @@ export default function AccountData() {
             {showTooplit && (
               <Tooplit onHide={() => setShowTooplit(false)} pos={tooplitPos}>
                 <div className="list_y_small">
-                  <div className="con_ha list_x df_ai_ce txt_main">
+                  <div
+                    className="con_ha list_x df_ai_ce txt_main"
+                    onClick={clickFileInput}
+                  >
                     <span className="material-symbols-outlined fz_normal">
                       cloud_upload
                     </span>
                     <span>Upload</span>
-                    <input type="file" />
+                    <input type="file" accept="image/*" />
                   </div>
                   <div className="con_ha list_x df_ai_ce txt_red">
                     <span className="material-symbols-outlined fz_normal">
