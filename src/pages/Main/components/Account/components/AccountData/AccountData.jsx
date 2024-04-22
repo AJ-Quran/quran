@@ -67,7 +67,9 @@ export default function AccountData() {
     }
 
     const username = loadLocal('quran').accounts.active
-    const editedData = await editUser(username, formData)
+
+    const userNewData = { ...formData, img: { img: profileImg } }
+    const editedData = await editUser(username, userNewData)
 
     if (!editedData.ok) {
       setMessage({ msg: editedData.msg, type: editedData.msgType, show: true })
