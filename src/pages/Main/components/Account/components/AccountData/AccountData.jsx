@@ -277,12 +277,20 @@ export default function AccountData() {
                     <span>Upload</span>
                     <input type="file" accept="image/*" onChange={uploadFile} />
                   </div>
-                  <div className="con_ha list_x df_ai_ce txt_red">
-                    <span className="material-symbols-outlined fz_normal">
-                      delete
-                    </span>
-                    <span>Delete</span>
-                  </div>
+                  {profileImg && (
+                    <div
+                      className="con_ha list_x df_ai_ce txt_red"
+                      onClick={() => {
+                        setProfileImg('')
+                        setShowTooplit(false)
+                      }}
+                    >
+                      <span className="material-symbols-outlined fz_normal">
+                        delete
+                      </span>
+                      <span>Delete</span>
+                    </div>
+                  )}
                 </div>
               </Tooplit>
             )}
