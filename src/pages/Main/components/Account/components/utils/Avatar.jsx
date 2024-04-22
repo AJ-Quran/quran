@@ -12,10 +12,11 @@ async function getName() {
   return name[0]
 }
 
-export default function Avatar({ style, letter, children }) {
+export default function Avatar({ style, letter, children, img }) {
   const [name, setName] = useState(() => '')
 
   useEffect(() => {
+    if (img) return
     if (letter) {
       setName(letter)
       return
@@ -26,6 +27,15 @@ export default function Avatar({ style, letter, children }) {
     }
     loadData()
   }, [])
+
+  if (img) {
+    return (
+      <div className="avatar df_f_ce con_bd_cl" style={style}>
+        <img src={img} alt="Image" />
+        {children}
+      </div>
+    )
+  }
 
   return (
     <div className="avatar df_f_ce con_bd_cl" style={style}>
