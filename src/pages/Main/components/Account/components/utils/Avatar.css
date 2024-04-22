@@ -22,6 +22,12 @@
   }
 }
 
+.avatar img {
+  width: 100%;
+  aspect-ratio: 1/1;
+  border-radius: inherit;
+}
+
 :root {
   --avatar-size: 0;
 }
