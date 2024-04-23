@@ -39,6 +39,7 @@ export default function AccountData() {
   const [showTooplit, setShowTooplit] = useState(false)
   const [tooplitPos, setTooplitPos] = useState({ x: 0, y: 0 })
   const [profileImg, setProfileImg] = useState('')
+  const [bigProfilePic, showBigProfilePic] = useState(false)
   const [message, setMessage] = useState({
     text: '',
     type: 'error',
@@ -54,8 +55,6 @@ export default function AccountData() {
   }, [saving])
 
   useEffect(() => {
-    if (profileImg) return
-
     setProfileImg(account?.img?.img)
   }, [editing])
 
@@ -388,7 +387,19 @@ export default function AccountData() {
             {message.msg}
           </Message>
           <div className="list_y df_f_ce">
-            <Avatar style={{ width: '80px', fontSize: '40px' }}></Avatar>
+            <Avatar
+              style={{ width: '80px', fontSize: '40px' }}
+              onClick={() => showBigProfilePic(true)}
+            ></Avatar>
+            {bigProfilePic && (
+              <Alert onHide={() => showBigProfilePic(false)} simple="true">
+                <div className="df_f_ce">
+                  <Avatar
+                    style={{ width: '400px', fontSize: '200px' }}
+                  ></Avatar>
+                </div>
+              </Alert>
+            )}
             <div className="list_y df_jc_ce_child">
               <div className="fz_big">
                 <b ref={nameRef} className="name" onClick={() => copy(nameRef)}>
