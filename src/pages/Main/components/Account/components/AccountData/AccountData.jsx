@@ -55,8 +55,6 @@ export default function AccountData() {
   }, [saving])
 
   useEffect(() => {
-    if (profileImg) return
-
     setProfileImg(account?.img?.img)
   }, [editing])
 
