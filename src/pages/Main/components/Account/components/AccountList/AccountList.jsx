@@ -56,7 +56,7 @@ export default function AccountList() {
                 <div className="list_x fz_small">
                   <Avatar
                     style={{ height: 30, fontSize: '14px' }}
-                    letter={account?.name[0]}
+                    username={account?.username}
                   />
                   <span>{account?.name}</span>
                 </div>
@@ -76,7 +76,7 @@ export default function AccountList() {
               <div className="df_ai_ce list_x fz_small">
                 <Avatar
                   style={{ height: 40, fontSize: '14px' }}
-                  letter={switchAcc.account?.name[0]}
+                  username={switchAcc.account?.username}
                 />
                 <div className="list_y">
                   <b>{switchAcc.account?.name}</b>
