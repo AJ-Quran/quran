@@ -11,6 +11,7 @@ import './SurahName.css'
 
 export default function SurahName({ surahI, setSurahI, surahData }) {
   const [savedI, setSavedI] = useState([])
+  const hasAccount = loadLocal('quran').accounts.active
 
   async function saveSurah(e) {
     const btn = e.target
@@ -53,18 +54,20 @@ export default function SurahName({ surahI, setSurahI, surahData }) {
           <div>{surahData?.numberOfAyahs || 0} verses</div>
         </div>
       </div>
-      <Button
-        className="save_surah_btn con_ha bg_none h_max"
-        onClick={saveSurah}
-      >
-        <span
-          className={`material-symbols-outlined fz_big ${
-            savedI.length > 0 && savedI.includes(surahI.surah) ? 'fill' : ''
-          }`}
+      {hasAccount && (
+        <Button
+          className="save_surah_btn con_ha bg_none h_max"
+          onClick={saveSurah}
         >
-          bookmark
-        </span>
-      </Button>
+          <span
+            className={`material-symbols-outlined fz_big ${
+              savedI.length > 0 && savedI.includes(surahI.surah) ? 'fill' : ''
+            }`}
+          >
+            bookmark
+          </span>
+        </Button>
+      )}
     </div>
   )
 }
