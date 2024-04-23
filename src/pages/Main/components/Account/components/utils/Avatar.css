@@ -23,6 +23,7 @@
 }
 
 .avatar img {
+  position: absolute;
   width: 100%;
   aspect-ratio: 1/1;
   border-radius: inherit;
