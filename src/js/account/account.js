@@ -92,7 +92,11 @@ export async function editUser(username, newData) {
   const user = {
     ...newData.inputs,
     ...newData.chosen,
+    img: { ...newData.img },
   }
+
+  if (!user.img.img) delete user.img
+
   const localUsername = loadLocal('quran').accounts.active
 
   if (localUsername === user.username) {

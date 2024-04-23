@@ -5,31 +5,33 @@ import { loadLocal } from '../../../../../../js/db/localStorage'
 
 import './Avatar.css'
 
-async function getName() {
-  const username = loadLocal('quran').accounts.active
+async function getUserAvatar(username) {
+  username = username ? username : loadLocal('quran').accounts.active
+
+  const img = await load(`accounts/${username}/user/img/img`)
   const name = await load(`accounts/${username}/user/name`)
 
-  return name[0]
+  return { name: name[0], img }
 }
 
-export default function Avatar({ style, letter }) {
-  const [name, setName] = useState(() => '')
+export default function Avatar({ style, username, children }) {
+  const [data, setData] = useState({ name: '', img: '' })
 
   useEffect(() => {
-    if (letter) {
-      setName(letter)
-      return
-    }
-
     async function loadData() {
-      setName(await getName())
+      const userAvatar = username
+        ? await getUserAvatar(username)
+        : await getUserAvatar()
+      setData(userAvatar)
     }
     loadData()
   }, [])
 
   return (
     <div className="avatar df_f_ce con_bd_cl" style={style}>
-      <span>{name?.toUpperCase() || 'A'}</span>
+      {data?.img && <img src={data?.img} alt="Image" />}
+      {data?.name && <span>{data?.name?.toUpperCase()}</span>}
+      {children}
     </div>
   )
 }

@@ -26,6 +26,10 @@
   color: var(--red-color);
 }
 
+.txt_main {
+  color: var(--main-color);
+}
+
 .gender_male {
   color: var(--gender-male-color);
 }

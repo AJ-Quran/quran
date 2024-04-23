@@ -6,7 +6,9 @@ import Choose from '../../../../../../components/Choose/Choose'
 import Loading from '../../../../../../components/Loading/Loading'
 import Message from '../../../../../../components/Message/Message'
 import Avatar from '../utils/Avatar'
+import AvatarToEdit from '../utils/AvatarToEdit'
 import Alert from '../../../../../../components/Alert/Alert'
+import Tooplit from '../../../../../../components/Tooplit/Tooplit'
 
 import { loadLocal } from '../../../../../../js/db/localStorage'
 import {
@@ -19,6 +21,7 @@ import { getData } from '../../../../../../js/utils/form'
 import { msgData } from '../../../../../../js/utils/message'
 import { elText } from '../../../../../../js/utils/copy'
 import { load } from '../../../../../../js/db/db'
+import { getImgBlob } from '../../../../../../js/utils/img'
 
 import './AccountData.css'
 
@@ -33,6 +36,9 @@ export default function AccountData() {
   const [saving, setSaving] = useState(false)
   const [logingout, setLogingout] = useState(false)
   const [deleting, setDeleting] = useState(false)
+  const [showTooplit, setShowTooplit] = useState(false)
+  const [tooplitPos, setTooplitPos] = useState({ x: 0, y: 0 })
+  const [profileImg, setProfileImg] = useState('')
   const [message, setMessage] = useState({
     text: '',
     type: 'error',
@@ -46,6 +52,12 @@ export default function AccountData() {
     }
     loadAccount()
   }, [saving])
+
+  useEffect(() => {
+    if (profileImg) return
+
+    setProfileImg(account?.img?.img)
+  }, [editing])
 
   async function saveChanges() {
     setSaving(true)
@@ -62,7 +74,9 @@ export default function AccountData() {
     }
 
     const username = loadLocal('quran').accounts.active
-    const editedData = await editUser(username, formData)
+
+    const userNewData = { ...formData, img: { img: profileImg } }
+    const editedData = await editUser(username, userNewData)
 
     if (!editedData.ok) {
       setMessage({ msg: editedData.msg, type: editedData.msgType, show: true })
@@ -130,6 +144,31 @@ export default function AccountData() {
     }
 
     dbDeleteAccount(username)
+  }
+
+  function showUpTooplit(e) {
+    const { clientX: x, clientY: y } = e
+
+    setTooplitPos({ x, y })
+    setShowTooplit(true)
+  }
+
+  function clickFileInput(e) {
+    const fileInput = e.target?.querySelector('input[type="file"]')
+    fileInput?.click()
+  }
+
+  async function uploadFile(e) {
+    const fileInput = e.target
+    if (!fileInput) return
+
+    const file = fileInput.files[0]
+    const blob = await getImgBlob(file)
+
+    setProfileImg(blob)
+    setShowTooplit(false)
+
+    fileInput.value = ''
   }
 
   if (account === null)
@@ -221,7 +260,49 @@ export default function AccountData() {
             </div>
           </div>
           <div className="list_x df_ai_ce">
-            <Avatar style={{ height: '70px', fontSize: '35px' }}></Avatar>
+            <AvatarToEdit
+              style={{ height: '70px', fontSize: '35px' }}
+              img={profileImg}
+            >
+              <div className="avatar_edit_btns">
+                <div
+                  className="con_bg_df con_ha bd_ra_50 df_f_ce"
+                  onClick={showUpTooplit}
+                >
+                  <span className="material-symbols-outlined">edit</span>
+                </div>
+              </div>
+            </AvatarToEdit>
+            {showTooplit && (
+              <Tooplit onHide={() => setShowTooplit(false)} pos={tooplitPos}>
+                <div className="list_y_small">
+                  <div
+                    className="con_ha list_x df_ai_ce txt_main"
+                    onClick={clickFileInput}
+                  >
+                    <span className="material-symbols-outlined fz_normal">
+                      cloud_upload
+                    </span>
+                    <span>Upload</span>
+                    <input type="file" accept="image/*" onChange={uploadFile} />
+                  </div>
+                  {profileImg && (
+                    <div
+                      className="con_ha list_x df_ai_ce txt_red"
+                      onClick={() => {
+                        setProfileImg('')
+                        setShowTooplit(false)
+                      }}
+                    >
+                      <span className="material-symbols-outlined fz_normal">
+                        delete
+                      </span>
+                      <span>Delete</span>
+                    </div>
+                  )}
+                </div>
+              </Tooplit>
+            )}
             <div className="list_y w_100 df_ai_ce_child">
               <div className="list_x">
                 <span className="material-symbols-outlined">person</span>
