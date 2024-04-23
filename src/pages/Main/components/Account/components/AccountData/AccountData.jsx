@@ -6,6 +6,7 @@ import Choose from '../../../../../../components/Choose/Choose'
 import Loading from '../../../../../../components/Loading/Loading'
 import Message from '../../../../../../components/Message/Message'
 import Avatar from '../utils/Avatar'
+import AvatarToEdit from '../utils/AvatarToEdit'
 import Alert from '../../../../../../components/Alert/Alert'
 import Tooplit from '../../../../../../components/Tooplit/Tooplit'
 
@@ -51,6 +52,12 @@ export default function AccountData() {
     }
     loadAccount()
   }, [saving])
+
+  useEffect(() => {
+    if (profileImg) return
+
+    setProfileImg(account?.img?.img)
+  }, [editing])
 
   async function saveChanges() {
     setSaving(true)
@@ -253,7 +260,7 @@ export default function AccountData() {
             </div>
           </div>
           <div className="list_x df_ai_ce">
-            <Avatar
+            <AvatarToEdit
               style={{ height: '70px', fontSize: '35px' }}
               img={profileImg}
             >
@@ -265,7 +272,7 @@ export default function AccountData() {
                   <span className="material-symbols-outlined">edit</span>
                 </div>
               </div>
-            </Avatar>
+            </AvatarToEdit>
             {showTooplit && (
               <Tooplit onHide={() => setShowTooplit(false)} pos={tooplitPos}>
                 <div className="list_y_small">
