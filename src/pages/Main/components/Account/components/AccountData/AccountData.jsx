@@ -351,7 +351,7 @@ export default function AccountData() {
             </span>
             <span>Save changes</span>
           </Button>
-          {saving && <Loading size="210px">Saving</Loading>}
+          {saving && <Loading>Saving</Loading>}
         </div>
         {deleting && (
           <Alert title="Delete account" onHide={() => setDeleting(false)}>
