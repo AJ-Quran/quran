@@ -31,6 +31,11 @@ export default function Avatar({ style, username, children }) {
     <div className="avatar df_f_ce con_bd_cl" style={style}>
       {data?.img && <img src={data?.img} alt="Image" />}
       {data?.name && <span>{data?.name?.toUpperCase()}</span>}
+      {!data?.img && !data?.name && (
+        <span className="material-symbols-outlined">
+          sentiment_dissatisfied
+        </span>
+      )}
       {children}
     </div>
   )
