@@ -95,7 +95,10 @@ export async function editUser(username, newData) {
     img: { ...newData.img },
   }
 
-  if (!user.img.img) delete user.img
+  if (!user.img.img) {
+    await deleteData(`accounts/${username}/user/img`)
+    delete user.img
+  }
 
   const localUsername = loadLocal('quran').accounts.active
 
