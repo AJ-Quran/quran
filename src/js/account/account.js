@@ -145,10 +145,15 @@ export async function getAccount(username) {
   return account
 }
 
-export function changeAccount(username) {
+export async function changeAccount(username) {
   const localData = loadLocal('quran')
   if (localData.accounts.usernames.includes(username))
     localData.accounts.active = username
+
+  const account = await load(`accounts/${username}`)
+
+  localData.quran.lastRead =
+    account.quran.lastRead || getLocalInitialData().quran.lastRead
 
   saveLocal('quran', localData)
   window.location.reload()
