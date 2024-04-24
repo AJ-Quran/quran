@@ -12,10 +12,12 @@
   padding-right: 0;
 }
 
-.is_phone .menu {
-  width: 100%;
-  height: var(--menu-size);
-  bottom: 0;
+.is_phone {
+  .menu {
+    width: 100%;
+    height: var(--menu-size);
+    bottom: 0;
+  }
 }
 
 .main {
@@ -25,12 +27,14 @@
   flex: 1;
 }
 
-.is_phone .main {
-  margin-left: 0;
-  margin-bottom: var(--menu-size);
+.is_phone {
+  .main {
+    margin-left: 0;
+    margin-bottom: var(--menu-size);
 
-  &:has(.home_page) {
-    padding: 0;
+    &:has(.home_page) {
+      padding: 0;
+    }
   }
 }
 
