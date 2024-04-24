@@ -6,6 +6,7 @@ import HomeFacts from './components/HomeFacts/HomeFacts'
 import HomeAboutUs from './components/HomeAboutUs/HomeAboutUs'
 import HomeFeedback from './components/HomeFeedback/HomeFeedback'
 import HomeSubcscribe from './components/HomeSubcscribe/HomeSubcscribe'
+import HomeDots from './components/HomeDots/HomeDots'
 
 import './Home.css'
 
@@ -32,20 +33,6 @@ export default function Home({ surahI, setSurahI }) {
     }
 
     scrollDotActive(direction)
-  }
-
-  function scrollDotBtn(e) {
-    const btn = e.target
-    if (btn.classList.contains('active')) return
-
-    if (btn.classList.contains('scroll_dot_btn')) {
-      const index = [...scrollBtns.current.children].indexOf(btn)
-
-      removeActiveDot()
-      btn.classList.add('active')
-
-      homePage.current.scrollTop = index * pageHeight
-    }
   }
 
   function scrollDotActive(direction) {
@@ -97,27 +84,12 @@ export default function Home({ surahI, setSurahI }) {
         <HomeAboutUs />
         <HomeFeedback />
         <HomeSubcscribe scrollDotActiveI={scrollDotActiveI} />
-        <div className="scroll_btns list_y df_ai_ce_child">
-          <div
-            className="con_bg_df con_ha up_down_btn df_f_ce"
-            onClick={() => scroll('up')}
-          >
-            <span className="material-symbols-outlined">expand_less</span>
-          </div>
-          <div ref={scrollBtns} className="list_y" onClick={scrollDotBtn}>
-            <div className="con_bg_df con_ha scroll_dot_btn active"></div>
-            <div className="con_bg_df con_ha scroll_dot_btn"></div>
-            <div className="con_bg_df con_ha scroll_dot_btn"></div>
-            <div className="con_bg_df con_ha scroll_dot_btn"></div>
-            <div className="con_bg_df con_ha scroll_dot_btn"></div>
-          </div>
-          <div
-            className="con_bg_df con_ha up_down_btn df_f_ce"
-            onClick={() => scroll('down')}
-          >
-            <span className="material-symbols-outlined">expand_more</span>
-          </div>
-        </div>
+        <HomeDots
+          scroll={scroll}
+          scrollBtns={scrollBtns}
+          removeActiveDot={removeActiveDot}
+          pageHeight={pageHeight}
+        />
       </div>
       {surahI.surah > 0 && <ReadArea surahI={surahI} setSurahI={setSurahI} />}
     </>
