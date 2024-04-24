@@ -1,4 +1,8 @@
+import { deviceIsPhone } from '../../../../../../js/utils/device'
+
 export default function HomeSubcscribe({ scrollDotActiveI }) {
+  const isPhone = deviceIsPhone()
+
   function scrollUp(e) {
     const homePage = e.target.closest('.home_page')
 
@@ -12,10 +16,12 @@ export default function HomeSubcscribe({ scrollDotActiveI }) {
         <b className="main_big_text">
           <span className="txt_gradient">Subcscribe</span>
         </b>
-        <div className="txt_opa">Do not lose hope - Follow us for more! 😊</div>
+        <div className="txt_opa txt_wrap_b txt_alg_ce">
+          Do not lose hope - Follow us for more! 😊
+        </div>
       </div>
       <div className="list_y df_ai_ce">
-        <div className="list_x subscribe_area fz_big">
+        <div className={`list_${isPhone ? 'y' : 'x'} subscribe_area fz_big`}>
           <a
             href="https://github.com/AJ-Quran"
             rel="noreferrer"

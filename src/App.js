@@ -3,6 +3,7 @@ import { BrowserRouter, Routes, Route } from 'react-router-dom'
 
 import { localInitialData } from './js/utils/checkers'
 import { checkTheme } from './js/utils/theme'
+import { deviceIsPhone } from './js/utils/device'
 
 import './css/App.css'
 
@@ -29,6 +30,9 @@ export default function App() {
 }
 
 function checkApp() {
+  const isPhone = deviceIsPhone()
+  if (isPhone) document.body.classList.add('is_phone')
+
   localInitialData()
   checkTheme()
 }

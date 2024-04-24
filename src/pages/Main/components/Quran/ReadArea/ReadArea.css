@@ -25,3 +25,14 @@
 .read_con .loading_area {
   width: 400px;
 }
+
+.is_phone {
+  .read_con,
+  .read_con .loading_area {
+    width: 100%;
+  }
+
+  .read_con {
+    padding: var(--pd-small);
+  }
+}

@@ -12,10 +12,30 @@
   padding-right: 0;
 }
 
+.is_phone {
+  .menu {
+    width: 100%;
+    height: var(--menu-size);
+    bottom: 0;
+  }
+}
+
 .main {
+  width: 100%;
   margin-left: var(--menu-size);
   padding: var(--pd-small);
   flex: 1;
+}
+
+.is_phone {
+  .main {
+    margin-left: 0;
+    margin-bottom: var(--menu-size);
+
+    &:has(.home_page) {
+      padding: 0;
+    }
+  }
 }
 
 .main_area:has(.two_blur_balls) .menu {
@@ -36,6 +56,16 @@
 
 .main_w_small {
   width: 500px;
+}
+
+.is_phone {
+  .main_w {
+    width: 100%;
+  }
+
+  .main_w_small {
+    width: 100%;
+  }
 }
 
 .social_media > * {

@@ -6,6 +6,12 @@
   overflow: hidden;
 }
 
+.is_phone {
+  .last_read {
+    min-width: 100%;
+  }
+}
+
 .last_read:hover {
   & img {
     scale: 1.05;

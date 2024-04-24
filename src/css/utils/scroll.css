@@ -26,6 +26,17 @@
   border-radius: var(--bd-ra);
 }
 
+.is_phone {
+  .scroll_y::-webkit-scrollbar {
+    width: var(--scroll-size-phone);
+  }
+
+  .scroll_x::-webkit-scrollbar {
+    height: var(--scroll-size-phone);
+  }
+}
+
 :root {
   --scroll-size: 5px;
+  --scroll-size-phone: 2px;
 }

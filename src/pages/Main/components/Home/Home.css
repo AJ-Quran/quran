@@ -96,12 +96,27 @@
   bottom: 80px;
 }
 
+.is_phone {
+  .mission_txt {
+    bottom: var(--pd-small);
+  }
+}
+
 .all_rights_txt {
   position: absolute;
   bottom: var(--pd-small);
   right: var(--pd-small);
   writing-mode: vertical-rl;
   text-orientation: mixed;
+}
+
+.is_phone {
+  .all_rights_txt {
+    left: 50%;
+    transform: translateX(-50%);
+    text-wrap: nowrap;
+    writing-mode: inherit;
+  }
 }
 
 .scroll_btns {

@@ -22,7 +22,7 @@ export default function HomeAboutUs() {
         <b className="main_big_text">
           <span className="txt_gradient">About us</span>
         </b>
-        <div className="txt_opa">We are the developers of AJ Quran 🧑‍💻📖</div>
+        <div className="txt_opa txt_wrap_b txt_alg_ce">We are the developers of AJ Quran 🧑‍💻📖</div>
       </div>
       <div className="list_y df_ai_ce">
         <div className="list_x facts about_us_area">
@@ -34,7 +34,7 @@ export default function HomeAboutUs() {
           {people?.map((p, i) => GetPerson(p, i))}
         </div>
       </div>
-      <div className="txt_opa fz_mono mission_txt">
+      <div className="txt_opa fz_mono txt_wrap_b txt_alg_ce mission_txt">
         Our mission is to enable access to the <b>Quran</b> for all, anytime,
         anywhere
       </div>
