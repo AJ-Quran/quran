@@ -5,9 +5,9 @@ import Button from '../../../../components/Button/Button'
 import Textarea from '../../../../components/Textarea/Textarea'
 import Message from '../../../../components/Message/Message'
 import ReadArea from '../Quran/ReadArea/ReadArea'
-import Loading from '../../../../components/Loading/Loading'
 import HomeWelcome from './components/HomeWelcome/HomeWelcome'
 import HomeFacts from './components/HomeFacts/HomeFacts'
+import HomeAboutUs from './components/HomeAboutUs/HomeAboutUs'
 
 import { getAccount } from '../../../../js/account/account'
 import { loadLocal } from '../../../../js/db/localStorage'
@@ -218,31 +218,7 @@ export default function Home({ surahI, setSurahI }) {
         </Message>
         <HomeWelcome setSurahI={setSurahI} />
         <HomeFacts />
-        <div className="h_100 list_y df_ai_ce df_jc_sb scroll_area home_page_item">
-          <div className="list_y df_ai_ce two_blur_balls">
-            <b className="main_big_text">
-              <span className="txt_gradient">About us</span>
-            </b>
-            <div className="txt_opa">
-              We are the developers of AJ Quran 🧑‍💻📖
-            </div>
-          </div>
-          <div className="list_y df_ai_ce">
-            <div className="list_x facts about_us_area">
-              {people.length === 0 && (
-                <div className="loading_area bd_ra">
-                  <Loading className="bg_none">People are loading</Loading>
-                </div>
-              )}
-              {people?.map((person, i) => getPerson(person, i))}
-            </div>
-          </div>
-          <div className="txt_opa fz_mono mission_txt">
-            Our mission is to enable access to the <b>Quran</b> for all,
-            anytime, anywhere
-          </div>
-          <div></div>
-        </div>
+        <HomeAboutUs />
         <div className="h_100 list_y df_ai_ce df_jc_sb scroll_area home_page_item">
           <div className="list_y df_ai_ce two_blur_balls">
             <b className="main_big_text">
@@ -371,34 +347,5 @@ export default function Home({ surahI, setSurahI }) {
       </div>
       {surahI.surah > 0 && <ReadArea surahI={surahI} setSurahI={setSurahI} />}
     </>
-  )
-}
-
-function getPerson(person, i) {
-  return (
-    <div className="con_bg_gradient active_bg_anim active" key={i}>
-      <div className="con_bg_dr facts_bg list_y df_ai_ce">
-        <div className="avatar df_f_ce">
-          <img src={person.img.img} alt={person.title} />
-          <span>AJ</span>
-        </div>
-        <b className="fz_big">{person.name}</b>
-        <div className="txt_opa fz_small">{person.title}</div>
-        <div className="social_media list_x">
-          {person.socialMedia.map((social, j) => {
-            return (
-              <a
-                href={social.link}
-                rel="noreferrer"
-                className="con_bg_df con_ha df_f_ce"
-                key={j}
-              >
-                <i className={`${social.logo} fz_big`}></i>
-              </a>
-            )
-          })}
-        </div>
-      </div>
-    </div>
   )
 }
