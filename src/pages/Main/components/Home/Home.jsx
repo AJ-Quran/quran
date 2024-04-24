@@ -32,13 +32,6 @@ export default function Home({ surahI, setSurahI }) {
     }
 
     scrollDotActive(direction)
-    checkPeopleArea(direction)
-  }
-
-  function checkPeopleArea(direction) {
-    let { scrollTop } = homePage.current
-    if (direction === 'up') scrollTop -= pageHeight
-    if (direction === 'down') scrollTop += pageHeight
   }
 
   function scrollDotBtn(e) {
@@ -46,7 +39,7 @@ export default function Home({ surahI, setSurahI }) {
     if (btn.classList.contains('active')) return
 
     if (btn.classList.contains('scroll_dot_btn')) {
-      const index = Array.from(scrollBtns.current.children).indexOf(btn)
+      const index = [...scrollBtns.current.children].indexOf(btn)
 
       removeActiveDot()
       btn.classList.add('active')
