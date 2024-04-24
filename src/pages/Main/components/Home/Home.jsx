@@ -43,13 +43,8 @@ export default function Home({ surahI, setSurahI }) {
 
     removeActiveDot()
 
-    if (direction === 'up') {
-      children[scrollI].classList.add('active')
-    }
-
-    if (direction === 'down') {
-      children[scrollI + 1].classList.add('active')
-    }
+    if (direction === 'up') children[scrollI].classList.add('active')
+    if (direction === 'down') children[scrollI + 1].classList.add('active')
   }
 
   function scrollDotActiveI(index) {
@@ -86,8 +81,8 @@ export default function Home({ surahI, setSurahI }) {
         <HomeSubcscribe scrollDotActiveI={scrollDotActiveI} />
         <HomeDots
           scroll={scroll}
-          scrollBtns={scrollBtns}
           removeActiveDot={removeActiveDot}
+          scrollBtns={scrollBtns}
           pageHeight={pageHeight}
         />
       </div>
