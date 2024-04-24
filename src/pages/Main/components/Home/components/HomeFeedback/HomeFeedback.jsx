@@ -110,7 +110,7 @@ export default function HomeFeedback() {
         <b className="main_big_text">
           <span className="txt_gradient">Feedback</span>
         </b>
-        <div className="txt_opa">
+        <div className="txt_opa txt_wrap_b txt_alg_ce">
           Dive into the Quran - Your insights are valued! 😊📖
         </div>
       </div>

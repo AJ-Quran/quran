@@ -42,3 +42,11 @@
   text-align: right;
   line-height: 2em;
 }
+
+.txt_wrap_b {
+  text-wrap: balance;
+}
+
+.txt_alg_ce {
+  text-align: center;
+}

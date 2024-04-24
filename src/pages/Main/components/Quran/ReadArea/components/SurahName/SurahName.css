@@ -3,6 +3,12 @@
   width: 400px;
 }
 
+.is_phone {
+  .surah_name {
+    width: 100%;
+  }
+}
+
 .surah_name button {
   position: absolute;
   top: var(--pd-small);

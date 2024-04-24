@@ -12,7 +12,7 @@ export default function HomeWelcome({ setSurahI }) {
         <b className="main_big_text">
           <span className="txt_gradient">AJ Quran</span>
         </b>
-        <div className="txt_opa">
+        <div className="txt_opa txt_wrap_b txt_alg_ce">
           The Quran - Explore and collaborate on the holy book of Islam. 📖✨
         </div>
       </div>

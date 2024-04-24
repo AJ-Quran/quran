@@ -14,7 +14,14 @@ function getTop(element) {
   return rect.top - parentRect.top
 }
 
-export default function Choose({ axe, label, children, iOption }) {
+export default function Choose({
+  axe,
+  label,
+  children,
+  iOption,
+  optionsSize,
+  chooseConStyle,
+}) {
   const chooseArea = useRef(null)
   const [chosenStyle, setChosenStyle] = useState(() => ({
     width: '0',
@@ -78,7 +85,11 @@ export default function Choose({ axe, label, children, iOption }) {
     <div className={`choose_area list_y ${axe}`} label={label}>
       <div className="choose_con_area">
         <div className="chosen" style={chosenStyle} index={activeChildI}></div>
-        <div ref={chooseArea} className={`choose_con list_${axe}`}>
+        <div
+          ref={chooseArea}
+          className={`choose_con list_${axe}`}
+          style={chooseConStyle}
+        >
           {children.map((child, i) => {
             const childProps = child.props
 
@@ -96,6 +107,7 @@ export default function Choose({ axe, label, children, iOption }) {
                 key={i}
                 onClick={click}
                 index={i}
+                style={optionsSize}
               >
                 {child}
               </div>

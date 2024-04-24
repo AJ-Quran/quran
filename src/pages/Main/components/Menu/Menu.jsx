@@ -4,10 +4,13 @@ import Button from '../../../../components/Button/Button'
 import Avatar from '../Account/components/utils/Avatar'
 import Choose from '../../../../components/Choose/Choose'
 
+import { deviceIsPhone } from '../../../../js/utils/device'
+
 import './Menu.css'
 
 export default function Menu({ setActievPage }) {
   const menu = useRef(null)
+  const isPhone = deviceIsPhone()
 
   function activeClick(btn) {
     const button = btn.target.querySelector('button')
@@ -16,9 +19,17 @@ export default function Menu({ setActievPage }) {
   }
 
   return (
-    <div className="menu_area list_x">
+    <div className={`menu_area list_${isPhone ? 'y' : 'x'}`}>
       <div className="menu_con list_y df_jc_ce" ref={menu}>
-        <Choose className="df_jc_sb" axe="y">
+        {isPhone && <div className="line_x"></div>}
+        <Choose
+          className="df_jc_sb"
+          axe={isPhone ? 'x' : 'y'}
+          {...(isPhone && {
+            optionsSize: { width: '50px', height: '50px' },
+            chooseConStyle: { justifyContent: 'space-between' },
+          })}
+        >
           <Button className="active" option="home" onClick={activeClick}>
             <span className="material-symbols-outlined">home</span>
           </Button>
@@ -32,17 +43,19 @@ export default function Menu({ setActievPage }) {
             <span className="material-symbols-outlined">settings</span>
           </Button>
         </Choose>
-        <div className="social_media df_f_ce">
-          <a
-            href="https://github.com/AJ-Quran"
-            rel="noreferrer"
-            className="con_bg_df con_ha df_f_ce"
-          >
-            <i className="fa-brands fa-github fz_big"></i>
-          </a>
-        </div>
+        {!isPhone && (
+          <div className="social_media df_f_ce">
+            <a
+              href="https://github.com/AJ-Quran"
+              rel="noreferrer"
+              className="con_bg_df con_ha df_f_ce"
+            >
+              <i className="fa-brands fa-github fz_big"></i>
+            </a>
+          </div>
+        )}
       </div>
-      <div className="line_y"></div>
+      {!isPhone && <div className="line_y"></div>}
     </div>
   )
 }

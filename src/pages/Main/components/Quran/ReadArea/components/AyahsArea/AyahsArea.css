@@ -2,6 +2,12 @@
   width: 400px;
 }
 
+.is_phone {
+  .ayahs_area_info {
+    width: 100%;
+  }
+}
+
 .ayahs_area_info > * {
   width: 100%;
 }
