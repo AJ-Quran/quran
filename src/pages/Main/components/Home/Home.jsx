@@ -7,16 +7,12 @@ import HomeAboutUs from './components/HomeAboutUs/HomeAboutUs'
 import HomeFeedback from './components/HomeFeedback/HomeFeedback'
 import HomeSubcscribe from './components/HomeSubcscribe/HomeSubcscribe'
 
-import { load } from '../../../../js/db/db'
-
 import './Home.css'
 
 export default function Home({ surahI, setSurahI }) {
   const homePage = useRef()
   const scrollBtns = useRef()
   const [pageHeight, setPageHeight] = useState(0)
-  const [people, setPeople] = useState([])
-  const aboutUsI = 2
 
   useEffect(() => {
     const height = homePage.current?.querySelector('.scroll_area').clientHeight
@@ -39,25 +35,10 @@ export default function Home({ surahI, setSurahI }) {
     checkPeopleArea(direction)
   }
 
-  function checkPeopleArea(direction, dontCheck) {
-    if (people.length > 0) return
-    if (dontCheck) return loadData()
-
+  function checkPeopleArea(direction) {
     let { scrollTop } = homePage.current
     if (direction === 'up') scrollTop -= pageHeight
     if (direction === 'down') scrollTop += pageHeight
-
-    if (
-      pageHeight * aboutUsI <= scrollTop &&
-      scrollTop < pageHeight * (aboutUsI + 1)
-    ) {
-      loadData()
-    }
-  }
-
-  async function loadData() {
-    const data = await load(`dev/people`)
-    setPeople(data)
   }
 
   function scrollDotBtn(e) {
@@ -67,7 +48,6 @@ export default function Home({ surahI, setSurahI }) {
     if (btn.classList.contains('scroll_dot_btn')) {
       const index = Array.from(scrollBtns.current.children).indexOf(btn)
 
-      if (index === aboutUsI) checkPeopleArea('', true)
       removeActiveDot()
       btn.classList.add('active')
 
