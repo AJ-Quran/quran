@@ -3,14 +3,16 @@ import AyahsAreaButtons from './components/AyahsAreaButtons/AyahsAreaButtons'
 
 import { ceil } from '../../../../../../../js/math/number'
 import { progressPercent } from '../../../../../../../js/math/percent'
+import { deviceIsPhone } from '../../../../../../../js/utils/device'
 
 import './AyahsArea.css'
 
 export default function AyahsArea({ arAyahs, engAyahs, surahI, setSurahI }) {
   const progress = progressPercent(surahI.ayah, arAyahs?.length)
+  const isPhone = deviceIsPhone()
 
   return (
-    <div className="ayahs_area">
+    <div className="ayahs_area list_y df_jc_sb h_100">
       <div className="list_y">
         <div className="ayahs_area_info list_y mar_ce">
           <div className="list_y_small">
@@ -22,7 +24,9 @@ export default function AyahsArea({ arAyahs, engAyahs, surahI, setSurahI }) {
               <div>{ceil(progress) || 0}%</div>
             </div>
           </div>
-          <AyahsAreaButtons surahI={surahI} setSurahI={setSurahI} />
+          {!isPhone && (
+            <AyahsAreaButtons surahI={surahI} setSurahI={setSurahI} />
+          )}
         </div>
         {surahI.ayah < (arAyahs?.length || 0) && (
           <div className="list_y">
@@ -35,6 +39,7 @@ export default function AyahsArea({ arAyahs, engAyahs, surahI, setSurahI }) {
           </div>
         )}
       </div>
+      {isPhone && <AyahsAreaButtons surahI={surahI} setSurahI={setSurahI} />}
     </div>
   )
 }
