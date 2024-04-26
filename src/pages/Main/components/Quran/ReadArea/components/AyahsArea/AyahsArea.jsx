@@ -22,7 +22,8 @@ export default function AyahsArea({ arAyahs, engAyahs, surahI, setSurahI }) {
             <ProgressBar value={ayah} max={ayahsLen} />
             <div className="df_jc_sb fz_small">
               <div>
-                {ayah}/{ayahsLen}
+                {ayah}/{ayahsLen}{' '}
+                <b className="txt_red">{ayahsLen - ayah} left</b>
               </div>
               <div>{ceil(progress) || 0}%</div>
             </div>
