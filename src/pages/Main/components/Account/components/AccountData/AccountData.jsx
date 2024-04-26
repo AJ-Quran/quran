@@ -22,6 +22,7 @@ import { msgData } from '../../../../../../js/utils/message'
 import { elText } from '../../../../../../js/utils/copy'
 import { load } from '../../../../../../js/db/db'
 import { getImgBlob } from '../../../../../../js/utils/img'
+import { avatars } from '../utils/getAvatar'
 
 import './AccountData.css'
 
@@ -76,6 +77,8 @@ export default function AccountData() {
 
     const userNewData = { ...formData, img: { img: profileImg } }
     const editedData = await editUser(username, userNewData)
+
+    avatars.get(username).img = profileImg
 
     if (!editedData.ok) {
       setMessage({ msg: editedData.msg, type: editedData.msgType, show: true })
