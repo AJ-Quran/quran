@@ -14,6 +14,7 @@ import './Quran.css'
 export default function Quran({ surahI, setSurahI }) {
   const [shownList, setShownList] = useState('surahsList')
   const [savedList, setSavedList] = useState([])
+  const [scrollTop, setScrollTop] = useState(0)
 
   useEffect(() => {
     async function loadData() {
@@ -26,10 +27,17 @@ export default function Quran({ surahI, setSurahI }) {
 
   return (
     <>
-      <div className="quran_area list_y h_max_100 scroll_y main_w mar_ce">
+      <div
+        className="quran_area list_y h_max_100 scroll_y main_w mar_ce"
+        onScroll={(e) => setScrollTop(e.target.scrollTop)}
+      >
         <LastRead setSurahI={setSurahI} />
         {savedList.length > 0 && (
-          <div className="quran_choose_area con_bg_dr">
+          <div
+            className={`quran_choose_area bd_ra ${
+              scrollTop > 100 ? 'bg_blur_theme' : ''
+            }`}
+          >
             <Choose axe="x" iOption="surahsList">
               <div
                 className="list_x_small df_ai_ce"

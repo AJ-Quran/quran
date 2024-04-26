@@ -1,6 +1,29 @@
-.bg_blur_theme {
+.blur_ha {
+  &:hover {
+    backdrop-filter: blur(var(--blur-less));
+  }
+
+  &:active {
+    backdrop-filter: blur(var(--blur-more));
+  }
+}
+
+.bg_blur_theme,
+.bg_blur_theme_less,
+.bg_blur_theme_more {
   background-color: color-mix(in srgb, var(--theme-color) 30%, transparent 50%);
+}
+
+.bg_blur_theme {
   backdrop-filter: blur(var(--blur));
+}
+
+.bg_blur_theme_less {
+  backdrop-filter: blur(var(--blur-less));
+}
+
+.bg_blur_theme_more {
+  backdrop-filter: blur(var(--blur-more));
 }
 
 .bg_blur_current {
@@ -9,10 +32,11 @@
     currentColor 30%,
     transparent 50%
   ) !important;
-  backdrop-filter: blur(var(--blur-small));
+  backdrop-filter: blur(var(--blur-less));
 }
 
 :root {
   --blur: 5px;
-  --blur-small: 2px;
+  --blur-less: 2px;
+  --blur-more: 7px;
 }

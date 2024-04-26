@@ -268,7 +268,7 @@ export default function AccountData() {
             >
               <div className="avatar_edit_btns">
                 <div
-                  className="con_bg_df con_ha bd_ra_50 df_f_ce"
+                  className="con bg_blur_theme_more blur_ha bd_ra_50 df_f_ce"
                   onClick={showUpTooplit}
                 >
                   <span className="material-symbols-outlined">edit</span>
