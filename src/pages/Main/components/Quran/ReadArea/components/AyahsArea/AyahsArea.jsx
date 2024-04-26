@@ -8,7 +8,10 @@ import { deviceIsPhone } from '../../../../../../../js/utils/device'
 import './AyahsArea.css'
 
 export default function AyahsArea({ arAyahs, engAyahs, surahI, setSurahI }) {
-  const progress = progressPercent(surahI.ayah, arAyahs?.length)
+  const ayahsLen = arAyahs?.length || 0
+  const { ayah } = surahI
+
+  const progress = progressPercent(ayah, arAyahs?.length)
   const isPhone = deviceIsPhone()
 
   return (
@@ -16,10 +19,10 @@ export default function AyahsArea({ arAyahs, engAyahs, surahI, setSurahI }) {
       <div className="list_y">
         <div className="ayahs_area_info list_y mar_ce">
           <div className="list_y_small">
-            <ProgressBar value={surahI.ayah} max={arAyahs?.length || 0} />
+            <ProgressBar value={ayah} max={ayahsLen} />
             <div className="df_jc_sb fz_small">
               <div>
-                {surahI.ayah}/{arAyahs?.length || 0}
+                {ayah}/{ayahsLen}
               </div>
               <div>{ceil(progress) || 0}%</div>
             </div>
@@ -28,13 +31,13 @@ export default function AyahsArea({ arAyahs, engAyahs, surahI, setSurahI }) {
             <AyahsAreaButtons surahI={surahI} setSurahI={setSurahI} />
           )}
         </div>
-        {surahI.ayah < (arAyahs?.length || 0) && (
+        {ayah < ayahsLen && (
           <div className="list_y">
             <div className="con_bg_df ayahs_text_area df_f_ce">
-              <p className="txt_ar w_100">{arAyahs[surahI.ayah]?.text}</p>
+              <p className="txt_ar w_100">{arAyahs[ayah]?.text}</p>
             </div>
             <div className="con_bg_df ayahs_text_area df_f_ce ayahs_eng_area">
-              <p className="w_100">{engAyahs[surahI.ayah]?.text}</p>
+              <p className="w_100">{engAyahs[ayah]?.text}</p>
             </div>
           </div>
         )}
