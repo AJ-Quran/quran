@@ -1,0 +1,18 @@
+.bg_blur_theme {
+  background-color: color-mix(in srgb, var(--theme-color) 30%, transparent 50%);
+  backdrop-filter: blur(var(--blur));
+}
+
+.bg_blur_current {
+  background-color: color-mix(
+    in srgb,
+    currentColor 30%,
+    transparent 50%
+  ) !important;
+  backdrop-filter: blur(var(--blur-small));
+}
+
+:root {
+  --blur: 5px;
+  --blur-small: 2px;
+}
