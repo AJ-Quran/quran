@@ -17,6 +17,7 @@
     width: 100%;
     height: var(--menu-size);
     bottom: 0;
+    padding: var(--pd-small-very);
   }
 }
 
