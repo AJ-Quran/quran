@@ -8,7 +8,7 @@ export default function Tooplit({ onHide, children, pos }) {
       <div className="tooplit_area alert_area">
         <div className="alert_bg" onClick={onHide}></div>
         <div
-          className="con_bg_dr con_bd_cl tooplit_con"
+          className="con_bd_cl bg_blur_theme_more tooplit_con"
           style={{ left: `${x}px`, top: `${y}px` }}
         >
           {children}
