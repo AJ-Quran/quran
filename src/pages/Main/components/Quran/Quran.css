@@ -2,6 +2,7 @@
   position: sticky;
   top: 0;
   z-index: 1;
+  padding: var(--pd-small) var(--pd-small-very);
 }
 
 .quran_area:has(.read_area) {
