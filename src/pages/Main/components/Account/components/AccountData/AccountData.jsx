@@ -396,7 +396,10 @@ export default function AccountData() {
             ></Avatar>
             {bigProfilePic && (
               <Alert onHide={() => showBigProfilePic(false)} simple="true">
-                <div className="df_f_ce">
+                <div
+                  className="df_f_ce"
+                  onClick={() => showBigProfilePic(false)}
+                >
                   <Avatar
                     style={{ width: '400px', fontSize: '200px' }}
                   ></Avatar>
