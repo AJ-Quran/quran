@@ -153,7 +153,7 @@ export async function changeAccount(username) {
   const account = await load(`accounts/${username}`)
 
   localData.quran.lastRead =
-    account.quran.lastRead || getLocalInitialData().quran.lastRead
+    account.quran?.lastRead || getLocalInitialData().quran.lastRead
 
   saveLocal('quran', localData)
   window.location.reload()
