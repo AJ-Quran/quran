@@ -31,9 +31,9 @@ export default function Message({ children, type = 'default', show }) {
 
   play(audios[type])
   return (
-    <div className={`message_area list_x df_ai_ce ${type}`}>
+    <div className={`message_area list_x df_ai_ce bg_blur_current ${type}`}>
       {icon}
-      <p>{children}</p>
+      <b>{children}</b>
       <div className="message_timeline"></div>
     </div>
   )

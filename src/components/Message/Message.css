@@ -8,6 +8,7 @@
   border-radius: var(--bd-ra);
   overflow: hidden;
   padding-bottom: calc(var(--pd-small) + var(--msg-timeline-size));
+  color: var(--msg-bd);
   animation: slideIn var(--msg-anim-time) cubic-bezier(0.25, 0.46, 0.45, 0.94)
       forwards,
     slideOut var(--msg-anim-time) cubic-bezier(0.55, 0.085, 0.68, 0.53)
