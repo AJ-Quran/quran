@@ -15,7 +15,7 @@ export default function Alert({ children, title, onHide: handeHide, simple }) {
 
   return (
     <div className="alert_area df_f_ce">
-      <div className="alert_bg" onClick={hide}></div>
+      <div className="alert_bg bg_blur_theme" onClick={hide}></div>
       <div className={`alert_con list_y ${simple ? 'bg_none' : ''}`}>
         {!simple && (
           <div className="list_y">
