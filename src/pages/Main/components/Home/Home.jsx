@@ -43,7 +43,8 @@ export default function Home({ surahI, setSurahI }) {
     }
 
     if (direction === 'down') {
-      homePage.current.scrollTop += pageHeight - scrollSize
+      if (scrollSize === 0) homePage.current.scrollTop += pageHeight
+      if (scrollSize > 0) homePage.current.scrollTop += scrollSize
       setActivePage(getIndex(activePage + 1, scrollBtns.current.children))
     }
 
