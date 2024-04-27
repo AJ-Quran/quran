@@ -3,6 +3,7 @@ export default function HomeDots({
   scrollBtns,
   scrollDotActive,
   removeActiveDot,
+  setActivePage,
   pageHeight,
 }) {
   const dots = Array(5).fill(1)
@@ -19,6 +20,7 @@ export default function HomeDots({
 
       const homePage = btn.closest('.home_page')
       homePage.scrollTop = index * pageHeight
+      setActivePage(index)
     }
   }
 

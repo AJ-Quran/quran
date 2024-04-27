@@ -1,6 +1,10 @@
 import { deviceIsPhone } from '../../../../../../js/utils/device'
 
-export default function HomeSubcscribe({ removeActiveDot, scrollBtns }) {
+export default function HomeSubcscribe({
+  removeActiveDot,
+  setActivePage,
+  scrollBtns,
+}) {
   const isPhone = deviceIsPhone()
 
   function scrollDotActiveI(index) {
@@ -15,6 +19,7 @@ export default function HomeSubcscribe({ removeActiveDot, scrollBtns }) {
 
     homePage.scrollTop = 0
     scrollDotActiveI(0)
+    setActivePage(0)
   }
 
   return (

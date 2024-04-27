@@ -110,12 +110,14 @@ export default function Home({ surahI, setSurahI }) {
         <HomeFeedback />
         <HomeSubcscribe
           removeActiveDot={removeActiveDot}
+          setActivePage={setActivePage}
           scrollBtns={scrollBtns}
         />
         <HomeDots
           scroll={scroll}
           scrollDotActive={scrollDotActive}
           removeActiveDot={removeActiveDot}
+          setActivePage={setActivePage}
           scrollBtns={scrollBtns}
           pageHeight={pageHeight}
         />
