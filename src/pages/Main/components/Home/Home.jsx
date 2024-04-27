@@ -74,16 +74,6 @@ export default function Home({ surahI, setSurahI }) {
     activeDot.classList.remove('active')
   }
 
-  function handleScroll(direction) {
-    scroll(direction)
-    scrollDotActive(direction)
-  }
-
-  function wheel(e) {
-    if (e.deltaY < 0) handleScroll('up')
-    if (e.deltaY > 0) handleScroll('down')
-  }
-
   let touchYStart
   function touchStart(e) {
     touchYStart = e.touches[0].clientY
@@ -96,12 +86,16 @@ export default function Home({ surahI, setSurahI }) {
     if (touchYStart > clientY) handleScroll('down')
   }
 
+  function handleScroll(direction) {
+    scroll(direction)
+    scrollDotActive(direction)
+  }
+
   return (
     <>
       <div
         className="h_100 home_page"
         ref={homePage}
-        onWheel={wheel}
         onTouchStart={touchStart}
         onTouchMove={touchMove}
       >
