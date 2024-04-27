@@ -13,6 +13,7 @@ import './Home.css'
 export default function Home({ surahI, setSurahI }) {
   const homePage = useRef()
   const scrollBtns = useRef()
+  const [activePage, setActivePage] = useState(0)
   const [pageHeight, setPageHeight] = useState(0)
 
   useEffect(() => {
@@ -20,16 +21,36 @@ export default function Home({ surahI, setSurahI }) {
     setPageHeight(height)
   }, [])
 
+  useEffect(() => {
+    function handleKeydown(e) {
+      if (e.key === 'ArrowLeft' || e.key === 'ArrowUp') scroll('up')
+      if (e.key === 'ArrowRight' || e.key === 'ArrowDown') scroll('down')
+    }
+
+    document.addEventListener('keydown', handleKeydown)
+    return () => {
+      document.removeEventListener('keydown', handleKeydown)
+    }
+  }, [activePage])
+
+  function getIndex(i, array) {
+    const max = array.length - 1
+
+    return Math.min(Math.max(i, 0), max)
+  }
+
   function scroll(direction) {
-    const scrollSize = homePage.current.scrollTop % pageHeight
+    const scrollSize = homePage.current.scrollTop % pageHeight || 0
 
     if (direction === 'up') {
       if (scrollSize === 0) homePage.current.scrollTop -= pageHeight
       if (scrollSize > 0) homePage.current.scrollTop -= scrollSize
+      setActivePage(getIndex(activePage - 1, scrollBtns.current.children))
     }
 
     if (direction === 'down') {
       homePage.current.scrollTop += pageHeight - scrollSize
+      setActivePage(getIndex(activePage + 1, scrollBtns.current.children))
     }
 
     scrollDotActive(direction)
@@ -38,22 +59,12 @@ export default function Home({ surahI, setSurahI }) {
   function scrollDotActive(direction) {
     const { children } = scrollBtns.current
 
-    let scrollI = homePage.current.scrollTop / pageHeight
-    scrollI = Math.floor(scrollI)
-
-    if (!children[scrollI + 1]) return
-
     removeActiveDot()
 
-    if (direction === 'up') children[scrollI].classList.add('active')
-    if (direction === 'down') children[scrollI + 1].classList.add('active')
-  }
-
-  function scrollDotActiveI(index) {
-    removeActiveDot()
-
-    const { children } = scrollBtns.current
-    children[index].classList.add('active')
+    if (direction === 'up' && children[activePage - 1])
+      children[activePage - 1].classList.add('active')
+    if (direction === 'down' && children[activePage + 1])
+      children[activePage + 1].classList.add('active')
   }
 
   function removeActiveDot() {
@@ -96,9 +107,13 @@ export default function Home({ surahI, setSurahI }) {
         <HomeFacts />
         <HomeAboutUs />
         <HomeFeedback />
-        <HomeSubcscribe scrollDotActiveI={scrollDotActiveI} />
+        <HomeSubcscribe
+          removeActiveDot={removeActiveDot}
+          scrollBtns={scrollBtns}
+        />
         <HomeDots
           scroll={scroll}
+          scrollDotActive={scrollDotActive}
           removeActiveDot={removeActiveDot}
           scrollBtns={scrollBtns}
           pageHeight={pageHeight}
