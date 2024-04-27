@@ -1,5 +1,10 @@
 .home_page {
   scroll-behavior: smooth;
+  overflow: hidden;
+
+  &.scroll_y {
+    overflow: auto;
+  }
 }
 
 .home_page_item {
