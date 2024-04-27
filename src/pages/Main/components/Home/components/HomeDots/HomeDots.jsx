@@ -1,7 +1,9 @@
 export default function HomeDots({
   scroll,
   scrollBtns,
+  scrollDotActive,
   removeActiveDot,
+  setActivePage,
   pageHeight,
 }) {
   const dots = Array(5).fill(1)
@@ -18,14 +20,20 @@ export default function HomeDots({
 
       const homePage = btn.closest('.home_page')
       homePage.scrollTop = index * pageHeight
+      setActivePage(index)
     }
+  }
+
+  function btnScroll(direction) {
+    scrollDotActive(direction)
+    scroll(direction)
   }
 
   return (
     <div className="scroll_btns list_y df_ai_ce_child">
       <div
         className="con_bg_df con_ha up_down_btn df_f_ce"
-        onClick={() => scroll('up')}
+        onClick={() => btnScroll('up')}
       >
         <span className="material-symbols-outlined">expand_less</span>
       </div>
@@ -43,7 +51,7 @@ export default function HomeDots({
       </div>
       <div
         className="con_bg_df con_ha up_down_btn df_f_ce"
-        onClick={() => scroll('down')}
+        onClick={() => btnScroll('down')}
       >
         <span className="material-symbols-outlined">expand_more</span>
       </div>

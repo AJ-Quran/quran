@@ -8,67 +8,73 @@ import HomeFeedback from './components/HomeFeedback/HomeFeedback'
 import HomeSubcscribe from './components/HomeSubcscribe/HomeSubcscribe'
 import HomeDots from './components/HomeDots/HomeDots'
 
+import { deviceIsPhone } from '../../../../js/utils/device'
+
 import './Home.css'
 
 export default function Home({ surahI, setSurahI }) {
   const homePage = useRef()
   const scrollBtns = useRef()
+  const [activePage, setActivePage] = useState(0)
   const [pageHeight, setPageHeight] = useState(0)
+  const isPhone = deviceIsPhone()
 
   useEffect(() => {
     const height = homePage.current?.querySelector('.scroll_area').clientHeight
     setPageHeight(height)
   }, [])
 
+  useEffect(() => {
+    function handleKeydown(e) {
+      if (e.key === 'ArrowLeft' || e.key === 'ArrowUp') scroll('up')
+      if (e.key === 'ArrowRight' || e.key === 'ArrowDown') scroll('down')
+    }
+
+    document.addEventListener('keydown', handleKeydown)
+    return () => {
+      document.removeEventListener('keydown', handleKeydown)
+    }
+  }, [activePage])
+
   function scroll(direction) {
-    const scrollSize = homePage.current.scrollTop % pageHeight
+    const scrollSize = homePage.current.scrollTop % pageHeight || 0
 
     if (direction === 'up') {
       if (scrollSize === 0) homePage.current.scrollTop -= pageHeight
       if (scrollSize > 0) homePage.current.scrollTop -= scrollSize
+      setActivePage(getIndex(activePage - 1, scrollBtns.current.children))
     }
 
     if (direction === 'down') {
-      homePage.current.scrollTop += pageHeight - scrollSize
+      if (scrollSize === 0) homePage.current.scrollTop += pageHeight
+      if (scrollSize > 0) homePage.current.scrollTop += scrollSize
+      setActivePage(getIndex(activePage + 1, scrollBtns.current.children))
     }
 
     scrollDotActive(direction)
+  }
+
+  function getIndex(i, array) {
+    const max = array.length - 1
+
+    return Math.min(Math.max(i, 0), max)
   }
 
   function scrollDotActive(direction) {
     const { children } = scrollBtns.current
 
-    let scrollI = homePage.current.scrollTop / pageHeight
-    scrollI = Math.floor(scrollI)
-
-    if (!children[scrollI + 1]) return
+    if (direction === 'up' && activePage === 0) return
+    if (direction === 'down' && activePage === children.length - 1) return
 
     removeActiveDot()
 
-    if (direction === 'up') children[scrollI].classList.add('active')
-    if (direction === 'down') children[scrollI + 1].classList.add('active')
-  }
-
-  function scrollDotActiveI(index) {
-    removeActiveDot()
-
-    const { children } = scrollBtns.current
-    children[index].classList.add('active')
+    if (direction === 'up') children[activePage - 1].classList.add('active')
+    if (direction === 'down') children[activePage + 1].classList.add('active')
   }
 
   function removeActiveDot() {
     const activeDot = scrollBtns.current.querySelector('.active')
     activeDot.classList.remove('active')
-  }
-
-  function handleScroll(direction) {
-    scroll(direction)
-    scrollDotActive(direction)
-  }
-
-  function wheel(e) {
-    if (e.deltaY < 0) handleScroll('up')
-    if (e.deltaY > 0) handleScroll('down')
   }
 
   let touchYStart
@@ -83,12 +89,16 @@ export default function Home({ surahI, setSurahI }) {
     if (touchYStart > clientY) handleScroll('down')
   }
 
+  function handleScroll(direction) {
+    scroll(direction)
+    scrollDotActive(direction)
+  }
+
   return (
     <>
       <div
-        className="h_100 home_page"
+        className={`h_100 home_page ${!isPhone ? 'scroll_y' : ''}`}
         ref={homePage}
-        onWheel={wheel}
         onTouchStart={touchStart}
         onTouchMove={touchMove}
       >
@@ -96,13 +106,21 @@ export default function Home({ surahI, setSurahI }) {
         <HomeFacts />
         <HomeAboutUs />
         <HomeFeedback />
-        <HomeSubcscribe scrollDotActiveI={scrollDotActiveI} />
-        <HomeDots
-          scroll={scroll}
+        <HomeSubcscribe
           removeActiveDot={removeActiveDot}
+          setActivePage={setActivePage}
           scrollBtns={scrollBtns}
-          pageHeight={pageHeight}
         />
+        {isPhone && (
+          <HomeDots
+            scroll={scroll}
+            scrollDotActive={scrollDotActive}
+            removeActiveDot={removeActiveDot}
+            setActivePage={setActivePage}
+            scrollBtns={scrollBtns}
+            pageHeight={pageHeight}
+          />
+        )}
       </div>
       {surahI.surah > 0 && <ReadArea surahI={surahI} setSurahI={setSurahI} />}
     </>
