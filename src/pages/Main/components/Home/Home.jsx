@@ -59,21 +59,37 @@ export default function Home({ surahI, setSurahI }) {
     activeDot.classList.remove('active')
   }
 
-  function wheel(e) {
-    if (e.deltaY < 0) {
-      scroll('up')
-      scrollDotActive('up')
-    }
+  function handleScroll(direction) {
+    scroll(direction)
+    scrollDotActive(direction)
+  }
 
-    if (e.deltaY > 0) {
-      scroll('down')
-      scrollDotActive('down')
-    }
+  function wheel(e) {
+    if (e.deltaY < 0) handleScroll('up')
+    if (e.deltaY > 0) handleScroll('down')
+  }
+
+  let touchYStart
+  function touchStart(e) {
+    touchYStart = e.touches[0].clientY
+  }
+
+  function touchMove(e) {
+    const { clientY } = e.touches[0]
+
+    if (touchYStart < clientY) handleScroll('up')
+    if (touchYStart > clientY) handleScroll('down')
   }
 
   return (
     <>
-      <div className="h_100 home_page" ref={homePage} onWheel={wheel}>
+      <div
+        className="h_100 home_page"
+        ref={homePage}
+        onWheel={wheel}
+        onTouchStart={touchStart}
+        onTouchMove={touchMove}
+      >
         <HomeWelcome setSurahI={setSurahI} />
         <HomeFacts />
         <HomeAboutUs />
