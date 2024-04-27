@@ -16,10 +16,12 @@ export default function HomeSubcscribe({
 
   function scrollUp(e) {
     const homePage = e.target.closest('.home_page')
-
     homePage.scrollTop = 0
-    scrollDotActiveI(0)
-    setActivePage(0)
+
+    if (isPhone) {
+      scrollDotActiveI(0)
+      setActivePage(0)
+    }
   }
 
   return (
