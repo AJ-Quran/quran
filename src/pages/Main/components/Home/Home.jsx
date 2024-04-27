@@ -8,6 +8,8 @@ import HomeFeedback from './components/HomeFeedback/HomeFeedback'
 import HomeSubcscribe from './components/HomeSubcscribe/HomeSubcscribe'
 import HomeDots from './components/HomeDots/HomeDots'
 
+import { deviceIsPhone } from '../../../../js/utils/device'
+
 import './Home.css'
 
 export default function Home({ surahI, setSurahI }) {
@@ -15,6 +17,7 @@ export default function Home({ surahI, setSurahI }) {
   const scrollBtns = useRef()
   const [activePage, setActivePage] = useState(0)
   const [pageHeight, setPageHeight] = useState(0)
+  const isPhone = deviceIsPhone()
 
   useEffect(() => {
     const height = homePage.current?.querySelector('.scroll_area').clientHeight
@@ -94,7 +97,7 @@ export default function Home({ surahI, setSurahI }) {
   return (
     <>
       <div
-        className="h_100 home_page"
+        className={`h_100 home_page ${!isPhone ? 'scroll_y' : ''}`}
         ref={homePage}
         onTouchStart={touchStart}
         onTouchMove={touchMove}
@@ -108,14 +111,16 @@ export default function Home({ surahI, setSurahI }) {
           setActivePage={setActivePage}
           scrollBtns={scrollBtns}
         />
-        <HomeDots
-          scroll={scroll}
-          scrollDotActive={scrollDotActive}
-          removeActiveDot={removeActiveDot}
-          setActivePage={setActivePage}
-          scrollBtns={scrollBtns}
-          pageHeight={pageHeight}
-        />
+        {isPhone && (
+          <HomeDots
+            scroll={scroll}
+            scrollDotActive={scrollDotActive}
+            removeActiveDot={removeActiveDot}
+            setActivePage={setActivePage}
+            scrollBtns={scrollBtns}
+            pageHeight={pageHeight}
+          />
+        )}
       </div>
       {surahI.surah > 0 && <ReadArea surahI={surahI} setSurahI={setSurahI} />}
     </>
