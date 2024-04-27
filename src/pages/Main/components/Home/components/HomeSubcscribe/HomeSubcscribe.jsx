@@ -1,7 +1,14 @@
 import { deviceIsPhone } from '../../../../../../js/utils/device'
 
-export default function HomeSubcscribe({ scrollDotActiveI }) {
+export default function HomeSubcscribe({ removeActiveDot, scrollBtns }) {
   const isPhone = deviceIsPhone()
+
+  function scrollDotActiveI(index) {
+    removeActiveDot()
+
+    const { children } = scrollBtns.current
+    children[index].classList.add('active')
+  }
 
   function scrollUp(e) {
     const homePage = e.target.closest('.home_page')
