@@ -41,6 +41,8 @@ export default function Home({ surahI, setSurahI }) {
     let scrollI = homePage.current.scrollTop / pageHeight
     scrollI = Math.floor(scrollI)
 
+    if (!children[scrollI + 1]) return
+
     removeActiveDot()
 
     if (direction === 'up') children[scrollI].classList.add('active')
