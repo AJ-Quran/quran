@@ -59,12 +59,13 @@ export default function Home({ surahI, setSurahI }) {
   function scrollDotActive(direction) {
     const { children } = scrollBtns.current
 
+    if (direction === 'up' && activePage === 0) return
+    if (direction === 'down' && activePage === children.length - 1) return
+
     removeActiveDot()
 
-    if (direction === 'up' && children[activePage - 1])
-      children[activePage - 1].classList.add('active')
-    if (direction === 'down' && children[activePage + 1])
-      children[activePage + 1].classList.add('active')
+    if (direction === 'up') children[activePage - 1].classList.add('active')
+    if (direction === 'down') children[activePage + 1].classList.add('active')
   }
 
   function removeActiveDot() {
