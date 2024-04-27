@@ -33,12 +33,6 @@ export default function Home({ surahI, setSurahI }) {
     }
   }, [activePage])
 
-  function getIndex(i, array) {
-    const max = array.length - 1
-
-    return Math.min(Math.max(i, 0), max)
-  }
-
   function scroll(direction) {
     const scrollSize = homePage.current.scrollTop % pageHeight || 0
 
@@ -54,6 +48,12 @@ export default function Home({ surahI, setSurahI }) {
     }
 
     scrollDotActive(direction)
+  }
+
+  function getIndex(i, array) {
+    const max = array.length - 1
+
+    return Math.min(Math.max(i, 0), max)
   }
 
   function scrollDotActive(direction) {
