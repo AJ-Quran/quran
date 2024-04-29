@@ -30,7 +30,6 @@ export default function AccountData() {
   const form = useRef(null)
   const nameRef = useRef(null)
   const usernameRef = useRef(null)
-  const logoutRef = useRef(null)
   const deleteRef = useRef(null)
   const [account, setAccount] = useState(false)
   const [editing, setEditing] = useState(false)
@@ -116,20 +115,6 @@ export default function AccountData() {
 
   async function logoutAccount() {
     const username = loadLocal('quran').accounts.active
-    const dbPassword = await load(`accounts/${username}/user/password`)
-    const password = logoutRef.current?.value
-
-    const correct = dbPassword === password
-
-    if (!correct) {
-      setMessage({ msg: 'Password is not matching', type: 'error', show: true })
-      setTimeout(
-        () => setMessage({ ...message, show: false }),
-        msgData.time * 1000
-      )
-      return
-    }
-
     dbLogout(username)
   }
 
@@ -459,14 +444,6 @@ export default function AccountData() {
       </div>
       {logingout && (
         <Alert title="Log out" onHide={() => setLogingout(false)}>
-          <Input
-            ref={logoutRef}
-            type="password"
-            label="Password"
-            maxLength="20"
-            autoFocus
-            areaProps={{ className: 'con_bg_dr' }}
-          />
           <div>
             You should <b>reload</b> the page to apply changes.
           </div>
