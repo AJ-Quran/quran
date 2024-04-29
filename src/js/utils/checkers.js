@@ -10,7 +10,7 @@ export function isValidUsername(username) {
     return { msg: 'Contains whitespace', ok: false }
   }
 
-  const regex = /^[a-z0-9_]+$/
+  const regex = /^[A-Za-z0-9_]+$/
   if (!regex.test(username.trim())) {
     return { msg: 'Invalid characters', ok: false }
   }
