@@ -46,6 +46,7 @@ export default function AccountData() {
     type: 'error',
     show: false,
   })
+  const profilePicLimit = 5 * 1024 * 1024
 
   useEffect(() => {
     const username = loadLocal('quran').accounts.active
@@ -154,6 +155,15 @@ export default function AccountData() {
     if (!fileInput) return
 
     const file = fileInput.files[0]
+    if (file.size > profilePicLimit) {
+      setMessage({ msg: 'Max file size is 5MB', type: 'error', show: true })
+      setTimeout(
+        () => setMessage({ ...message, show: false }),
+        msgData.time * 1000
+      )
+      return
+    }
+
     const blob = await getImgBlob(file)
 
     setProfileImg(blob)
