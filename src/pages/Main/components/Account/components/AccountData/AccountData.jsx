@@ -40,7 +40,8 @@ export default function AccountData() {
   const [showTooplit, setShowTooplit] = useState(false)
   const [tooplitPos, setTooplitPos] = useState({ x: 0, y: 0 })
   const [profileImg, setProfileImg] = useState('')
-  const [bigProfilePic, showBigProfilePic] = useState(false)
+  const [bigProfilePic, setBigProfilePic] = useState(false)
+  const [openProfilePic, setOpenProfilePic] = useState(false)
   const [message, setMessage] = useState({
     text: '',
     type: 'error',
@@ -50,7 +51,10 @@ export default function AccountData() {
   useEffect(() => {
     const username = loadLocal('quran').accounts.active
     async function loadAccount() {
-      setAccount(await getAccount(username))
+      const account = await getAccount(username)
+      setAccount(account)
+
+      if (account?.img?.img) setOpenProfilePic(true)
     }
     loadAccount()
   }, [saving])
@@ -392,13 +396,13 @@ export default function AccountData() {
           <div className="list_y df_f_ce">
             <Avatar
               style={{ width: '80px', fontSize: '40px' }}
-              onClick={() => showBigProfilePic(true)}
+              onClick={() => openProfilePic && setBigProfilePic(true)}
             ></Avatar>
             {bigProfilePic && (
-              <Alert onHide={() => showBigProfilePic(false)} simple="true">
+              <Alert onHide={() => setBigProfilePic(false)} simple="true">
                 <div
                   className="df_f_ce"
-                  onClick={() => showBigProfilePic(false)}
+                  onClick={() => setBigProfilePic(false)}
                 >
                   <Avatar
                     style={{ width: '400px', fontSize: '200px' }}
