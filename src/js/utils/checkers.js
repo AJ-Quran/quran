@@ -5,11 +5,6 @@ export function isValidUsername(username) {
     return { msg: 'Write more than 1 characters', ok: false }
   }
 
-  const hasUppercase = /[A-Z]/.test(username.trim())
-  if (hasUppercase) {
-    return { msg: "Don't use uppercase", ok: false }
-  }
-
   const hasWhitespace = /\s/.test(username.trim())
   if (hasWhitespace) {
     return { msg: 'Contains whitespace', ok: false }
