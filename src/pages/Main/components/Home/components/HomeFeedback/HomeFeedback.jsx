@@ -7,7 +7,7 @@ import Message from '../../../../../../components/Message/Message'
 
 import { getData } from '../../../../../../js/utils/form'
 import { msgData } from '../../../../../../js/utils/message'
-import { send } from '../../../../../../js/utils/feedback'
+import { sendFeedback } from '../../../../../../js/utils/feedback'
 import { wait } from '@testing-library/user-event/dist/utils'
 import { getAccount } from '../../../../../../js/account/account'
 import { loadLocal } from '../../../../../../js/db/localStorage'
@@ -72,7 +72,7 @@ export default function HomeFeedback() {
     nameInput.current.classList.remove('error')
   }
 
-  async function sendFeedback() {
+  async function send() {
     const formData = getData(form.current)
     if (!formData.ok) {
       setMessage({ msg: formData.msg, type: 'error', show: true })
@@ -83,7 +83,7 @@ export default function HomeFeedback() {
       return
     }
 
-    await send(formData.inputs)
+    await sendFeedback(formData.inputs)
     setMessage({
       msg: 'Feedback sent successfully!',
       type: 'success',
@@ -141,7 +141,7 @@ export default function HomeFeedback() {
           <Button
             className="medium list_x df_f_ce"
             colorful="true"
-            onClick={sendFeedback}
+            onClick={send}
           >
             <span className="material-symbols-outlined fz_normal">
               forward_to_inbox
