@@ -54,7 +54,7 @@ export default function OptimizeApp() {
         <span className="material-symbols-outlined fz_normal">
           change_circle
         </span>
-        <span>{optimizing ? 'Optimizing...' : 'Optimize App'}</span>
+        <span>{optimizing ? 'Optimizing...' : 'Optimize app'}</span>
       </div>
     </>
   )
