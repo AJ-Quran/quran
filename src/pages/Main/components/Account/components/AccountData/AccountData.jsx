@@ -15,7 +15,7 @@ export default function AccountData() {
   const [saving, setSaving] = useState(false)
   const [message, setMessage] = useState({
     text: '',
-    type: 'error',
+    type: 'default',
     show: false,
   })
 
@@ -27,6 +27,10 @@ export default function AccountData() {
     }
     loadData()
   }, [saving])
+
+  useEffect(() => {
+    setMessage({ ...message, show: false })
+  }, [editing])
 
   if (account === null) return <AccountDataNotFound />
   if (editing)
