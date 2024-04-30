@@ -11,17 +11,17 @@ import { getAccount, logout } from '../../../../../../../../js/account/account'
 import { elText } from '../../../../../../../../js/utils/copy'
 import { msgData } from '../../../../../../../../js/utils/message'
 
-export default function AccountDataMain({ account, setEditing }) {
+export default function AccountDataMain({
+  account,
+  message,
+  setMessage,
+  setEditing,
+}) {
   const nameRef = useRef(null)
   const usernameRef = useRef(null)
   const [bigProfilePic, setBigProfilePic] = useState(false)
   const [logingout, setLogingout] = useState(false)
   const [openProfilePic, setOpenProfilePic] = useState(false)
-  const [message, setMessage] = useState({
-    text: '',
-    type: 'error',
-    show: false,
-  })
 
   useEffect(() => {
     const username = loadLocal('quran').accounts.active
