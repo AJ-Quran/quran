@@ -1,8 +1,8 @@
 import { useEffect, useState } from 'react'
 
 import AccountDataNotFound from './components/AccountDataNotFound/AccountDataNotFound'
-import AccountDataMain from './components/AccountDataMain/AccountDataMain'
 import AccountDataEditing from './components/AccountDataEditing/AccountDataEditing'
+import AccountDataMain from './components/AccountDataMain/AccountDataMain'
 
 import { loadLocal } from '../../../../../../js/db/localStorage'
 import { getAccount } from '../../../../../../js/account/account'
