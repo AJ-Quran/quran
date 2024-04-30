@@ -1,0 +1,5 @@
+*[disabled] {
+  opacity: 0.5 !important;
+  border-color: var(--grey-border) !important;
+  pointer-events: none !important;
+}

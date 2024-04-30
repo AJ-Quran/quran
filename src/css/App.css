@@ -17,6 +17,7 @@
 @import url('./utils/bg.css');
 @import url('./utils/link.css');
 @import url('./utils/blur.css');
+@import url('./utils/disabled.css');
 
 @import url('./utils/animation/blurBalls.css');
 @import url('./utils/animation/activeBg.css');
