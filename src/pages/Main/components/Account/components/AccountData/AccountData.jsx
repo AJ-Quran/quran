@@ -5,21 +5,19 @@ import Input from '../../../../../../components/Input/Input'
 import Choose from '../../../../../../components/Choose/Choose'
 import Loading from '../../../../../../components/Loading/Loading'
 import Message from '../../../../../../components/Message/Message'
-import Avatar from '../utils/Avatar'
 import AvatarToEdit from '../utils/AvatarToEdit'
 import Alert from '../../../../../../components/Alert/Alert'
 import Tooplit from '../../../../../../components/Tooplit/Tooplit'
+import AccountDataMain from './components/AccountDataMain/AccountDataMain'
 
 import { loadLocal } from '../../../../../../js/db/localStorage'
 import {
   getAccount,
   editUser,
-  logout as dbLogout,
   deleteAccount as dbDeleteAccount,
 } from '../../../../../../js/account/account'
 import { getData } from '../../../../../../js/utils/form'
 import { msgData } from '../../../../../../js/utils/message'
-import { elText } from '../../../../../../js/utils/copy'
 import { load } from '../../../../../../js/db/db'
 import { getImgBlob } from '../../../../../../js/utils/img'
 import { avatars } from '../utils/getAvatar'
@@ -28,19 +26,14 @@ import './AccountData.css'
 
 export default function AccountData() {
   const form = useRef(null)
-  const nameRef = useRef(null)
-  const usernameRef = useRef(null)
   const deleteRef = useRef(null)
   const [account, setAccount] = useState(false)
   const [editing, setEditing] = useState(false)
   const [saving, setSaving] = useState(false)
-  const [logingout, setLogingout] = useState(false)
   const [deleting, setDeleting] = useState(false)
   const [showTooplit, setShowTooplit] = useState(false)
   const [tooplitPos, setTooplitPos] = useState({ x: 0, y: 0 })
   const [profileImg, setProfileImg] = useState('')
-  const [bigProfilePic, setBigProfilePic] = useState(false)
-  const [openProfilePic, setOpenProfilePic] = useState(false)
   const [message, setMessage] = useState({
     text: '',
     type: 'error',
@@ -53,8 +46,6 @@ export default function AccountData() {
     async function loadAccount() {
       const account = await getAccount(username)
       setAccount(account)
-
-      if (account?.img?.img) setOpenProfilePic(true)
     }
     loadAccount()
   }, [saving])
@@ -102,21 +93,6 @@ export default function AccountData() {
       () => setMessage({ ...message, show: false }),
       msgData.time * 1000
     )
-  }
-
-  function copy(elRef) {
-    const msg = elText(elRef)
-
-    setMessage({ ...msg, type: 'success', show: true })
-    setTimeout(
-      () => setMessage({ ...message, show: false }),
-      msgData.time * 1000
-    )
-  }
-
-  async function logoutAccount() {
-    const username = loadLocal('quran').accounts.active
-    dbLogout(username)
   }
 
   async function deleteAccount() {
@@ -381,92 +357,5 @@ export default function AccountData() {
     )
   }
 
-  return (
-    <>
-      <div className="df_ai_ce list_y">
-        <div className="w_max loading_area df_jc_sb list_y bd_ra">
-          <Message show={message.show} type={message.type}>
-            {message.msg}
-          </Message>
-          <div className="list_y df_f_ce">
-            <Avatar
-              style={{ width: '80px', fontSize: '40px' }}
-              onClick={() => openProfilePic && setBigProfilePic(true)}
-            ></Avatar>
-            {bigProfilePic && (
-              <Alert onHide={() => setBigProfilePic(false)} simple="true">
-                <div
-                  className="df_f_ce"
-                  onClick={() => setBigProfilePic(false)}
-                >
-                  <Avatar
-                    style={{ width: '400px', fontSize: '200px' }}
-                  ></Avatar>
-                </div>
-              </Alert>
-            )}
-            <div className="list_y df_jc_ce_child">
-              <div className="fz_big">
-                <b ref={nameRef} className="name" onClick={() => copy(nameRef)}>
-                  {account?.name}
-                </b>
-              </div>
-              <div
-                className="txt_opa fz_small w_100"
-                onClick={() => copy(usernameRef)}
-              >
-                @<span ref={usernameRef}>{account?.username}</span>
-              </div>
-            </div>
-          </div>
-          {!account && <Loading>Main account</Loading>}
-        </div>
-        {account && (
-          <div className="list_y df_jc_ce df_jc_ce_child">
-            <Button
-              className="list_x_small medium"
-              onClick={() => setEditing(true)}
-            >
-              <span className="material-symbols-outlined fz_normal">edit</span>
-              <span>Edit</span>
-            </Button>
-            <Button
-              className="list_x_small medium red"
-              onClick={() => setLogingout(true)}
-            >
-              <span className="material-symbols-outlined fz_normal">
-                logout
-              </span>
-              <span>Log out</span>
-            </Button>
-            <Button
-              className="list_x_small medium"
-              colorful="true"
-              onClick={() => (window.location.href = 'account/login')}
-            >
-              <span className="material-symbols-outlined fz_normal">
-                add_circle
-              </span>
-              <span>Add account</span>
-            </Button>
-          </div>
-        )}
-      </div>
-      {logingout && (
-        <Alert title="Log out" onHide={() => setLogingout(false)}>
-          <div>
-            You should <b>reload</b> the page to apply changes.
-          </div>
-          <div className="df_jc_end">
-            <Button className="list_x red" onClick={logoutAccount}>
-              <span className="material-symbols-outlined fz_normal">
-                logout
-              </span>
-              <span>Log out</span>
-            </Button>
-          </div>
-        </Alert>
-      )}
-    </>
-  )
+  return <AccountDataMain setEditing={setEditing} />
 }
