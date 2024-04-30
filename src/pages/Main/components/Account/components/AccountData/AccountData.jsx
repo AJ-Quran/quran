@@ -21,11 +21,11 @@ export default function AccountData() {
 
   useEffect(() => {
     const username = loadLocal('quran').accounts.active
-    async function loadAccount() {
-      const account = await getAccount(username)
-      setAccount(account)
+    async function loadData() {
+      const data = await getAccount(username)
+      setAccount(data)
     }
-    loadAccount()
+    loadData()
   }, [saving])
 
   if (account === null) return <AccountDataNotFound />
