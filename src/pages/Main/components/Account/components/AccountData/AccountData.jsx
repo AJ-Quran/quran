@@ -357,5 +357,5 @@ export default function AccountData() {
     )
   }
 
-  return <AccountDataMain setEditing={setEditing} />
+  return <AccountDataMain account={account} setEditing={setEditing} />
 }

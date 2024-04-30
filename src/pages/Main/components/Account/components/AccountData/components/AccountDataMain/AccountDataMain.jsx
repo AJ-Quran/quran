@@ -11,10 +11,9 @@ import { getAccount, logout } from '../../../../../../../../js/account/account'
 import { elText } from '../../../../../../../../js/utils/copy'
 import { msgData } from '../../../../../../../../js/utils/message'
 
-export default function AccountDataMain({ setEditing }) {
+export default function AccountDataMain({ account, setEditing }) {
   const nameRef = useRef(null)
   const usernameRef = useRef(null)
-  const [account, setAccount] = useState(false)
   const [bigProfilePic, setBigProfilePic] = useState(false)
   const [logingout, setLogingout] = useState(false)
   const [openProfilePic, setOpenProfilePic] = useState(false)
@@ -28,7 +27,6 @@ export default function AccountDataMain({ setEditing }) {
     const username = loadLocal('quran').accounts.active
     async function loadAccount() {
       const account = await getAccount(username)
-      setAccount(account)
 
       if (account?.img?.img) setOpenProfilePic(true)
     }
