@@ -8,6 +8,7 @@ import Message from '../../../../../../components/Message/Message'
 import AvatarToEdit from '../utils/AvatarToEdit'
 import Alert from '../../../../../../components/Alert/Alert'
 import Tooplit from '../../../../../../components/Tooplit/Tooplit'
+import AccountDataNotFound from './components/AccountDataNotFound/AccountDataNotFound'
 import AccountDataMain from './components/AccountDataMain/AccountDataMain'
 
 import { loadLocal } from '../../../../../../js/db/localStorage'
@@ -148,63 +149,7 @@ export default function AccountData() {
     fileInput.value = ''
   }
 
-  if (account === null)
-    return (
-      <>
-        <div className="list_y mar_ce df_ai_ce">
-          <div className="list_x fz_big">
-            <span className="txt_red">There is no account with</span>
-            <b>@{loadLocal('quran').accounts.active}</b>
-          </div>
-          <div className="list_x">
-            <div
-              className="con_bg_gradient con_ha list_x df_ai_ce"
-              onClick={() => (window.location.href = '/account/signup')}
-            >
-              <span className="material-symbols-outlined fz_normal">
-                person_add
-              </span>
-              <span>Sign up</span>
-            </div>
-            <div
-              className="con_bg_df con_ha list_x df_ai_ce"
-              onClick={() => (window.location.href = '/account/login')}
-            >
-              <span className="material-symbols-outlined fz_normal">login</span>
-              <span>Log in</span>
-            </div>
-          </div>
-          <div className="df_fd_cl w_100 df_ai_ce">
-            <div className="title">Reasons</div>
-            <div className="line_x"></div>
-          </div>
-          <div className="reasons_area">
-            <div className="con_bg_df">
-              1. Account deleted due to inactivity.
-            </div>
-            <div className="con_bg_df">
-              2. Mistaken deletion during maintenance.
-            </div>
-            <div className="con_bg_df">3. Technical error during creation.</div>
-            <div className="con_bg_df">4. Flagged for suspicious activity.</div>
-            <div className="con_bg_df">
-              5. Data corruption or loss incident.
-            </div>
-            <div className="con_bg_df">6. System upgrade complications.</div>
-            <div className="con_bg_df">
-              7. Intentional removal for policy violation.
-            </div>
-            <div className="con_bg_df">
-              8. Account archived during restructuring.
-            </div>
-            <div className="con_bg_df">
-              9. Inadvertent loss during data transfer.
-            </div>
-            <div className="con_bg_df">10. Security breach precautions.</div>
-          </div>
-        </div>
-      </>
-    )
+  if (account === null) return <AccountDataNotFound />
 
   if (editing) {
     return (
