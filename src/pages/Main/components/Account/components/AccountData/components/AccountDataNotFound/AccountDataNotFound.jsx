@@ -1,4 +1,5 @@
 import { loadLocal } from '../../../../../../../../js/db/localStorage'
+import { changeHref } from '../../../../../../../../js/utils/href'
 
 export default function AccountDataNotFound() {
   const reasonsArray = [
@@ -24,7 +25,7 @@ export default function AccountDataNotFound() {
         <div className="list_x">
           <div
             className="con_bg_gradient con_ha list_x df_ai_ce"
-            onClick={() => (window.location.href = '/account/signup')}
+            onClick={() => changeHref('account/signup')}
           >
             <span className="material-symbols-outlined fz_normal">
               person_add
@@ -33,7 +34,7 @@ export default function AccountDataNotFound() {
           </div>
           <div
             className="con_bg_df con_ha list_x df_ai_ce"
-            onClick={() => (window.location.href = '/account/login')}
+            onClick={() => changeHref('account/login')}
           >
             <span className="material-symbols-outlined fz_normal">login</span>
             <span>Log in</span>

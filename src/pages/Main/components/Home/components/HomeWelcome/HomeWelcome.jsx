@@ -1,6 +1,7 @@
 import Button from '../../../../../../components/Button/Button'
 
 import { loadLocal } from '../../../../../../js/db/localStorage'
+import { changeHref } from '../../../../../../js/utils/href'
 import { openLastReadSurah } from '../../../Quran/components/List/util/openSurah'
 
 export default function HomeWelcome({ setSurahI }) {
@@ -39,7 +40,7 @@ export default function HomeWelcome({ setSurahI }) {
           <div className="list_x">
             <div
               className="con_bg_gradient con_ha list_x df_f_ce bd_ra_big w_100"
-              onClick={() => (window.location.href = 'account/signup')}
+              onClick={() => changeHref('account/signup')}
             >
               <span className="material-symbols-outlined fz_normal">
                 person_add
@@ -48,7 +49,7 @@ export default function HomeWelcome({ setSurahI }) {
             </div>
             <Button
               className="bd_btn list_x df_f_ce bd_ra_big w_100"
-              onClick={() => (window.location.href = 'account/login')}
+              onClick={() => changeHref('account/login')}
             >
               <span className="material-symbols-outlined fz_normal">login</span>
               <span>Log in</span>

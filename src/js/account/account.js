@@ -1,6 +1,7 @@
 import { save, load, edit as editDB, deleteData } from '../db/db'
 import { loadLocal, saveLocal } from '../db/localStorage'
 import { getLocalInitialData } from '../utils/checkers'
+import { changeHref } from '../utils/href'
 
 export async function signup(data) {
   if (!data) return { msg: 'Wrong data', ok: false }
@@ -19,7 +20,7 @@ export async function signup(data) {
   await save(`accounts/${username}/user`, user)
   await login({ inputs: { username, password }, ok: true })
 
-  window.location.href = '/'
+  changeHref('/')
   return { ok: true }
 }
 
@@ -61,7 +62,7 @@ export async function login(data) {
 
   saveLocal('quran', localData)
 
-  window.location.href = '/'
+  changeHref('/')
   return { ok: true }
 }
 
@@ -82,7 +83,7 @@ export function logout(username) {
   }
 
   saveLocal('quran', getLocalInitialData())
-  window.location.href = '/account/login'
+  changeHref('account/login')
   return true
 }
 
