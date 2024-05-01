@@ -6,7 +6,7 @@ import Loading from '../../../components/Loading/Loading'
 import Message from '../../../components/Message/Message'
 
 import * as FORM from '../../../js/utils/form'
-import { login } from '../../../js/account/account'
+import { googleAuth, login } from '../../../js/account/account'
 import { msgData } from '../../../js/utils/message'
 import useTitle from '../../../hooks/useTitle'
 import { changeHref } from '../../../js/utils/href'
@@ -52,6 +52,21 @@ export default function Login() {
     }
   }
 
+  async function handleGoogleAuth() {
+    const googleData = await googleAuth()
+    if (!googleData.ok) {
+      setMessage({
+        msg: googleData.msg,
+        type: googleData.msgType || 'error',
+        show: true,
+      })
+      setTimeout(
+        () => setMessage({ ...message, show: false }),
+        msgData.time * 1000
+      )
+    }
+  }
+
   return (
     <div className="h_100 df_f_ce">
       <Message show={message.show} type={message.type}>
@@ -92,6 +107,19 @@ export default function Login() {
               <span className="material-symbols-outlined fz_normal">login</span>
               <span>Log in</span>
             </Button>
+          </div>
+          <div className="list_x df_ai_ce">
+            <div className="line_x"></div>
+            <span>or</span>
+            <div className="line_x"></div>
+          </div>
+          <div className="df_jc_ce">
+            <div
+              className="con_bg_df con_ha bd_ra_50"
+              onClick={handleGoogleAuth}
+            >
+              <i className="fa-brands fa-google fz_normal"></i>
+            </div>
           </div>
         </div>
         <Button
