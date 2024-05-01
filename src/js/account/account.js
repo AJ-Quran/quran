@@ -20,7 +20,7 @@ export async function signup(data) {
   await save(`accounts/${username}/user`, user)
   await login({ inputs: { username, password }, ok: true })
 
-  changeHref('/')
+  changeHref()
   return { ok: true }
 }
 
@@ -62,7 +62,7 @@ export async function login(data) {
 
   saveLocal('quran', localData)
 
-  changeHref('/')
+  changeHref()
   return { ok: true }
 }
 

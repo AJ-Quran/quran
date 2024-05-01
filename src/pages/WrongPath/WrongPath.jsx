@@ -14,14 +14,14 @@ export default function WrongPath() {
             <b className="fz_big">Page was not found</b>
             <div>
               Back to{' '}
-              <span className="txt_gradient" onClick={() => changeHref('/')}>
+              <span className="txt_gradient" onClick={changeHref}>
                 Safe Page
               </span>
             </div>
           </div>
           <div
             className="con_bg_gradient con_ha list_x df_f_ce w_100"
-            onClick={() => changeHref('/')}
+            onClick={changeHref}
           >
             <span className="material-symbols-outlined">home</span>
             <span>Home Page</span>

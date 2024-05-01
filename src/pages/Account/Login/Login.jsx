@@ -97,7 +97,7 @@ export default function Login() {
         <Button
           className="medium list_x df_f_ce"
           colorful="true"
-          onClick={() => changeHref('/')}
+          onClick={changeHref}
         >
           <span className="material-symbols-outlined fz_normal">home</span>
           <span>Main page</span>
