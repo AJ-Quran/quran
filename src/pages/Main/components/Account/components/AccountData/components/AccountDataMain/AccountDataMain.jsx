@@ -91,13 +91,17 @@ export default function AccountDataMain({
         </div>
         {account && (
           <div className="list_y df_jc_ce df_jc_ce_child">
-            <Button
-              className="list_x_small medium"
-              onClick={() => setEditing(true)}
-            >
-              <span className="material-symbols-outlined fz_normal">edit</span>
-              <span>Edit</span>
-            </Button>
+            {account?.password && (
+              <Button
+                className="list_x_small medium"
+                onClick={() => setEditing(true)}
+              >
+                <span className="material-symbols-outlined fz_normal">
+                  edit
+                </span>
+                <span>Edit</span>
+              </Button>
+            )}
             <Button
               className="list_x_small medium red"
               onClick={() => setLogingout(true)}
