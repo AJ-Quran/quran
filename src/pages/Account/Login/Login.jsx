@@ -9,6 +9,7 @@ import * as FORM from '../../../js/utils/form'
 import { login } from '../../../js/account/account'
 import { msgData } from '../../../js/utils/message'
 import useTitle from '../../../hooks/useTitle'
+import { changeHref } from '../../../js/utils/href'
 
 import '../Account.css'
 
@@ -65,7 +66,7 @@ export default function Login() {
             </div>
             <Button
               className="list_x df_ai_ce"
-              onClick={() => (window.location.href = '/account/signup')}
+              onClick={() => changeHref('/account/signup')}
             >
               <span className="material-symbols-outlined fz_normal">
                 person_add
@@ -96,7 +97,7 @@ export default function Login() {
         <Button
           className="medium list_x df_f_ce"
           colorful="true"
-          onClick={() => (window.location.href = '/')}
+          onClick={changeHref}
         >
           <span className="material-symbols-outlined fz_normal">home</span>
           <span>Main page</span>

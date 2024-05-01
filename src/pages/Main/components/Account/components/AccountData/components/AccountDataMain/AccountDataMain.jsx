@@ -10,6 +10,7 @@ import { loadLocal } from '../../../../../../../../js/db/localStorage'
 import { getAccount, logout } from '../../../../../../../../js/account/account'
 import { elText } from '../../../../../../../../js/utils/copy'
 import { msgData } from '../../../../../../../../js/utils/message'
+import { changeHref } from '../../../../../../../../js/utils/href'
 
 export default function AccountDataMain({
   account,
@@ -109,7 +110,7 @@ export default function AccountDataMain({
             <Button
               className="list_x_small medium"
               colorful="true"
-              onClick={() => (window.location.href = 'account/login')}
+              onClick={() => changeHref('account/login')}
             >
               <span className="material-symbols-outlined fz_normal">
                 add_circle

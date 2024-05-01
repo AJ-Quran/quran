@@ -9,6 +9,7 @@ import Message from '../../../components/Message/Message'
 import * as FORM from '../../../js/utils/form'
 import { signup } from '../../../js/account/account'
 import { msgData } from '../../../js/utils/message'
+import { changeHref } from '../../../js/utils/href'
 import useTitle from '../../../hooks/useTitle'
 
 import '../Account.css'
@@ -68,7 +69,7 @@ export default function Signup() {
             </div>
             <Button
               className="list_x d_ai_ce"
-              onClick={() => (window.location.href = '/account/login')}
+              onClick={() => changeHref('/account/login')}
             >
               <span className="material-symbols-outlined fz_normal">login</span>
               <span>Log in</span>
@@ -117,7 +118,7 @@ export default function Signup() {
         <Button
           className="medium list_x df_f_ce"
           colorful="true"
-          onClick={() => (window.location.href = '/')}
+          onClick={changeHref}
         >
           <span className="material-symbols-outlined fz_normal">home</span>
           <span>Main page</span>
