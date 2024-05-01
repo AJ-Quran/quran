@@ -66,7 +66,7 @@ export default function Login() {
             </div>
             <Button
               className="list_x df_ai_ce"
-              onClick={() => changeHref('account/signup')}
+              onClick={() => changeHref('/account/signup')}
             >
               <span className="material-symbols-outlined fz_normal">
                 person_add

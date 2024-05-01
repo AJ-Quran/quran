@@ -69,7 +69,7 @@ export default function Signup() {
             </div>
             <Button
               className="list_x d_ai_ce"
-              onClick={() => changeHref('account/login')}
+              onClick={() => changeHref('/account/login')}
             >
               <span className="material-symbols-outlined fz_normal">login</span>
               <span>Log in</span>
