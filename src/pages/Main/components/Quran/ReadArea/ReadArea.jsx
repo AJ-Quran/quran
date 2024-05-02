@@ -32,6 +32,26 @@ export default function ReadArea({ surahI, setSurahI }) {
   const arSurahData = arData?.data
   const engSurahData = engData?.data
 
+  if ((!arSurahData || !engSurahData) && !loading)
+    return (
+      <div className="read_area df_jc_sb">
+        <div className="read_con df_f_ce list_y">
+          <b className="txt_yellow">Something went wrong! Try again</b>
+          <div
+            className="con_bd_cl con_bg_gradient con_ha bd_btn list_x df_f_ce"
+            onClick={() => setSurahI({ ...surahI, surah: 0 })}
+          >
+            <span className="material-symbols-outlined fz_normal">
+              menu_book
+            </span>
+            <span>
+              Back to <b>Quran</b>
+            </span>
+          </div>
+        </div>
+      </div>
+    )
+
   const userHasRead =
     surahI.surah === arSurahData?.number &&
     surahI.ayah === arSurahData?.numberOfAyahs
