@@ -83,10 +83,13 @@ export default function Home({ surahI, setSurahI }) {
   }
 
   function touchMove(e) {
-    const { clientY } = e.touches[0]
+    const scrollVal = 80
 
-    if (touchYStart < clientY) handleScroll('up')
-    if (touchYStart > clientY) handleScroll('down')
+    const { clientY } = e.touches[0]
+    const difY = clientY - touchYStart
+
+    if (difY < -scrollVal) handleScroll('down')
+    if (difY > scrollVal) handleScroll('up')
   }
 
   function handleScroll(direction) {
