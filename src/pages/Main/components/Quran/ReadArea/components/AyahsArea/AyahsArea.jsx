@@ -4,12 +4,19 @@ import AyahsAreaButtons from './components/AyahsAreaButtons/AyahsAreaButtons'
 import { ceil } from '../../../../../../../js/math/number'
 import { progressPercent } from '../../../../../../../js/math/percent'
 import { deviceIsPhone } from '../../../../../../../js/utils/device'
+import { loadLocal } from '../../../../../../../js/db/localStorage'
 
 import './AyahsArea.css'
 
 export default function AyahsArea({ arAyahs, engAyahs, surahI, setSurahI }) {
   const ayahsLen = arAyahs?.length || 0
   const { ayah } = surahI
+
+  const localData = loadLocal('quran')
+  const fontSizes = {
+    ar: localData.settings.fontSize.arabic,
+    en: localData.settings.fontSize.english,
+  }
 
   const progress = progressPercent(ayah, arAyahs?.length)
   const isPhone = deviceIsPhone()
@@ -35,10 +42,17 @@ export default function AyahsArea({ arAyahs, engAyahs, surahI, setSurahI }) {
         {ayah < ayahsLen && (
           <div className="list_y">
             <div className="con_bg_df ayahs_text_area df_f_ce">
-              <p className="txt_ar w_100">{arAyahs[ayah]?.text}</p>
+              <p
+                className="txt_ar w_100"
+                style={{ fontSize: `${fontSizes.ar}px` }}
+              >
+                {arAyahs[ayah]?.text}
+              </p>
             </div>
             <div className="con_bg_df ayahs_text_area df_f_ce ayahs_eng_area">
-              <p className="w_100">{engAyahs[ayah]?.text}</p>
+              <p className="w_100" style={{ fontSize: `${fontSizes.en}px` }}>
+                {engAyahs[ayah]?.text}
+              </p>
             </div>
           </div>
         )}
