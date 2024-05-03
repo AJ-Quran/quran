@@ -1,3 +1,5 @@
+import { optimizeApp } from '../../pages/Main/components/Settings/components/OptimizeApp/optimize'
+import { load } from '../db/db'
 import { loadLocal, saveLocal } from '../db/localStorage'
 
 export function isValidUsername(username) {
@@ -63,6 +65,13 @@ export function isValidEmail(email) {
   }
 
   return { msg: 'Valid email', ok: true }
+}
+
+export async function checkUser() {
+  const username = loadLocal('quran').accounts.active
+  const account = await load(`accounts/${username}/user`)
+
+  if (!account) await optimizeApp()
 }
 
 export function localInitialData() {
