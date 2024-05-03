@@ -23,13 +23,13 @@ export default function Slider({
 
   return (
     <>
-      <div className={`con slider_area ${className}`}>
+      <div className={`con slider_area con_bg_df ${className}`}>
         <input
           type="range"
           min={min}
           max={max}
           value={value}
-          step={range}
+          step={range || 1}
           onChange={handleChange}
           className="slider_input"
         />

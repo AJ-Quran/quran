@@ -25,15 +25,13 @@ export default function Settings() {
             label="ar"
             min="14"
             max="30"
-            range="2"
             value={fontSizes.ar}
             example="بِسْمِ ٱللَّهِ ٱلرَّحْمَٰنِ ٱلرَّحِيمِ"
           />
           <FontSize
             label="en"
             min="14"
-            max="30"
-            range="2"
+            max="20"
             value={fontSizes.en}
             example="In the name of God, the Most Gracious, the Most Merciful"
           />
