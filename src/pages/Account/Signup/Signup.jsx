@@ -7,7 +7,7 @@ import Loading from '../../../components/Loading/Loading'
 import Message from '../../../components/Message/Message'
 
 import * as FORM from '../../../js/utils/form'
-import { googleAuth, signup } from '../../../js/account/account'
+import { signup } from '../../../js/account/account'
 import { msgData } from '../../../js/utils/message'
 import { changeHref } from '../../../js/utils/href'
 import useTitle from '../../../hooks/useTitle'
@@ -50,21 +50,6 @@ export default function Signup() {
       )
       setSigning(false)
       return
-    }
-  }
-
-  async function handleGoogleAuth() {
-    const googleData = await googleAuth()
-    if (!googleData.ok) {
-      setMessage({
-        msg: googleData.msg,
-        type: googleData.msgType || 'error',
-        show: true,
-      })
-      setTimeout(
-        () => setMessage({ ...message, show: false }),
-        msgData.time * 1000
-      )
     }
   }
 
@@ -128,19 +113,6 @@ export default function Signup() {
               </span>
               <span>Sign up</span>
             </Button>
-          </div>
-          <div className="list_x df_ai_ce">
-            <div className="line_x"></div>
-            <span>or</span>
-            <div className="line_x"></div>
-          </div>
-          <div className="df_jc_ce">
-            <div
-              className="con_bg_df con_ha bd_ra_50"
-              onClick={handleGoogleAuth}
-            >
-              <i className="fa-brands fa-google fz_normal"></i>
-            </div>
           </div>
         </div>
         <Button

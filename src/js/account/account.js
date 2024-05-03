@@ -1,6 +1,4 @@
-import { GoogleAuthProvider, getAuth, signInWithPopup } from 'firebase/auth'
-
-import { save, load, edit as editDB, deleteData, app } from '../db/db'
+import { save, load, edit as editDB, deleteData } from '../db/db'
 import { loadLocal, saveLocal } from '../db/localStorage'
 import { getLocalInitialData } from '../utils/checkers'
 import { changeHref } from '../utils/href'
@@ -156,44 +154,4 @@ export async function changeAccount(username) {
 
   saveLocal('quran', localData)
   window.location.reload()
-}
-
-export async function googleAuth() {
-  const auth = getAuth(app)
-  const provider = new GoogleAuthProvider()
-
-  const { user } = await signInWithPopup(auth, provider)
-  const username = user.email.split('@')[0]
-
-  const localData = loadLocal('quran')
-  if (localData.accounts.usernames.includes(username)) {
-    return { msg: 'You have already logged in', msgType: 'success', ok: false }
-  }
-
-  const hasAccount = await load(`accounts/${username}`)
-
-  if (hasAccount) {
-    localData.accounts.usernames = [...localData.accounts.usernames, username]
-  }
-
-  if (!hasAccount) {
-    const newUser = {
-      name: user.displayName,
-      username,
-      gender: 'male',
-      img: {
-        img: user.photoURL,
-      },
-      password: false,
-    }
-
-    await save(`accounts/${username}/user`, newUser)
-
-    localData.accounts.usernames = [...localData.accounts.usernames, username]
-    if (!localData.accounts.active) localData.accounts.active = username
-  }
-
-  saveLocal('quran', localData)
-  changeHref()
-  return { ok: true }
 }

@@ -11,7 +11,7 @@ import {
   remove,
 } from 'firebase/database'
 
-export const app = initializeApp(API.firebase)
+const app = initializeApp(API.firebase)
 const db = getDatabase()
 
 export async function save(path, data) {
