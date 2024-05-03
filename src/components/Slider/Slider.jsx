@@ -29,7 +29,7 @@ export default function Slider({
           min={min}
           max={max}
           value={value}
-          step={range}
+          step={range || 1}
           onChange={handleChange}
           className="slider_input"
         />
