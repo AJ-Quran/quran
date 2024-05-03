@@ -1,7 +1,7 @@
 import React from 'react'
 import { BrowserRouter, Routes, Route } from 'react-router-dom'
 
-import { localInitialData } from './js/utils/checkers'
+import { checkUser, localInitialData } from './js/utils/checkers'
 import { checkTheme } from './js/utils/theme'
 import { deviceIsPhone } from './js/utils/device'
 
@@ -29,10 +29,11 @@ export default function App() {
   )
 }
 
-function checkApp() {
+async function checkApp() {
   const isPhone = deviceIsPhone()
   if (isPhone) document.body.classList.add('is_phone')
 
   localInitialData()
   checkTheme()
+  await checkUser()
 }
