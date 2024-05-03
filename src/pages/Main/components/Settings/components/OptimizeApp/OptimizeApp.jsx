@@ -30,10 +30,8 @@ export default function OptimizeApp() {
 
     const activeAccount = await getAccount(activeUsername)
     if (!activeAccount) {
-      if (newUsernames.length > 0)
-        return (localData.accounts.active = newUsernames[0])
-
-      localData.accounts.active = ''
+      if (newUsernames.length > 0) localData.accounts.active = newUsernames[0]
+      if (newUsernames.length === 0) localData.accounts.active = ''
     }
 
     saveLocal('quran', localData)
