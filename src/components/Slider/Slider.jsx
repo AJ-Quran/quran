@@ -13,8 +13,7 @@ export default function Slider({
   const [value, setValue] = useState(iValue || min)
 
   function getValue() {
-    const valuePercent = ((value - min) / (max - min)) * 100
-    return valuePercent
+    return ((value - min) / (max - min)) * 100
   }
 
   function handleChange(e) {
