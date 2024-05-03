@@ -1,7 +1,0 @@
-.font_size_area {
-  align-items: start;
-}
-
-.font_size_area:has(.txt_ar) {
-  align-items: end;
-}

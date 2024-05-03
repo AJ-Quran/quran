@@ -5,8 +5,6 @@ import Slider from '../../../../../../components/Slider/Slider'
 import { txtCapitalizeFirstLetter } from '../../../../../../js/utils/txt'
 import { loadLocal, saveLocal } from '../../../../../../js/db/localStorage'
 
-import './FontSize.css'
-
 const labelArr = {
   ar: 'arabic',
   en: 'english',
@@ -26,24 +24,22 @@ export default function FontSize({ label, min, max, range, value, example }) {
 
   return (
     <>
-      <div className="list_y font_size_area">
-        <div className="df_jc_sb w_100">
-          <div>{txtCapitalizeFirstLetter(labelArr[label])}</div>
+      <div className="con_bg_dr list_y df_ai_ce font_size_area">
+        <b>{txtCapitalizeFirstLetter(labelArr[label])}</b>
+        <p className="con" style={{ fontSize: `${fontSize}px` }}>
+          {example}
+        </p>
+        <div className="list_x df_jc_ce w_100">
+          <span className="material-symbols-outlined fz_normal">title</span>
           <Slider
             min={min}
             max={max}
             range={range}
             value={value}
             onChange={changeFontSize}
-            className="bg_theme_dr"
           />
+          <span className="material-symbols-outlined">title</span>
         </div>
-        <p
-          className={`con_bg_dr txt_${label}`}
-          style={{ fontSize: `${fontSize}px` }}
-        >
-          {example}
-        </p>
       </div>
     </>
   )
