@@ -2,14 +2,10 @@ import ThemeArea from './components/ThemeArea/ThemeArea'
 import OptimizeApp from './components/OptimizeApp/OptimizeApp'
 import FontSize from './components/FontSize/FontSize'
 
-import { loadLocal } from '../../../../js/db/localStorage'
+import { getFontSize } from './utils/getFontSize'
 
 export default function Settings() {
-  const localData = loadLocal('quran')
-  const fontSizes = {
-    ar: localData.settings.fontSize.arabic,
-    en: localData.settings.fontSize.english,
-  }
+  const fontSizes = getFontSize()
 
   return (
     <>
