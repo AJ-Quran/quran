@@ -88,6 +88,10 @@ export function getLocalInitialData() {
     },
     settings: {
       theme: 'auto',
+      fontSize: {
+        arabic: '14',
+        english: '14',
+      },
     },
   }
   return initialData
