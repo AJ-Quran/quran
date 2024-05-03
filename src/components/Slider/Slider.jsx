@@ -23,7 +23,7 @@ export default function Slider({
 
   return (
     <>
-      <div className={`con slider_area ${className}`}>
+      <div className={`con slider_area con_bg_df ${className}`}>
         <input
           type="range"
           min={min}
