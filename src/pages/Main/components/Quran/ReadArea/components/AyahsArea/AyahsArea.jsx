@@ -4,7 +4,7 @@ import AyahsAreaButtons from './components/AyahsAreaButtons/AyahsAreaButtons'
 import { ceil } from '../../../../../../../js/math/number'
 import { progressPercent } from '../../../../../../../js/math/percent'
 import { deviceIsPhone } from '../../../../../../../js/utils/device'
-import { loadLocal } from '../../../../../../../js/db/localStorage'
+import { getFontSize } from '../../../../Settings/utils/getFontSize'
 
 import './AyahsArea.css'
 
@@ -12,11 +12,7 @@ export default function AyahsArea({ arAyahs, engAyahs, surahI, setSurahI }) {
   const ayahsLen = arAyahs?.length || 0
   const { ayah } = surahI
 
-  const localData = loadLocal('quran')
-  const fontSizes = {
-    ar: localData.settings.fontSize.arabic,
-    en: localData.settings.fontSize.english,
-  }
+  const fontSizes = getFontSize()
 
   const progress = progressPercent(ayah, arAyahs?.length)
   const isPhone = deviceIsPhone()
