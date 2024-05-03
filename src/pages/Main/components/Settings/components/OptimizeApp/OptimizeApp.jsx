@@ -35,14 +35,14 @@ export default function OptimizeApp() {
         {message.msg}
       </Message>
       <div
-        className="con_bg_df con_ha list_x df_ai_ce"
+        className="con_bd_df con_ha list_x df_jc_ce"
         onClick={optimize}
         disabled={optimizing}
       >
         <span className="material-symbols-outlined fz_normal">
           change_circle
         </span>
-        <span>{optimizing ? 'Optimizing...' : 'Optimize app'}</span>
+        <span>{optimizing ? 'Optimizing...' : 'Optimize'}</span>
       </div>
     </>
   )

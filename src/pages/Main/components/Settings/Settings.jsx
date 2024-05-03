@@ -36,7 +36,9 @@ export default function Settings() {
             example="In the name of God, the Most Gracious, the Most Merciful"
           />
         </div>
-        <div className="df_jc_ce">
+        <div className="con_bg_df df_ai_ce_child list_y">
+          <div className="title df_jc_ce">Optimize app</div>
+          <div className="line_x line_dark"></div>
           <OptimizeApp />
         </div>
       </div>
