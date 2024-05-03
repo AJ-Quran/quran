@@ -1,3 +1,7 @@
 .bg_none {
   background-color: transparent !important;
 }
+
+.bg_theme_dr {
+  background-color: var(--bg-dark);
+}
