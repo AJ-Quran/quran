@@ -18,7 +18,7 @@ export default function OptimizeApp() {
     setOptimizing(true)
 
     const localData = loadLocal('quran')
-    const { usernames } = localData.accounts
+    const { usernames, active: activeUsername } = localData.accounts
     const newUsernames = []
 
     for (let i = 0; i < usernames.length; i++) {
@@ -27,6 +27,15 @@ export default function OptimizeApp() {
     }
 
     localData.accounts.usernames = newUsernames
+
+    const activeAccount = await getAccount(activeUsername)
+    if (!activeAccount) {
+      if (newUsernames.length > 0)
+        return (localData.accounts.active = newUsernames[0])
+
+      localData.accounts.active = ''
+    }
+
     saveLocal('quran', localData)
     setOptimizing(false)
 
