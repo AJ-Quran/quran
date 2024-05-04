@@ -13,7 +13,7 @@ import './AyahsArea.css'
 
 export default function AyahsArea({ arAyahs, engAyahs, surahI, setSurahI }) {
   const audioRef = useRef()
-  const [playing, setPlaying] = useState(false)
+  const [arPlaying, setArPlaying] = useState(false)
 
   const ayahsLen = arAyahs?.length || 0
   const { ayah } = surahI
@@ -30,7 +30,7 @@ export default function AyahsArea({ arAyahs, engAyahs, surahI, setSurahI }) {
     return () => {
       audio.removeEventListener('ended', audioFinished)
     }
-  }, [playing])
+  }, [arPlaying])
 
   function audioFinished() {
     setSurahI((cur) => ({ ...cur, ayah: cur.ayah + 1 }))
@@ -39,14 +39,14 @@ export default function AyahsArea({ arAyahs, engAyahs, surahI, setSurahI }) {
   function toggleAudio() {
     const audio = audioRef.current
 
-    if (playing) {
+    if (arPlaying) {
       pause(audio)
-      setPlaying(false)
+      setArPlaying(false)
       return
     }
 
     play(audio)
-    setPlaying(true)
+    setArPlaying(true)
   }
 
   return (
@@ -67,7 +67,7 @@ export default function AyahsArea({ arAyahs, engAyahs, surahI, setSurahI }) {
             <AyahsAreaButtons
               surahI={surahI}
               setSurahI={setSurahI}
-              setPlaying={setPlaying}
+              setArPlaying={setArPlaying}
             />
           )}
         </div>
@@ -77,13 +77,13 @@ export default function AyahsArea({ arAyahs, engAyahs, surahI, setSurahI }) {
               <div className="list_x w_100">
                 <div className="con_bd_df con_ha df_f_ce" onClick={toggleAudio}>
                   <span className="material-symbols-outlined fz_normal">
-                    {playing && <span>pause</span>}
-                    {!playing && <span>play_arrow</span>}
+                    {arPlaying && <span>pause</span>}
+                    {!arPlaying && <span>play_arrow</span>}
                   </span>
                   <audio
                     ref={audioRef}
                     src={arAyahs[ayah]?.audio}
-                    autoPlay={playing}
+                    autoPlay={arPlaying}
                   ></audio>
                 </div>
               </div>
@@ -95,7 +95,21 @@ export default function AyahsArea({ arAyahs, engAyahs, surahI, setSurahI }) {
                 {arAyahs[ayah]?.text}
               </p>
             </div>
-            <div className="con_bg_df ayahs_text_area df_f_ce ayahs_eng_area">
+            <div className="con_bg_df ayahs_text_area df_f_ce ayahs_eng_area list_y">
+              <div className="list_x w_100">
+                <div className="con_bd_df con_ha df_f_ce" onClick={toggleAudio}>
+                  <span className="material-symbols-outlined fz_normal">
+                    {arPlaying && <span>pause</span>}
+                    {!arPlaying && <span>play_arrow</span>}
+                  </span>
+                  <audio
+                    ref={audioRef}
+                    src={arAyahs[ayah]?.audio}
+                    autoPlay={arPlaying}
+                  ></audio>
+                </div>
+              </div>
+              <div className="line_x_small line_dark"></div>
               <p className="w_100" style={{ fontSize: `${fontSizes.en}px` }}>
                 {engAyahs[ayah]?.text}
               </p>
@@ -107,7 +121,7 @@ export default function AyahsArea({ arAyahs, engAyahs, surahI, setSurahI }) {
         <AyahsAreaButtons
           surahI={surahI}
           setSurahI={setSurahI}
-          setPlaying={setPlaying}
+          setArPlaying={setArPlaying}
         />
       )}
     </div>
