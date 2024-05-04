@@ -36,45 +36,47 @@ export default function AyahsArea({ arAyahs, engAyahs, surahI, setSurahI }) {
   }, [arPlaying])
 
   useEffect(() => {
-    if (!enPlaying) return
-
-    read(engText.current.textContent, () => {
-      setSurahI((cur) => ({ ...cur, ayah: cur.ayah + 1 }))
-    })
+    if (enPlaying) readEnglish()
   }, [surahI?.ayah])
 
-  function audioFinished() {
-    setSurahI((cur) => ({ ...cur, ayah: cur.ayah + 1 }))
+  function toggleAudio() {
+    if (arPlaying) return stopArabic(audioRef?.current)
+
+    stopEnglish()
+    readArabic(audioRef?.current)
   }
 
-  function toggleAudio() {
-    const audio = audioRef?.current
+  function toggleEngAudio() {
+    if (enPlaying) return stopEnglish()
 
-    if (arPlaying) {
-      pause(audio)
-      setArPlaying(false)
-      return
-    }
-    readStop()
-    setEnPlaying(false)
+    stopArabic(audioRef?.current)
+    readEnglish()
+  }
 
+  function readArabic(audio) {
     play(audio)
     setArPlaying(true)
   }
 
-  function toggleEngAudio() {
-    if (enPlaying) {
-      readStop()
-      setEnPlaying(false)
-      return
-    }
-    pause(audioRef?.current)
+  function stopArabic(audio) {
+    pause(audio)
     setArPlaying(false)
+  }
 
+  function readEnglish() {
     read(engText.current.textContent, () => {
-      setSurahI((cur) => ({ ...cur, ayah: cur.ayah + 1 }))
+      audioFinished()
     })
     setEnPlaying(true)
+  }
+
+  function stopEnglish() {
+    readStop()
+    setEnPlaying(false)
+  }
+
+  function audioFinished() {
+    setSurahI((cur) => ({ ...cur, ayah: cur.ayah + 1 }))
   }
 
   return (
