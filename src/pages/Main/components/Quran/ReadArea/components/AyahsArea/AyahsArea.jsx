@@ -16,7 +16,7 @@ export default function AyahsArea({ arAyahs, engAyahs, surahI, setSurahI }) {
   const audioRef = useRef()
   const engText = useRef()
   const [arPlaying, setArPlaying] = useState(false)
-  const [engPlaying, setEngPlaying] = useState(false)
+  const [enPlaying, setEnPlaying] = useState(false)
 
   const ayahsLen = arAyahs?.length || 0
   const { ayah } = surahI
@@ -36,7 +36,7 @@ export default function AyahsArea({ arAyahs, engAyahs, surahI, setSurahI }) {
   }, [arPlaying])
 
   useEffect(() => {
-    if (!engPlaying) return
+    if (!enPlaying) return
 
     read(engText.current.textContent, () => {
       setSurahI((cur) => ({ ...cur, ayah: cur.ayah + 1 }))
@@ -56,16 +56,16 @@ export default function AyahsArea({ arAyahs, engAyahs, surahI, setSurahI }) {
       return
     }
     readStop()
-    setEngPlaying(false)
+    setEnPlaying(false)
 
     play(audio)
     setArPlaying(true)
   }
 
   function toggleEngAudio() {
-    if (engPlaying) {
+    if (enPlaying) {
       readStop()
-      setEngPlaying(false)
+      setEnPlaying(false)
       return
     }
     pause(audioRef?.current)
@@ -74,7 +74,7 @@ export default function AyahsArea({ arAyahs, engAyahs, surahI, setSurahI }) {
     read(engText.current.textContent, () => {
       setSurahI((cur) => ({ ...cur, ayah: cur.ayah + 1 }))
     })
-    setEngPlaying(true)
+    setEnPlaying(true)
   }
 
   return (
@@ -130,14 +130,9 @@ export default function AyahsArea({ arAyahs, engAyahs, surahI, setSurahI }) {
                   onClick={toggleEngAudio}
                 >
                   <span className="material-symbols-outlined fz_normal">
-                    {engPlaying && <span>pause</span>}
-                    {!engPlaying && <span>play_arrow</span>}
+                    {enPlaying && <span>pause</span>}
+                    {!enPlaying && <span>play_arrow</span>}
                   </span>
-                  <audio
-                    ref={audioRef}
-                    src={arAyahs[ayah]?.audio}
-                    autoPlay={arPlaying}
-                  ></audio>
                 </div>
               </div>
               <div className="line_x_small line_dark"></div>
