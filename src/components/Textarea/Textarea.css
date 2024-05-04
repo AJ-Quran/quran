@@ -29,7 +29,6 @@
   pointer-events: none;
   top: var(--pd-small);
   left: var(--pd-small);
-  transition: all 0.2s ease-in-out;
 }
 
 .textarea_area label.active {

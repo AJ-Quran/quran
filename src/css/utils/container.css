@@ -50,7 +50,6 @@
     var(--gradient-4) 85%
   );
   background-size: 100%;
-  transition: all 0.3s ease;
 
   &.con_a {
     &:active {

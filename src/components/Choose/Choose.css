@@ -54,7 +54,6 @@ span {
   background-color: var(--main-color-light);
   pointer-events: none;
   opacity: 0;
-  transition: all 0.3s ease;
   animation: opa 0.3s 0.3s ease-in forwards;
 }
 
