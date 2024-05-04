@@ -30,3 +30,7 @@
 .ayahs_eng_area {
   line-height: 140%;
 }
+
+audio {
+  display: none;
+}
