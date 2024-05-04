@@ -8,11 +8,5 @@
   );
   background-size: 400% 400%;
   background-position: 0% 50%;
-  animation: activeBg 5s ease infinite;
-}
-
-@keyframes activeBg {
-  50% {
-    background-position: 100% 50%;
-  }
+  animation: bgPos10050 5s ease infinite;
 }

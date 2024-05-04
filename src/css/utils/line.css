@@ -9,19 +9,26 @@
   }
 }
 
+.line_x,
+.line_x_small {
+  width: 0;
+  margin: 0 auto;
+  animation: widthTo100 0.3s 0.2s ease forwards;
+}
+
 .line_x {
-  width: 100%;
   height: var(--line-size);
 }
 
 .line_x_small {
-  width: 100%;
   height: calc(var(--line-size) / 2);
 }
 
 .line_y {
+  height: 0;
+  margin: auto 0;
   width: var(--line-size);
-  height: 100%;
+  animation: heightTo100 0.3s 0.2s ease forwards;
 }
 
 :root {

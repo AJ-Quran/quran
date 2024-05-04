@@ -24,6 +24,8 @@
   max-width: var(--alert-con-max-size);
   padding: var(--pd-small);
   text-decoration: balance;
+  scale: 1.02;
+  animation: scaleTo1 0.3s ease forwards;
 }
 
 .alert_con .title {
