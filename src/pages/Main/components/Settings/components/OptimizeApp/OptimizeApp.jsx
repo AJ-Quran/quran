@@ -35,7 +35,7 @@ export default function OptimizeApp() {
         {message.msg}
       </Message>
       <div
-        className="con_bd_df con_ha list_x df_jc_ce"
+        className="con_bd_cl con_bg_dr con_ha list_x df_jc_ce"
         onClick={optimize}
         disabled={optimizing}
       >
