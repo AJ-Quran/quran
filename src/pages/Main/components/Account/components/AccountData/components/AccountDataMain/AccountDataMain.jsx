@@ -122,6 +122,13 @@ export default function AccountDataMain({
       </div>
       {logingout && (
         <Alert title="Log out" onHide={() => setLogingout(false)}>
+          <div className="con_bg_dr df_ai_ce list_x fz_small">
+            <Avatar style={{ height: 40, fontSize: '14px' }} />
+            <div className="list_y">
+              <b>{account?.name}</b>
+              <span className="txt_opa fz_small">@{account?.username}</span>
+            </div>
+          </div>
           <div>
             You should <b>reload</b> the page to apply changes.
           </div>
