@@ -12,6 +12,11 @@
   width: 100%;
 }
 
+.ayah_area_buttons {
+  position: sticky;
+  bottom: 0;
+}
+
 .ayahs_area button {
   border-radius: var(--bd-ra-big) !important;
   aspect-ratio: auto !important;
