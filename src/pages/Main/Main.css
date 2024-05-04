@@ -76,6 +76,11 @@
   border-radius: 50%;
 }
 
+.social_media > a {
+  scale: 0;
+  animation: scaleTo1 0.3s ease forwards;
+}
+
 :root {
   --menu-size: 70px;
 }
