@@ -106,10 +106,10 @@ export default function AyahsArea({ arAyahs, engAyahs, surahI, setSurahI }) {
             <div className="con_bg_df ayahs_text_area df_f_ce list_y">
               <div className="list_x w_100">
                 <div className="con_bd_df con_ha df_f_ce" onClick={toggleAudio}>
-                  <span className="material-symbols-outlined fz_normal">
-                    {arPlaying && <span>pause</span>}
-                    {!arPlaying && <span>play_arrow</span>}
+                  <span className={`material-symbols-outlined fz_normal`}>
+                    {arPlaying ? 'pause' : 'play_arrow'}
                   </span>
+
                   <audio
                     ref={audioRef}
                     src={arAyahs[ayah]?.audio}
@@ -131,9 +131,8 @@ export default function AyahsArea({ arAyahs, engAyahs, surahI, setSurahI }) {
                   className="con_bd_df con_ha df_f_ce"
                   onClick={toggleEngAudio}
                 >
-                  <span className="material-symbols-outlined fz_normal">
-                    {enPlaying && <span>pause</span>}
-                    {!enPlaying && <span>play_arrow</span>}
+                  <span className={`material-symbols-outlined fz_normal`}>
+                    {enPlaying ? 'pause' : 'play_arrow'}
                   </span>
                 </div>
               </div>
