@@ -5,10 +5,8 @@ import Textarea from '../../../../../../components/Textarea/Textarea'
 import Button from '../../../../../../components/Button/Button'
 import Message from '../../../../../../components/Message/Message'
 
-import { getData } from '../../../../../../js/utils/form'
 import { msgData } from '../../../../../../js/utils/message'
 import { sendFeedback } from '../../../../../../js/utils/feedback'
-import { wait } from '@testing-library/user-event/dist/utils'
 import { getAccount } from '../../../../../../js/account/account'
 import { loadLocal } from '../../../../../../js/db/localStorage'
 
@@ -17,6 +15,7 @@ export default function HomeFeedback() {
   const nameInput = useRef()
   const emailInput = useRef()
   const msgTextarea = useRef()
+  const [autoFillData, setAutoFillData] = useState({ name: '' })
   const [message, setMessage] = useState({
     msg: '',
     type: 'default',
@@ -24,7 +23,7 @@ export default function HomeFeedback() {
   })
 
   async function autoFill() {
-    if (nameInput.current.value) return
+    if (autoFillData.name) return
 
     const nameParent = nameInput.current.parentElement
     nameParent.classList.add('active')
@@ -50,7 +49,7 @@ export default function HomeFeedback() {
       nameParent.classList.remove('active')
 
       setMessage({
-        msg: 'Your account has been deleted',
+        msg: 'Your account has not been found',
         type: 'error',
         show: true,
       })
@@ -61,11 +60,8 @@ export default function HomeFeedback() {
       return
     }
 
-    await wait(1000)
-
     const nameLabel = nameParent.querySelector('label')
-
-    nameInput.current.value = account.name
+    setAutoFillData({ ...autoFillData, name: account.name })
 
     nameLabel.classList.add('active')
     nameParent.classList.remove('active')
@@ -73,9 +69,15 @@ export default function HomeFeedback() {
   }
 
   async function send() {
-    const formData = getData(form.current)
-    if (!formData.ok) {
-      setMessage({ msg: formData.msg, type: 'error', show: true })
+    if (!msgTextarea.current.value) {
+      msgTextarea.current.classList.add('error')
+      msgTextarea.current.focus()
+
+      setMessage({
+        msg: 'Write the message',
+        type: 'error',
+        show: true,
+      })
       setTimeout(
         () => setMessage({ ...message, show: false }),
         msgData.time * 1000
@@ -83,7 +85,12 @@ export default function HomeFeedback() {
       return
     }
 
-    await sendFeedback(formData.inputs)
+    await sendFeedback({
+      name: nameInput.current.value,
+      email: emailInput.current.value,
+      message: msgTextarea.current.value,
+    })
+
     setMessage({
       msg: 'Feedback sent successfully!',
       type: 'success',
@@ -128,26 +135,33 @@ export default function HomeFeedback() {
           </div>
           <div ref={form} className="list_y">
             <div className="list_x">
-              <Input
-                ref={nameInput}
-                type="text"
-                label="Name"
-                areaProps={{ className: 'active_bg_anim' }}
-              />
+              {!autoFillData.name && (
+                <Input
+                  ref={nameInput}
+                  type="text"
+                  label="Name"
+                  areaProps={{ className: 'active_bg_anim' }}
+                />
+              )}
+              {autoFillData.name && (
+                <Input
+                  ref={nameInput}
+                  value={autoFillData.name}
+                  type="text"
+                  label="Name"
+                  areaProps={{ className: 'active_bg_anim' }}
+                />
+              )}
               <Input ref={emailInput} type="text" label="Email" />
             </div>
             <Textarea ref={msgTextarea} label="Message" />
           </div>
-          <Button
-            className="medium list_x df_f_ce"
-            colorful="true"
-            onClick={send}
-          >
+          <div className="con_bd_cl con_ha list_x df_f_ce" onClick={send}>
             <span className="material-symbols-outlined fz_normal">
               forward_to_inbox
             </span>
             <span>Send</span>
-          </Button>
+          </div>
         </div>
         <div></div>
       </div>
