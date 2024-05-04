@@ -73,7 +73,7 @@ export default function AccountList() {
               title="Switch account"
               onHide={() => setSwitchAcc({ ...switchAcc, switch: false })}
             >
-              <div className="df_ai_ce list_x fz_small">
+              <div className="con_bg_dr df_ai_ce list_x fz_small">
                 <Avatar
                   style={{ height: 40, fontSize: '14px' }}
                   username={switchAcc.account?.username}
