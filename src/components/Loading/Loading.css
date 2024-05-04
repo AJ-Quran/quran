@@ -27,17 +27,7 @@
   border-right: none;
   width: var(--loading-size);
   height: var(--loading-size);
-  animation: rotate var(--loading-anim-duration) linear infinite;
-}
-
-@keyframes rotate {
-  0% {
-    transform: rotateY(var(--loading-rotate-deg)) rotateX(45deg) rotateZ(0deg);
-  }
-
-  100% {
-    transform: rotateY(var(--loading-rotate-deg)) rotateX(45deg) rotateZ(360deg);
-  }
+  animation: loadingRotate var(--loading-anim-duration) linear infinite;
 }
 
 .loading_text {

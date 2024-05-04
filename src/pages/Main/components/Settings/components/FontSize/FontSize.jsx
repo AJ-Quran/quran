@@ -26,7 +26,7 @@ export default function FontSize({ label, min, max, range, value, example }) {
     <>
       <div className="con_bg_dr list_y df_ai_ce font_size_area">
         <b>{txtCapitalizeFirstLetter(labelArr[label])}</b>
-        <p className="con" style={{ fontSize: `${fontSize}px` }}>
+        <p className="con font_size_example" style={{ fontSize: `${fontSize}px` }}>
           {example}
         </p>
         <div className="list_x df_jc_ce w_100">

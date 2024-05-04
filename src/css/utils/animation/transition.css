@@ -1,0 +1,20 @@
+*,
+*::before,
+*::after {
+  transition: background 0.1s ease, transform 0.3s ease, scale 0.3s ease,
+    box-shadow 0.3s ease, opacity 0.2s ease-in-out, width 0.2s ease,
+    top 0.2s ease, right 0.2s ease, bottom 0.2s ease, left 0.2s ease;
+}
+
+.con_bg_gradient {
+  transition: background 0.7s ease;
+}
+
+.chosen {
+  transition: top 0.4s ease-in-out, right 0.4s ease-in-out,
+    bottom 0.4s ease-in-out, left 0.4s ease-in-out;
+}
+
+.font_size_example {
+  transition: font-size 0.3s ease;
+}

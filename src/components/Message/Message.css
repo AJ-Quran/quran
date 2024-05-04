@@ -15,28 +15,6 @@
       var(--msg-show-time) forwards;
 }
 
-@keyframes slideIn {
-  from {
-    top: -100%;
-    transform: translate(-50%, -100%);
-  }
-  to {
-    top: var(--pd-small);
-    transform: translate(-50%, 0);
-  }
-}
-
-@keyframes slideOut {
-  from {
-    top: var(--pd-small);
-    transform: translate(-50%, 0);
-  }
-  to {
-    top: -100%;
-    transform: translate(-50%, -100%);
-  }
-}
-
 .message_area.success {
   --msg-bg: var(--success-color);
   --msg-bd: var(--success-color-border);
@@ -53,22 +31,7 @@
 }
 
 .message_area .icon {
-  animation: iconScale 0.5s ease 0.3s forwards;
-}
-
-@keyframes iconScale {
-  0% {
-    scale: 0;
-  }
-  40% {
-    scale: 1.2;
-  }
-  90% {
-    scale: 0.9;
-  }
-  100% {
-    scale: 1;
-  }
+  animation: unlinearScale 0.5s ease 0.3s forwards;
 }
 
 .message_timeline {
@@ -79,13 +42,7 @@
   height: var(--msg-timeline-size);
   border-top-right-radius: var(--bd-ra);
   background-color: var(--msg-bd);
-  animation: timeline var(--msg-show-time) linear forwards;
-}
-
-@keyframes timeline {
-  to {
-    width: 0;
-  }
+  animation: widthTo0 var(--msg-show-time) linear forwards;
 }
 
 :root {

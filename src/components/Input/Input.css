@@ -55,7 +55,6 @@
   top: 50%;
   left: var(--pd-small);
   transform: translateY(-50%);
-  transition: all 0.2s ease-in-out;
 }
 
 .input_area label.active {
@@ -78,7 +77,6 @@ input {
   padding: 0 var(--pd-small-very);
   opacity: 0;
   scale: 0;
-  transition: scale 0.3s ease;
 }
 
 .input_area:focus-within button,
