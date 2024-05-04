@@ -64,7 +64,11 @@ export default function AyahsArea({ arAyahs, engAyahs, surahI, setSurahI }) {
             </div>
           </div>
           {!isPhone && (
-            <AyahsAreaButtons surahI={surahI} setSurahI={setSurahI} />
+            <AyahsAreaButtons
+              surahI={surahI}
+              setSurahI={setSurahI}
+              setPlaying={setPlaying}
+            />
           )}
         </div>
         {ayah < ayahsLen && (
@@ -99,7 +103,13 @@ export default function AyahsArea({ arAyahs, engAyahs, surahI, setSurahI }) {
           </div>
         )}
       </div>
-      {isPhone && <AyahsAreaButtons surahI={surahI} setSurahI={setSurahI} />}
+      {isPhone && (
+        <AyahsAreaButtons
+          surahI={surahI}
+          setSurahI={setSurahI}
+          setPlaying={setPlaying}
+        />
+      )}
     </div>
   )
 }

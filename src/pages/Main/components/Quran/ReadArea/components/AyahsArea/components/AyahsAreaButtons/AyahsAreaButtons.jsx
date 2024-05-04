@@ -4,8 +4,10 @@ import Button from '../../../../../../../../../components/Button/Button'
 
 import { readDone } from '../../../../util/readDone'
 
-export default function AyahsAreaButtons({ surahI, setSurahI }) {
+export default function AyahsAreaButtons({ surahI, setSurahI, setPlaying }) {
   function back() {
+    setPlaying(false)
+
     if (surahI.ayah <= 0) return
     setSurahI({ ...surahI, ayah: surahI.ayah - 1 })
   }
@@ -15,6 +17,7 @@ export default function AyahsAreaButtons({ surahI, setSurahI }) {
   }
 
   function next() {
+    setPlaying(false)
     setSurahI({ ...surahI, ayah: surahI.ayah + 1 })
   }
 
