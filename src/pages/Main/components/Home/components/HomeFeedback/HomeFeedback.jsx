@@ -156,16 +156,12 @@ export default function HomeFeedback() {
             </div>
             <Textarea ref={msgTextarea} label="Message" />
           </div>
-          <Button
-            className="medium list_x df_f_ce"
-            colorful="true"
-            onClick={send}
-          >
+          <div className="con_bd_cl con_ha list_x df_f_ce" onClick={send}>
             <span className="material-symbols-outlined fz_normal">
               forward_to_inbox
             </span>
             <span>Send</span>
-          </Button>
+          </div>
         </div>
         <div></div>
       </div>
