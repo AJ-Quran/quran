@@ -25,11 +25,6 @@ export function isValidPassword(password) {
     return { msg: 'Write more than 3 characters', ok: false }
   }
 
-  const hasNumbers = /\d/
-  if (!hasNumbers.test(password.trim())) {
-    return { msg: 'Password must contain at least one number', ok: false }
-  }
-
   return { msg: 'Valid password', ok: true }
 }
 
