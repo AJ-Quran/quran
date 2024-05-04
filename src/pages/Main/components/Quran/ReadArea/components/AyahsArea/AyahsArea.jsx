@@ -1,3 +1,5 @@
+import { useEffect, useRef, useState } from 'react'
+
 import ProgressBar from '../ProgressBar/ProgressBar'
 import AyahsAreaButtons from './components/AyahsAreaButtons/AyahsAreaButtons'
 
@@ -5,10 +7,17 @@ import { ceil } from '../../../../../../../js/math/number'
 import { progressPercent } from '../../../../../../../js/math/percent'
 import { deviceIsPhone } from '../../../../../../../js/utils/device'
 import { getFontSize } from '../../../../Settings/utils/getFontSize'
+import { pause, play } from '../../../../../../../js/utils/audio'
+import { read, readStop } from '../../../../../../../js/utils/read'
 
 import './AyahsArea.css'
 
 export default function AyahsArea({ arAyahs, engAyahs, surahI, setSurahI }) {
+  const audioRef = useRef()
+  const engText = useRef()
+  const [arPlaying, setArPlaying] = useState(false)
+  const [enPlaying, setEnPlaying] = useState(false)
+
   const ayahsLen = arAyahs?.length || 0
   const { ayah } = surahI
 
@@ -16,6 +25,59 @@ export default function AyahsArea({ arAyahs, engAyahs, surahI, setSurahI }) {
 
   const progress = progressPercent(ayah, arAyahs?.length)
   const isPhone = deviceIsPhone()
+
+  useEffect(() => {
+    const audio = audioRef?.current
+    audio.addEventListener('ended', audioFinished)
+
+    return () => {
+      audio.removeEventListener('ended', audioFinished)
+    }
+  }, [arPlaying])
+
+  useEffect(() => {
+    if (enPlaying) readEnglish()
+  }, [surahI?.ayah])
+
+  function toggleAudio() {
+    if (arPlaying) return stopArabic(audioRef?.current)
+
+    stopEnglish()
+    readArabic(audioRef?.current)
+  }
+
+  function toggleEngAudio() {
+    if (enPlaying) return stopEnglish()
+
+    stopArabic(audioRef?.current)
+    readEnglish()
+  }
+
+  function readArabic(audio) {
+    play(audio)
+    setArPlaying(true)
+  }
+
+  function stopArabic(audio) {
+    pause(audio)
+    setArPlaying(false)
+  }
+
+  function readEnglish() {
+    read(engText.current.textContent, () => {
+      audioFinished()
+    })
+    setEnPlaying(true)
+  }
+
+  function stopEnglish() {
+    readStop()
+    setEnPlaying(false)
+  }
+
+  function audioFinished() {
+    setSurahI((cur) => ({ ...cur, ayah: cur.ayah + 1 }))
+  }
 
   return (
     <div className="ayahs_area list_y df_jc_sb h_100">
@@ -32,12 +94,30 @@ export default function AyahsArea({ arAyahs, engAyahs, surahI, setSurahI }) {
             </div>
           </div>
           {!isPhone && (
-            <AyahsAreaButtons surahI={surahI} setSurahI={setSurahI} />
+            <AyahsAreaButtons
+              surahI={surahI}
+              setSurahI={setSurahI}
+              setArPlaying={setArPlaying}
+            />
           )}
         </div>
         {ayah < ayahsLen && (
           <div className="list_y">
-            <div className="con_bg_df ayahs_text_area df_f_ce">
+            <div className="con_bg_df ayahs_text_area df_f_ce list_y">
+              <div className="list_x w_100">
+                <div className="con_bd_df con_ha df_f_ce" onClick={toggleAudio}>
+                  <span className={`material-symbols-outlined fz_normal`}>
+                    {arPlaying ? 'pause' : 'play_arrow'}
+                  </span>
+
+                  <audio
+                    ref={audioRef}
+                    src={arAyahs[ayah]?.audio}
+                    autoPlay={arPlaying}
+                  ></audio>
+                </div>
+              </div>
+              <div className="line_x_small line_dark"></div>
               <p
                 className="txt_ar w_100"
                 style={{ fontSize: `${fontSizes.ar}px` }}
@@ -45,15 +125,36 @@ export default function AyahsArea({ arAyahs, engAyahs, surahI, setSurahI }) {
                 {arAyahs[ayah]?.text}
               </p>
             </div>
-            <div className="con_bg_df ayahs_text_area df_f_ce ayahs_eng_area">
-              <p className="w_100" style={{ fontSize: `${fontSizes.en}px` }}>
+            <div className="con_bg_df ayahs_text_area df_f_ce ayahs_eng_area list_y">
+              <div className="list_x w_100">
+                <div
+                  className="con_bd_df con_ha df_f_ce"
+                  onClick={toggleEngAudio}
+                >
+                  <span className={`material-symbols-outlined fz_normal`}>
+                    {enPlaying ? 'pause' : 'play_arrow'}
+                  </span>
+                </div>
+              </div>
+              <div className="line_x_small line_dark"></div>
+              <p
+                ref={engText}
+                className="w_100"
+                style={{ fontSize: `${fontSizes.en}px` }}
+              >
                 {engAyahs[ayah]?.text}
               </p>
             </div>
           </div>
         )}
       </div>
-      {isPhone && <AyahsAreaButtons surahI={surahI} setSurahI={setSurahI} />}
+      {isPhone && (
+        <AyahsAreaButtons
+          surahI={surahI}
+          setSurahI={setSurahI}
+          setArPlaying={setArPlaying}
+        />
+      )}
     </div>
   )
 }
