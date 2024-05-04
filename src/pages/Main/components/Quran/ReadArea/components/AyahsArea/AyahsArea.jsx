@@ -8,12 +8,15 @@ import { progressPercent } from '../../../../../../../js/math/percent'
 import { deviceIsPhone } from '../../../../../../../js/utils/device'
 import { getFontSize } from '../../../../Settings/utils/getFontSize'
 import { pause, play } from '../../../../../../../js/utils/audio'
+import { read, readStop } from '../../../../../../../js/utils/read'
 
 import './AyahsArea.css'
 
 export default function AyahsArea({ arAyahs, engAyahs, surahI, setSurahI }) {
   const audioRef = useRef()
+  const engText = useRef()
   const [arPlaying, setArPlaying] = useState(false)
+  const [engPlaying, setEngPlaying] = useState(false)
 
   const ayahsLen = arAyahs?.length || 0
   const { ayah } = surahI
@@ -24,7 +27,7 @@ export default function AyahsArea({ arAyahs, engAyahs, surahI, setSurahI }) {
   const isPhone = deviceIsPhone()
 
   useEffect(() => {
-    const audio = audioRef.current
+    const audio = audioRef?.current
     audio.addEventListener('ended', audioFinished)
 
     return () => {
@@ -32,21 +35,46 @@ export default function AyahsArea({ arAyahs, engAyahs, surahI, setSurahI }) {
     }
   }, [arPlaying])
 
+  useEffect(() => {
+    if (!engPlaying) return
+
+    read(engText.current.textContent, () => {
+      setSurahI((cur) => ({ ...cur, ayah: cur.ayah + 1 }))
+    })
+  }, [surahI?.ayah])
+
   function audioFinished() {
     setSurahI((cur) => ({ ...cur, ayah: cur.ayah + 1 }))
   }
 
   function toggleAudio() {
-    const audio = audioRef.current
+    const audio = audioRef?.current
 
     if (arPlaying) {
       pause(audio)
       setArPlaying(false)
       return
     }
+    readStop()
+    setEngPlaying(false)
 
     play(audio)
     setArPlaying(true)
+  }
+
+  function toggleEngAudio() {
+    if (engPlaying) {
+      readStop()
+      setEngPlaying(false)
+      return
+    }
+    pause(audioRef?.current)
+    setArPlaying(false)
+
+    read(engText.current.textContent, () => {
+      setSurahI((cur) => ({ ...cur, ayah: cur.ayah + 1 }))
+    })
+    setEngPlaying(true)
   }
 
   return (
@@ -97,10 +125,13 @@ export default function AyahsArea({ arAyahs, engAyahs, surahI, setSurahI }) {
             </div>
             <div className="con_bg_df ayahs_text_area df_f_ce ayahs_eng_area list_y">
               <div className="list_x w_100">
-                <div className="con_bd_df con_ha df_f_ce" onClick={toggleAudio}>
+                <div
+                  className="con_bd_df con_ha df_f_ce"
+                  onClick={toggleEngAudio}
+                >
                   <span className="material-symbols-outlined fz_normal">
-                    {arPlaying && <span>pause</span>}
-                    {!arPlaying && <span>play_arrow</span>}
+                    {engPlaying && <span>pause</span>}
+                    {!engPlaying && <span>play_arrow</span>}
                   </span>
                   <audio
                     ref={audioRef}
@@ -110,7 +141,11 @@ export default function AyahsArea({ arAyahs, engAyahs, surahI, setSurahI }) {
                 </div>
               </div>
               <div className="line_x_small line_dark"></div>
-              <p className="w_100" style={{ fontSize: `${fontSizes.en}px` }}>
+              <p
+                ref={engText}
+                className="w_100"
+                style={{ fontSize: `${fontSizes.en}px` }}
+              >
                 {engAyahs[ayah]?.text}
               </p>
             </div>
