@@ -1,5 +1,6 @@
 .scroll_y {
   overflow: hidden auto;
+  scrollbar-gutter: stable both-edges;
 }
 
 .scroll_y::-webkit-scrollbar {
@@ -8,6 +9,7 @@
 
 .scroll_x {
   overflow: auto hidden;
+  scrollbar-gutter: stable both-edges;
 }
 
 .scroll_x::-webkit-scrollbar {
