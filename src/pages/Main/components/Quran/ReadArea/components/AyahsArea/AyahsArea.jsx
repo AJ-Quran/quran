@@ -2,26 +2,28 @@ import { useEffect, useRef, useState } from 'react'
 
 import ProgressBar from '../ProgressBar/ProgressBar'
 import AyahsAreaButtons from './components/AyahsAreaButtons/AyahsAreaButtons'
-import FontSizeSlider from '../../../../Settings/components/FontSize/FontSizeSlider'
 
 import { ceil } from '../../../../../../../js/math/number'
 import { progressPercent } from '../../../../../../../js/math/percent'
 import { deviceIsPhone } from '../../../../../../../js/utils/device'
-import {
-  fontSizeData,
-  getFontSize,
-} from '../../../../Settings/utils/getFontSize'
 import { pause, play } from '../../../../../../../js/utils/audio'
 import { read, readStop } from '../../../../../../../js/utils/read'
+import { getFontSize } from '../../../../Settings/utils/getFontSize'
 
 import './AyahsArea.css'
 
-export default function AyahsArea({ arAyahs, engAyahs, surahI, setSurahI }) {
+export default function AyahsArea({
+  arAyahs,
+  engAyahs,
+  surahI,
+  setSurahI,
+  setShowSettings,
+}) {
   const audioRef = useRef()
   const engText = useRef()
   const [arPlaying, setArPlaying] = useState(false)
   const [enPlaying, setEnPlaying] = useState(false)
-  const [fontSizes, setFontSizes] = useState(getFontSize())
+  const fontSizes = getFontSize()
 
   const ayahsLen = arAyahs?.length || 0
   const { ayah } = surahI
@@ -82,11 +84,6 @@ export default function AyahsArea({ arAyahs, engAyahs, surahI, setSurahI }) {
     setSurahI((cur) => ({ ...cur, ayah: cur.ayah + 1 }))
   }
 
-  useEffect(() => {
-    if (typeof fontSizes === 'object') return
-    setFontSizes(getFontSize())
-  }, [fontSizes])
-
   return (
     <div className="ayahs_area list_y df_jc_sb h_100">
       <div className="list_y">
@@ -117,22 +114,20 @@ export default function AyahsArea({ arAyahs, engAyahs, surahI, setSurahI }) {
                   <span className={`material-symbols-outlined fz_normal`}>
                     {arPlaying ? 'pause' : 'play_arrow'}
                   </span>
-
                   <audio
                     ref={audioRef}
                     src={arAyahs[ayah]?.audio}
                     autoPlay={arPlaying}
                   ></audio>
                 </div>
-                <FontSizeSlider
-                  label="ar"
-                  min={fontSizeData.ar.min}
-                  max={fontSizeData.ar.max}
-                  value={fontSizes.ar}
-                  setFontSize={setFontSizes}
-                  className="df_jc_end"
-                  darkSlider="true"
-                />
+                <div
+                  className="con_bd_df con_ha df_f_ce"
+                  onClick={() => setShowSettings(true)}
+                >
+                  <span className="material-symbols-outlined fz_normal">
+                    settings
+                  </span>
+                </div>
               </div>
               <div className="line_x_small line_dark"></div>
               <p
@@ -152,15 +147,14 @@ export default function AyahsArea({ arAyahs, engAyahs, surahI, setSurahI }) {
                     {enPlaying ? 'pause' : 'play_arrow'}
                   </span>
                 </div>
-                <FontSizeSlider
-                  label="en"
-                  min={fontSizeData.en.min}
-                  max={fontSizeData.en.max}
-                  value={fontSizes.en}
-                  setFontSize={setFontSizes}
-                  className="df_jc_end"
-                  darkSlider="true"
-                />
+                <div
+                  className="con_bd_df con_ha df_f_ce"
+                  onClick={() => setShowSettings(true)}
+                >
+                  <span className="material-symbols-outlined fz_normal">
+                    settings
+                  </span>
+                </div>
               </div>
               <div className="line_x_small line_dark"></div>
               <p

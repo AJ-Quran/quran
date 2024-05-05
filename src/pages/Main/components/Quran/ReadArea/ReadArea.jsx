@@ -4,14 +4,19 @@ import Loading from '../../../../../components/Loading/Loading'
 import AyahsArea from './components/AyahsArea/AyahsArea'
 import SurahName from './components/SurahName/SurahName'
 import UserHasRead from './components/UserHasRead/UserHasRead'
+import Alert from '../../../../../components/Alert/Alert'
+import FontSize from '../../Settings/components/FontSize/FontSize'
 
 import useFetch from '../../../../../hooks/useFetch'
 import { wait } from '../../../../../js/utils/wait'
+import { fontSizeData, getFontSize } from '../../Settings/utils/getFontSize'
 
 import './ReadArea.css'
 
 export default function ReadArea({ surahI, setSurahI }) {
   const [loading, setLoading] = useState(true)
+  const [showSettings, setShowSettings] = useState(false)
+  const fontSizes = getFontSize()
   const { data: arData } = useFetch(
     `https://api.alquran.cloud/v1/surah/${surahI.surah}/ar.alafasy`
   )
@@ -78,12 +83,33 @@ export default function ReadArea({ surahI, setSurahI }) {
               engAyahs={engSurahData?.ayahs}
               surahI={surahI}
               setSurahI={setSurahI}
+              setShowSettings={setShowSettings}
             />
           )}
           {!loading && userHasRead && (
             <UserHasRead surahI={surahI} setSurahI={setSurahI} />
           )}
         </div>
+        {showSettings && (
+          <Alert title="Settings" onHide={() => setShowSettings(false)}>
+            <div className="title df_jc_ce">Font Size</div>
+            <div className="line_x line_dark"></div>
+            <FontSize
+              label="ar"
+              min={fontSizeData.ar.min}
+              max={fontSizeData.ar.max}
+              value={fontSizes.ar}
+              example="بِسْمِ ٱللَّهِ ٱلرَّحْمَٰنِ ٱلرَّحِيمِ"
+            />
+            <FontSize
+              label="en"
+              min={fontSizeData.en.min}
+              max={fontSizeData.en.max}
+              value={fontSizes.en}
+              example="In the name of God, the Most Gracious, the Most Merciful"
+            />
+          </Alert>
+        )}
       </div>
     </>
   )

@@ -28,7 +28,7 @@ export default function FontSizeSlider({
 
   return (
     <>
-      <div className={`list_x df_jc_ce w_100 ${className}`}>
+      <div className={`list_x df_jc_ce df_ai_ce w_100 ${className}`}>
         <span className="material-symbols-outlined fz_normal">title</span>
         <Slider
           min={min}
