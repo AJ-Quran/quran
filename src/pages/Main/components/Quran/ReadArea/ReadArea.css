@@ -8,7 +8,7 @@
   padding: var(--pd-small-very);
 }
 
-.read_area button {
+.read_area button:not(.alert_area button) {
   border-radius: 50%;
   aspect-ratio: 1/1;
 }
