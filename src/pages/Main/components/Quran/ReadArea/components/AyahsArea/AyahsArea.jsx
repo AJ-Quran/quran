@@ -79,6 +79,11 @@ export default function AyahsArea({ arAyahs, engAyahs, surahI, setSurahI }) {
     setSurahI((cur) => ({ ...cur, ayah: cur.ayah + 1 }))
   }
 
+  useEffect(() => {
+    if (typeof fontSizes === 'object') return
+    setFontSizes(getFontSize())
+  }, [fontSizes])
+
   return (
     <div className="ayahs_area list_y df_jc_sb h_100">
       <div className="list_y">
@@ -128,7 +133,7 @@ export default function AyahsArea({ arAyahs, engAyahs, surahI, setSurahI }) {
               </div>
               <div className="line_x_small line_dark"></div>
               <p
-                className="txt_ar w_100"
+                className="txt_ar w_100 font_size_transition"
                 style={{ fontSize: `${fontSizes.ar}px` }}
               >
                 {arAyahs[ayah]?.text}
@@ -157,7 +162,7 @@ export default function AyahsArea({ arAyahs, engAyahs, surahI, setSurahI }) {
               <div className="line_x_small line_dark"></div>
               <p
                 ref={engText}
-                className="w_100"
+                className="w_100 font_size_transition"
                 style={{ fontSize: `${fontSizes.en}px` }}
               >
                 {engAyahs[ayah]?.text}
