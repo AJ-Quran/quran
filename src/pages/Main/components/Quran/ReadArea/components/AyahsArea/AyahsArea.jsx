@@ -7,7 +7,10 @@ import FontSizeSlider from '../../../../Settings/components/FontSize/FontSizeSli
 import { ceil } from '../../../../../../../js/math/number'
 import { progressPercent } from '../../../../../../../js/math/percent'
 import { deviceIsPhone } from '../../../../../../../js/utils/device'
-import { getFontSize } from '../../../../Settings/utils/getFontSize'
+import {
+  fontSizeData,
+  getFontSize,
+} from '../../../../Settings/utils/getFontSize'
 import { pause, play } from '../../../../../../../js/utils/audio'
 import { read, readStop } from '../../../../../../../js/utils/read'
 
@@ -123,8 +126,8 @@ export default function AyahsArea({ arAyahs, engAyahs, surahI, setSurahI }) {
                 </div>
                 <FontSizeSlider
                   label="ar"
-                  min="14"
-                  max="30"
+                  min={fontSizeData.ar.min}
+                  max={fontSizeData.ar.max}
                   value={fontSizes.ar}
                   setFontSize={setFontSizes}
                   className="df_jc_end"
@@ -151,8 +154,8 @@ export default function AyahsArea({ arAyahs, engAyahs, surahI, setSurahI }) {
                 </div>
                 <FontSizeSlider
                   label="en"
-                  min="14"
-                  max="20"
+                  min={fontSizeData.en.min}
+                  max={fontSizeData.en.max}
                   value={fontSizes.en}
                   setFontSize={setFontSizes}
                   className="df_jc_end"

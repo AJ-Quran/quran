@@ -17,3 +17,14 @@ export function getFontSize() {
 
   return fontSizes
 }
+
+export const fontSizeData = {
+  ar: {
+    min: '14',
+    max: '30',
+  },
+  en: {
+    min: '14',
+    max: '20',
+  },
+}
