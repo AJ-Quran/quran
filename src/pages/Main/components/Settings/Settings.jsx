@@ -2,7 +2,7 @@ import ThemeArea from './components/ThemeArea/ThemeArea'
 import OptimizeApp from './components/OptimizeApp/OptimizeApp'
 import FontSize from './components/FontSize/FontSize'
 
-import { getFontSize } from './utils/getFontSize'
+import { fontSizeData, getFontSize } from './utils/getFontSize'
 
 export default function Settings() {
   const fontSizes = getFontSize()
@@ -23,15 +23,15 @@ export default function Settings() {
           <div className="line_x line_dark"></div>
           <FontSize
             label="ar"
-            min="14"
-            max="30"
+            min={fontSizeData.ar.min}
+            max={fontSizeData.ar.max}
             value={fontSizes.ar}
             example="بِسْمِ ٱللَّهِ ٱلرَّحْمَٰنِ ٱلرَّحِيمِ"
           />
           <FontSize
             label="en"
-            min="14"
-            max="20"
+            min={fontSizeData.en.min}
+            max={fontSizeData.en.max}
             value={fontSizes.en}
             example="In the name of God, the Most Gracious, the Most Merciful"
           />
