@@ -147,7 +147,7 @@ export default function AyahsArea({ arAyahs, engAyahs, surahI, setSurahI }) {
                 <FontSizeSlider
                   label="en"
                   min="14"
-                  max="30"
+                  max="20"
                   value={fontSizes.en}
                   setFontSize={setFontSizes}
                   className="df_jc_end"
