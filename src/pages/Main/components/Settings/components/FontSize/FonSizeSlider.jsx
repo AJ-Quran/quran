@@ -1,0 +1,41 @@
+import Slider from '../../../../../../components/Slider/Slider'
+import { loadLocal, saveLocal } from '../../../../../../js/db/localStorage'
+
+const labelArr = {
+  ar: 'arabic',
+  en: 'english',
+}
+
+export default function FonSizeSlider({
+  label,
+  min,
+  max,
+  range,
+  value,
+  setFontSize,
+}) {
+  function changeFontSize(fzVal) {
+    setFontSize(fzVal)
+
+    const localData = loadLocal('quran')
+    localData.settings.fontSize[labelArr[label]] = fzVal
+
+    saveLocal('quran', localData)
+  }
+
+  return (
+    <>
+      <div className="list_x df_jc_ce w_100">
+        <span className="material-symbols-outlined fz_normal">title</span>
+        <Slider
+          min={min}
+          max={max}
+          range={range}
+          value={value}
+          onChange={changeFontSize}
+        />
+        <span className="material-symbols-outlined">title</span>
+      </div>
+    </>
+  )
+}
