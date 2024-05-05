@@ -1,4 +1,5 @@
 import Slider from '../../../../../../components/Slider/Slider'
+
 import { loadLocal, saveLocal } from '../../../../../../js/db/localStorage'
 
 const labelArr = {
