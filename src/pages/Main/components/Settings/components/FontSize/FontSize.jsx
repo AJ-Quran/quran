@@ -1,6 +1,6 @@
 import { useState } from 'react'
 
-import FonSizeSlider from './FonSizeSlider'
+import FontSizeSlider from './FontSizeSlider'
 
 import { txtCapitalizeFirstLetter } from '../../../../../../js/utils/txt'
 
@@ -22,7 +22,7 @@ export default function FontSize({ label, min, max, range, value, example }) {
         >
           {example}
         </p>
-        <FonSizeSlider
+        <FontSizeSlider
           label={label}
           min={min}
           max={max}
