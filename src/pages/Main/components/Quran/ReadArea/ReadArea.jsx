@@ -92,6 +92,8 @@ export default function ReadArea({ surahI, setSurahI }) {
         </div>
         {showSettings && (
           <Alert title="Settings" onHide={() => setShowSettings(false)}>
+            <div className="title df_jc_ce">Font Size</div>
+            <div className="line_x line_dark"></div>
             <FontSize
               label="ar"
               min={fontSizeData.ar.min}
