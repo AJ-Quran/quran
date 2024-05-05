@@ -13,6 +13,8 @@ export default function FontSizeSlider({
   range,
   value,
   setFontSize,
+  className,
+  darkSlider,
 }) {
   function changeFontSize(fzVal) {
     setFontSize(fzVal)
@@ -25,7 +27,7 @@ export default function FontSizeSlider({
 
   return (
     <>
-      <div className="list_x df_jc_ce w_100">
+      <div className={`list_x df_jc_ce w_100 ${className}`}>
         <span className="material-symbols-outlined fz_normal">title</span>
         <Slider
           min={min}
@@ -33,6 +35,7 @@ export default function FontSizeSlider({
           range={range}
           value={value}
           onChange={changeFontSize}
+          className={darkSlider ? 'bg_theme_dr' : ''}
         />
         <span className="material-symbols-outlined">title</span>
       </div>

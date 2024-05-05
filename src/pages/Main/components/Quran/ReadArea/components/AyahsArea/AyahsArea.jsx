@@ -2,6 +2,7 @@ import { useEffect, useRef, useState } from 'react'
 
 import ProgressBar from '../ProgressBar/ProgressBar'
 import AyahsAreaButtons from './components/AyahsAreaButtons/AyahsAreaButtons'
+import FontSizeSlider from '../../../../Settings/components/FontSize/FontSizeSlider'
 
 import { ceil } from '../../../../../../../js/math/number'
 import { progressPercent } from '../../../../../../../js/math/percent'
@@ -17,11 +18,10 @@ export default function AyahsArea({ arAyahs, engAyahs, surahI, setSurahI }) {
   const engText = useRef()
   const [arPlaying, setArPlaying] = useState(false)
   const [enPlaying, setEnPlaying] = useState(false)
+  const [fontSizes, setFontSizes] = useState(getFontSize())
 
   const ayahsLen = arAyahs?.length || 0
   const { ayah } = surahI
-
-  const fontSizes = getFontSize()
 
   const progress = progressPercent(ayah, arAyahs?.length)
   const isPhone = deviceIsPhone()
@@ -104,7 +104,7 @@ export default function AyahsArea({ arAyahs, engAyahs, surahI, setSurahI }) {
         {ayah < ayahsLen && (
           <div className="list_y">
             <div className="con_bg_df ayahs_text_area df_f_ce list_y">
-              <div className="list_x w_100">
+              <div className="list_x df_jc_sb df_ai_ce_child w_100">
                 <div className="con_bd_df con_ha df_f_ce" onClick={toggleAudio}>
                   <span className={`material-symbols-outlined fz_normal`}>
                     {arPlaying ? 'pause' : 'play_arrow'}
@@ -116,6 +116,15 @@ export default function AyahsArea({ arAyahs, engAyahs, surahI, setSurahI }) {
                     autoPlay={arPlaying}
                   ></audio>
                 </div>
+                <FontSizeSlider
+                  label="ar"
+                  min="14"
+                  max="30"
+                  value={fontSizes.ar}
+                  setFontSize={setFontSizes}
+                  className="df_jc_end"
+                  darkSlider="true"
+                />
               </div>
               <div className="line_x_small line_dark"></div>
               <p
@@ -126,7 +135,7 @@ export default function AyahsArea({ arAyahs, engAyahs, surahI, setSurahI }) {
               </p>
             </div>
             <div className="con_bg_df ayahs_text_area df_f_ce ayahs_eng_area list_y">
-              <div className="list_x w_100">
+              <div className="list_x df_jc_sb df_ai_ce_child w_100">
                 <div
                   className="con_bd_df con_ha df_f_ce"
                   onClick={toggleEngAudio}
@@ -135,6 +144,15 @@ export default function AyahsArea({ arAyahs, engAyahs, surahI, setSurahI }) {
                     {enPlaying ? 'pause' : 'play_arrow'}
                   </span>
                 </div>
+                <FontSizeSlider
+                  label="en"
+                  min="14"
+                  max="30"
+                  value={fontSizes.en}
+                  setFontSize={setFontSizes}
+                  className="df_jc_end"
+                  darkSlider="true"
+                />
               </div>
               <div className="line_x_small line_dark"></div>
               <p
