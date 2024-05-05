@@ -6,7 +6,7 @@ const labelArr = {
   en: 'english',
 }
 
-export default function FonSizeSlider({
+export default function FontSizeSlider({
   label,
   min,
   max,
