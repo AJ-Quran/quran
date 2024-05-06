@@ -174,11 +174,8 @@ export default function AccountDataEditing({
           </AvatarToEdit>
           {showTooplit &&
             (isPhone ? (
-              <Alert onHide={() => setShowTooplit(false)} noTitle>
-                <div
-                  className="con_ha list_x df_f_ce txt_main"
-                  onClick={clickFileInput}
-                >
+              <Alert onHide={() => setShowTooplit(false)}>
+                <div className="con_ha list_x df_f_ce" onClick={clickFileInput}>
                   <span className="material-symbols-outlined fz_normal">
                     cloud_upload
                   </span>
@@ -207,7 +204,7 @@ export default function AccountDataEditing({
               <Tooplit onHide={() => setShowTooplit(false)} pos={tooplitPos}>
                 <div className="list_y_small">
                   <div
-                    className="con_ha list_x df_ai_ce txt_main"
+                    className="con blur_ha list_x df_ai_ce"
                     onClick={clickFileInput}
                   >
                     <span className="material-symbols-outlined fz_normal">
@@ -218,7 +215,7 @@ export default function AccountDataEditing({
                   </div>
                   {profileImg && (
                     <div
-                      className="con_ha list_x df_ai_ce txt_red"
+                      className="con blur_ha list_x df_ai_ce txt_red"
                       onClick={() => {
                         setProfileImg('')
                         setShowTooplit(false)
