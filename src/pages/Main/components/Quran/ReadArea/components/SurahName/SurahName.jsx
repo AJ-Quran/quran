@@ -1,7 +1,5 @@
 import { useEffect, useState } from 'react'
 
-import Button from '../../../../../../../components/Button/Button'
-
 import { toggleSurah } from '../../../../../../../js/db/quran/savedSurahs'
 import { loadLocal } from '../../../../../../../js/db/localStorage'
 import { load } from '../../../../../../../js/db/db'
@@ -38,36 +36,28 @@ export default function SurahName({ surahI, setSurahI, surahData }) {
   }
 
   return (
-    <div className="con_bg_gradient con_h df_jc_ce surah_name">
-      <Button className="close_surah_btn con_ha bg_none h_max" onClick={close}>
-        <span className="material-symbols-outlined fz_big">close</span>
-      </Button>
-      <div className="df_ai_ce list_y">
-        <b>
-          {surahData?.number}. {surahData?.englishName}
-        </b>
-        <div>{surahData?.englishNameTranslation}</div>
-        <div className="line_x_small"></div>
-        <div className="txt_opa fz_small list_x">
-          <div>{surahData?.revelationType}</div>
-          <div>•</div>
-          <div>{surahData?.numberOfAyahs || 0} verses</div>
+    <>
+      <div className="list_x df_jc_sb surah_name df_ai_ce_child">
+        <div className="con_bd_df con_ha bd_ra_50 h_max" onClick={close}>
+          <span className="material-symbols-outlined fz_big">close</span>
         </div>
+        <b className="con_bg_gradient list_x">
+          <div>{surahData?.number}</div>
+          <div className="line_y"></div>
+          <div>{surahData?.englishName}</div>
+        </b>
+        {hasAccount && (
+          <div className="con_bd_df con_ha bd_ra_50 h_max" onClick={saveSurah}>
+            <span
+              className={`material-symbols-outlined fz_big ${
+                savedI.length > 0 && savedI.includes(surahI.surah) ? 'fill' : ''
+              }`}
+            >
+              bookmark
+            </span>
+          </div>
+        )}
       </div>
-      {hasAccount && (
-        <Button
-          className="save_surah_btn con_ha bg_none h_max"
-          onClick={saveSurah}
-        >
-          <span
-            className={`material-symbols-outlined fz_big ${
-              savedI.length > 0 && savedI.includes(surahI.surah) ? 'fill' : ''
-            }`}
-          >
-            bookmark
-          </span>
-        </Button>
-      )}
-    </div>
+    </>
   )
 }

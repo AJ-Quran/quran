@@ -36,7 +36,7 @@ export default function AyahsAreaButtons({ surahI, setSurahI, setArPlaying }) {
   }, [surahI])
 
   return (
-    <div className="con_bg_dr ayah_area_buttons df_jc_sb df_ai_ce_child list_x">
+    <div className="con_bg_dr ayah_area_buttons df_jc_sb df_ai_ce_child list_x pd_lr_none">
       <Button
         disabled={surahI.ayah === 0}
         className="bd_btn list_x"
