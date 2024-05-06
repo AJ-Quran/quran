@@ -12,13 +12,7 @@ import { getFontSize } from '../../../../Settings/utils/getFontSize'
 
 import './AyahsArea.css'
 
-export default function AyahsArea({
-  arAyahs,
-  engAyahs,
-  surahI,
-  setSurahI,
-  setShowSettings,
-}) {
+export default function AyahsArea({ arAyahs, engAyahs, surahI, setSurahI }) {
   const audioRef = useRef()
   const engText = useRef()
   const [arPlaying, setArPlaying] = useState(false)
@@ -109,7 +103,7 @@ export default function AyahsArea({
         {ayah < ayahsLen && (
           <div className="list_y">
             <div className="con_bg_df ayahs_text_area df_f_ce list_y">
-              <div className="list_x df_jc_sb df_ai_ce_child w_100">
+              <div className="df_f w_100">
                 <div className="con_bd_df con_ha df_f_ce" onClick={toggleAudio}>
                   <span className={`material-symbols-outlined fz_normal`}>
                     {arPlaying ? 'pause' : 'play_arrow'}
@@ -119,14 +113,6 @@ export default function AyahsArea({
                     src={arAyahs[ayah]?.audio}
                     autoPlay={arPlaying}
                   ></audio>
-                </div>
-                <div
-                  className="con_bd_df con_ha df_f_ce"
-                  onClick={() => setShowSettings(true)}
-                >
-                  <span className="material-symbols-outlined fz_normal">
-                    settings
-                  </span>
                 </div>
               </div>
               <div className="line_x_small line_dark"></div>
@@ -138,21 +124,13 @@ export default function AyahsArea({
               </p>
             </div>
             <div className="con_bg_df ayahs_text_area df_f_ce ayahs_eng_area list_y">
-              <div className="list_x df_jc_sb df_ai_ce_child w_100">
+              <div className="df_f w_100">
                 <div
                   className="con_bd_df con_ha df_f_ce"
                   onClick={toggleEngAudio}
                 >
                   <span className={`material-symbols-outlined fz_normal`}>
                     {enPlaying ? 'pause' : 'play_arrow'}
-                  </span>
-                </div>
-                <div
-                  className="con_bd_df con_ha df_f_ce"
-                  onClick={() => setShowSettings(true)}
-                >
-                  <span className="material-symbols-outlined fz_normal">
-                    settings
                   </span>
                 </div>
               </div>

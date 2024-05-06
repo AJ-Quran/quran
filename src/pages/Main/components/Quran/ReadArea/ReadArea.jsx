@@ -74,6 +74,7 @@ export default function ReadArea({ surahI, setSurahI }) {
                 surahI={surahI}
                 setSurahI={setSurahI}
                 surahData={arSurahData}
+                setShowSettings={setShowSettings}
               />
             )}
           </div>
@@ -83,7 +84,6 @@ export default function ReadArea({ surahI, setSurahI }) {
               engAyahs={engSurahData?.ayahs}
               surahI={surahI}
               setSurahI={setSurahI}
-              setShowSettings={setShowSettings}
             />
           )}
           {!loading && userHasRead && (
