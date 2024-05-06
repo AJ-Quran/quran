@@ -10,6 +10,7 @@ import './SurahName.css'
 export default function SurahName({
   surahI,
   setSurahI,
+  userHasRead,
   surahData,
   setShowSettings,
 }) {
@@ -68,12 +69,14 @@ export default function SurahName({
               </span>
             </div>
           )}
-          <div
-            className="con_bd_df con_ha bd_ra_50 h_max"
-            onClick={() => setShowSettings(true)}
-          >
-            <span className="material-symbols-outlined fz_big">settings</span>
-          </div>
+          {!userHasRead && (
+            <div
+              className="con_bd_df con_ha bd_ra_50 h_max"
+              onClick={() => setShowSettings(true)}
+            >
+              <span className="material-symbols-outlined fz_big">settings</span>
+            </div>
+          )}
         </div>
       </div>
     </>

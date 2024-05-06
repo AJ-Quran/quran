@@ -73,6 +73,7 @@ export default function ReadArea({ surahI, setSurahI }) {
               <SurahName
                 surahI={surahI}
                 setSurahI={setSurahI}
+                userHasRead={userHasRead}
                 surahData={arSurahData}
                 setShowSettings={setShowSettings}
               />
