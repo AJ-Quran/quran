@@ -7,6 +7,11 @@
   padding-bottom: 0 !important;
 }
 
+.pd_lr_none {
+  padding-left: 0 !important;
+  padding-right: 0 !important;
+}
+
 :root {
   --pd: 10px;
   --pd-small: 6px;
