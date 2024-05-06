@@ -7,7 +7,12 @@ import { readDone } from '../../util/readDone'
 
 import './SurahName.css'
 
-export default function SurahName({ surahI, setSurahI, surahData }) {
+export default function SurahName({
+  surahI,
+  setSurahI,
+  surahData,
+  setShowSettings,
+}) {
   const [savedI, setSavedI] = useState([])
   const hasAccount = loadLocal('quran').accounts.active
 
@@ -46,17 +51,30 @@ export default function SurahName({ surahI, setSurahI, surahData }) {
           <div className="line_y"></div>
           <div>{surahData?.englishName}</div>
         </b>
-        {hasAccount && (
-          <div className="con_bd_df con_ha bd_ra_50 h_max" onClick={saveSurah}>
-            <span
-              className={`material-symbols-outlined fz_big ${
-                savedI.length > 0 && savedI.includes(surahI.surah) ? 'fill' : ''
-              }`}
+        <div className="list_x">
+          {hasAccount && (
+            <div
+              className="con_bd_df con_ha bd_ra_50 h_max"
+              onClick={saveSurah}
             >
-              bookmark
-            </span>
+              <span
+                className={`material-symbols-outlined fz_big ${
+                  savedI.length > 0 && savedI.includes(surahI.surah)
+                    ? 'fill'
+                    : ''
+                }`}
+              >
+                bookmark
+              </span>
+            </div>
+          )}
+          <div
+            className="con_bd_df con_ha bd_ra_50 h_max"
+            onClick={() => setShowSettings(true)}
+          >
+            <span className="material-symbols-outlined fz_big">settings</span>
           </div>
-        )}
+        </div>
       </div>
     </>
   )
