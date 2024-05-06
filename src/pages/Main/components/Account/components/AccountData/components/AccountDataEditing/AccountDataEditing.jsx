@@ -17,6 +17,7 @@ import { loadLocal } from '../../../../../../../../js/db/localStorage'
 import { editUser } from '../../../../../../../../js/account/account'
 import { avatars } from '../../../utils/getAvatar'
 import { load } from '../../../../../../../../js/db/db'
+import { deviceIsPhone } from '../../../../../../../../js/utils/device'
 
 export default function AccountDataEditing({
   account,
@@ -33,6 +34,7 @@ export default function AccountDataEditing({
   const [tooplitPos, setTooplitPos] = useState({ x: 0, y: 0 })
   const [profileImg, setProfileImg] = useState('')
   const profilePicLimit = 5 * 1024 * 1024
+  const isPhone = deviceIsPhone()
 
   useEffect(() => {
     setProfileImg(account?.img?.img)
@@ -170,11 +172,11 @@ export default function AccountDataEditing({
               </div>
             </div>
           </AvatarToEdit>
-          {showTooplit && (
-            <Tooplit onHide={() => setShowTooplit(false)} pos={tooplitPos}>
-              <div className="list_y_small">
+          {showTooplit &&
+            (isPhone ? (
+              <Alert onHide={() => setShowTooplit(false)} noTitle>
                 <div
-                  className="con_ha list_x df_ai_ce txt_main"
+                  className="con_ha list_x df_f_ce txt_main"
                   onClick={clickFileInput}
                 >
                   <span className="material-symbols-outlined fz_normal">
@@ -184,22 +186,53 @@ export default function AccountDataEditing({
                   <input type="file" accept="image/*" onChange={uploadFile} />
                 </div>
                 {profileImg && (
-                  <div
-                    className="con_ha list_x df_ai_ce txt_red"
-                    onClick={() => {
-                      setProfileImg('')
-                      setShowTooplit(false)
-                    }}
-                  >
-                    <span className="material-symbols-outlined fz_normal">
-                      delete
-                    </span>
-                    <span>Delete</span>
+                  <div className="list_y">
+                    <div className="line_x_small line_dark"></div>
+                    <div
+                      className="con_ha list_x df_f_ce txt_red"
+                      onClick={() => {
+                        setProfileImg('')
+                        setShowTooplit(false)
+                      }}
+                    >
+                      <span className="material-symbols-outlined fz_normal">
+                        delete
+                      </span>
+                      <span>Delete</span>
+                    </div>
                   </div>
                 )}
-              </div>
-            </Tooplit>
-          )}
+              </Alert>
+            ) : (
+              <Tooplit onHide={() => setShowTooplit(false)} pos={tooplitPos}>
+                <div className="list_y_small">
+                  <div
+                    className="con_ha list_x df_ai_ce txt_main"
+                    onClick={clickFileInput}
+                  >
+                    <span className="material-symbols-outlined fz_normal">
+                      cloud_upload
+                    </span>
+                    <span>Upload</span>
+                    <input type="file" accept="image/*" onChange={uploadFile} />
+                  </div>
+                  {profileImg && (
+                    <div
+                      className="con_ha list_x df_ai_ce txt_red"
+                      onClick={() => {
+                        setProfileImg('')
+                        setShowTooplit(false)
+                      }}
+                    >
+                      <span className="material-symbols-outlined fz_normal">
+                        delete
+                      </span>
+                      <span>Delete</span>
+                    </div>
+                  )}
+                </div>
+              </Tooplit>
+            ))}
           <div className="list_y w_100 df_ai_ce_child">
             <div className="list_x">
               <span className="material-symbols-outlined">person</span>
