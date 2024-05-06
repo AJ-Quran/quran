@@ -1,7 +1,5 @@
 import { useEffect, useState } from 'react'
 
-import Button from '../../../../../../../components/Button/Button'
-
 import { toggleSurah } from '../../../../../../../js/db/quran/savedSurahs'
 import { loadLocal } from '../../../../../../../js/db/localStorage'
 import { load } from '../../../../../../../js/db/db'
