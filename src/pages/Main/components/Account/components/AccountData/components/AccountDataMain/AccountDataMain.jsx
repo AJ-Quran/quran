@@ -62,7 +62,7 @@ export default function AccountDataMain({
               onClick={() => openProfilePic && setBigProfilePic(true)}
             ></Avatar>
             {bigProfilePic && (
-              <Alert onHide={() => setBigProfilePic(false)} simple="true">
+              <Alert onHide={() => setBigProfilePic(false)} bgNone="true">
                 <div
                   className="df_f_ce"
                   onClick={() => setBigProfilePic(false)}

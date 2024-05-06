@@ -174,7 +174,7 @@ export default function AccountDataEditing({
           </AvatarToEdit>
           {showTooplit &&
             (isPhone ? (
-              <Alert onHide={() => setShowTooplit(false)} noTitle>
+              <Alert onHide={() => setShowTooplit(false)}>
                 <div
                   className="con_ha list_x df_f_ce txt_main"
                   onClick={clickFileInput}
