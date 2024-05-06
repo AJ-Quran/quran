@@ -187,7 +187,7 @@ export default function AccountDataEditing({
                 </div>
                 {profileImg && (
                   <div className="list_y">
-                    <div className="line_x line_dark"></div>
+                    <div className="line_x_small line_dark"></div>
                     <div
                       className="con_ha list_x df_f_ce txt_red"
                       onClick={() => {
