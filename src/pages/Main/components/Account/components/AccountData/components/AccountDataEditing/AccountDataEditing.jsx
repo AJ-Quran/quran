@@ -186,17 +186,20 @@ export default function AccountDataEditing({
                   <input type="file" accept="image/*" onChange={uploadFile} />
                 </div>
                 {profileImg && (
-                  <div
-                    className="con_ha list_x df_f_ce txt_red"
-                    onClick={() => {
-                      setProfileImg('')
-                      setShowTooplit(false)
-                    }}
-                  >
-                    <span className="material-symbols-outlined fz_normal">
-                      delete
-                    </span>
-                    <span>Delete</span>
+                  <div className="list_y">
+                    <div className="line_x line_dark"></div>
+                    <div
+                      className="con_ha list_x df_f_ce txt_red"
+                      onClick={() => {
+                        setProfileImg('')
+                        setShowTooplit(false)
+                      }}
+                    >
+                      <span className="material-symbols-outlined fz_normal">
+                        delete
+                      </span>
+                      <span>Delete</span>
+                    </div>
                   </div>
                 )}
               </Alert>
