@@ -1,5 +1,4 @@
 .surah_name {
-  position: relative;
   width: 400px;
 }
 
@@ -7,17 +6,4 @@
   .surah_name {
     width: 100%;
   }
-}
-
-.surah_name button {
-  position: absolute;
-  top: var(--pd-small);
-}
-
-.close_surah_btn {
-  left: var(--pd-small);
-}
-
-.save_surah_btn {
-  right: var(--pd-small);
 }
