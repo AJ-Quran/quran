@@ -24,18 +24,6 @@ export default function Home({ surahI, setSurahI }) {
     setPageHeight(height)
   }, [])
 
-  useEffect(() => {
-    function handleKeydown(e) {
-      if (e.key === 'ArrowLeft' || e.key === 'ArrowUp') scroll('up')
-      if (e.key === 'ArrowRight' || e.key === 'ArrowDown') scroll('down')
-    }
-
-    document.addEventListener('keydown', handleKeydown)
-    return () => {
-      document.removeEventListener('keydown', handleKeydown)
-    }
-  }, [activePage])
-
   function scroll(direction) {
     const scrollSize = homePage.current.scrollTop % pageHeight || 0
 
@@ -56,7 +44,6 @@ export default function Home({ surahI, setSurahI }) {
 
   function getIndex(i, array) {
     const max = array.length - 1
-
     return Math.min(Math.max(i, 0), max)
   }
 
