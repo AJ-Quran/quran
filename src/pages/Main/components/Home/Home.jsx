@@ -44,7 +44,6 @@ export default function Home({ surahI, setSurahI }) {
 
   function getIndex(i, array) {
     const max = array.length - 1
-
     return Math.min(Math.max(i, 0), max)
   }
 
