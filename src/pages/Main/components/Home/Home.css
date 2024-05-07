@@ -26,8 +26,8 @@
 .home_page .two_blur_balls {
   &::before,
   &::after {
-    top: -200%;
-    opacity: 0.5;
+    top: -250%;
+    opacity: 0.3;
     animation: toTop0 3s ease forwards, opaTo1 3s ease forwards;
   }
 }
