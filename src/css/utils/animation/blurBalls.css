@@ -18,7 +18,7 @@
   height: 0;
   background-color: transparent;
   z-index: -1;
-  box-shadow: 0 0 700px 200px var(--main-color);
+  box-shadow: 0 0 150px 100px var(--main-color);
 }
 
 .two_blur_balls::before {
