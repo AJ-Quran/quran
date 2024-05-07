@@ -23,6 +23,24 @@
   color: color-mix(in srgb, #fff 60%, transparent 20%);
 }
 
+.home_page .two_blur_balls {
+  &::before,
+  &::after {
+    top: -250%;
+    opacity: 0.3;
+  }
+
+  &::before {
+    animation: leftToRight 8s infinite, toTop0 3s ease forwards,
+      opaTo1 3s ease forwards;
+  }
+
+  &::after {
+    animation: rightToLeft 8s infinite, toTop0 3s ease forwards,
+      opaTo1 3s ease forwards;
+  }
+}
+
 .warning_account_msg {
   position: absolute;
   bottom: 200px;

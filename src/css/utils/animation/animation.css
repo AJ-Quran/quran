@@ -4,6 +4,12 @@
   }
 }
 
+@keyframes toTop0 {
+  to {
+    top: 0;
+  }
+}
+
 @keyframes opaTo1 {
   to {
     opacity: 1;
