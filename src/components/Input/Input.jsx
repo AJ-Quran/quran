@@ -7,7 +7,7 @@ import './Input.css'
 const Input = React.forwardRef(
   ({ label, value: iValue, areaProps, ...props }, ref) => {
     const inputRef = useRef(null)
-    const [value, setValue] = useState(iValue || '')
+    const [value, setValue] = useState(iValue === undefined ? '' : iValue)
     const [seePassword, setSeePassword] = useState('visibility')
 
     function handleInputChange() {
