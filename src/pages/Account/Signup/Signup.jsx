@@ -56,6 +56,13 @@ export default function Signup() {
     }
   }
 
+  function setStrongPassword() {
+    activateInput(passwordInput.current)
+    const pass = strongPassword(12)
+
+    passwordInput.current.value = pass
+  }
+
   return (
     <div className="h_100 df_f_ce">
       <Message show={message.show} type={message.type}>
@@ -112,12 +119,7 @@ export default function Signup() {
               />
               <div
                 className="con_bg_df con_ha pd_tb_none"
-                onClick={() => {
-                  activateInput(passwordInput.current)
-                  const pass = strongPassword(12)
-
-                  passwordInput.current.value = pass
-                }}
+                onClick={setStrongPassword}
               >
                 <span className="material-symbols-outlined">password</span>
               </div>
