@@ -10,6 +10,8 @@ import * as FORM from '../../../js/utils/form'
 import { signup } from '../../../js/account/account'
 import { msgData } from '../../../js/utils/message'
 import { changeHref } from '../../../js/utils/href'
+import { strongPassword } from '../../../js/utils/generator'
+import { activateInput } from '../../../components/Input/utils/input'
 import useTitle from '../../../hooks/useTitle'
 
 import '../Account.css'
@@ -22,6 +24,7 @@ export default function Signup() {
     show: false,
   })
   const form = useRef(null)
+  const passwordInput = useRef()
   useTitle('Sign up')
 
   async function handleSignup() {
@@ -51,6 +54,13 @@ export default function Signup() {
       setSigning(false)
       return
     }
+  }
+
+  function setStrongPassword() {
+    activateInput(passwordInput.current)
+    const pass = strongPassword(12)
+
+    passwordInput.current.value = pass
   }
 
   return (
@@ -101,7 +111,18 @@ export default function Signup() {
             </Choose>
             <div className="list_x df_ai_ce">
               <span className="material-symbols-outlined">vpn_key</span>
-              <Input type="password" label="Password" maxLength="20" />
+              <Input
+                ref={passwordInput}
+                type="password"
+                label="Password"
+                maxLength="20"
+              />
+              <div
+                className="con_bg_df con_ha pd_tb_none"
+                onClick={setStrongPassword}
+              >
+                <span className="material-symbols-outlined">password</span>
+              </div>
             </div>
             <Button
               className="medium list_x df_f_ce"
