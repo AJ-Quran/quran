@@ -3,22 +3,26 @@
   position: relative;
 }
 
-.is_phone .two_blur_balls::before,
-.is_phone .two_blur_balls::after {
-  box-shadow: 0 0 150px 80px var(--main-color);
+.is_phone .two_blur_balls {
+  &::before,
+  &::after {
+    box-shadow: 0 0 150px 80px var(--main-color);
+  }
 }
 
-.two_blur_balls::before,
-.two_blur_balls::after {
-  content: '';
-  position: absolute;
-  top: 0;
-  transform: translateX(-50%);
-  width: 0;
-  height: 0;
-  background-color: transparent;
-  z-index: -1;
-  box-shadow: 0 0 150px 100px var(--main-color);
+.two_blur_balls {
+  &::before,
+  &::after {
+    content: '';
+    position: absolute;
+    top: 0;
+    transform: translateX(-50%);
+    width: 0;
+    height: 0;
+    background-color: transparent;
+    z-index: -1;
+    box-shadow: 0 0 150px 100px var(--main-color);
+  }
 }
 
 .two_blur_balls::before {
