@@ -28,7 +28,16 @@
   &::after {
     top: -250%;
     opacity: 0.3;
-    animation: toTop0 3s ease forwards, opaTo1 3s ease forwards;
+  }
+
+  &::before {
+    animation: leftToRight 8s infinite, toTop0 3s ease forwards,
+      opaTo1 3s ease forwards;
+  }
+
+  &::after {
+    animation: rightToLeft 8s infinite, toTop0 3s ease forwards,
+      opaTo1 3s ease forwards;
   }
 }
 
