@@ -9,6 +9,7 @@ import { msgData } from '../../../../../../js/utils/message'
 import { sendFeedback } from '../../../../../../js/utils/feedback'
 import { getAccount } from '../../../../../../js/account/account'
 import { loadLocal } from '../../../../../../js/db/localStorage'
+import { activateInput } from '../../../../../../components/Input/utils/input'
 
 export default function HomeFeedback() {
   const form = useRef()
@@ -60,12 +61,10 @@ export default function HomeFeedback() {
       return
     }
 
-    const nameLabel = nameParent.querySelector('label')
     setAutoFillData({ ...autoFillData, name: account.name })
 
-    nameLabel.classList.add('active')
+    activateInput(nameInput.current)
     nameParent.classList.remove('active')
-    nameInput.current.classList.remove('error')
   }
 
   async function send() {
