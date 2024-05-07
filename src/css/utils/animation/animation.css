@@ -1,3 +1,15 @@
+@keyframes toTranslateX0 {
+  to {
+    transform: translateX(0);
+  }
+}
+
+@keyframes toTranslateY0 {
+  to {
+    transform: translateY(0);
+  }
+}
+
 @keyframes scaleTo1 {
   to {
     scale: 1;
