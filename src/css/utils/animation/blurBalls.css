@@ -5,7 +5,7 @@
 
 .is_phone .two_blur_balls::before,
 .is_phone .two_blur_balls::after {
-  box-shadow: 0 0 300px 150px var(--main-color);
+  box-shadow: 0 0 150px 80px var(--main-color);
 }
 
 .two_blur_balls::before,
