@@ -1,0 +1,49 @@
+{
+  "name": "AJ Quran",
+  "short_name": "AJ Quran",
+  "scope": "/",
+  "id": "/",
+  "start_url": "/",
+  "display": "fullscreen",
+  "theme_color": "#3434ac",
+  "background_color": "#3434ac",
+  "description": "The Quran - Explore and collaborate on the holy book of Islam. 📖✨",
+  "icons": [
+    {
+      "src": "./icons/app/appIcon192.png",
+      "type": "image/png",
+      "sizes": "192x192"
+    },
+    {
+      "src": "./icons/app/appIcon196.png",
+      "type": "image/png",
+      "sizes": "196x196",
+      "purpose": "any maskable"
+    },
+    {
+      "src": "./icons/app/appIcon512.png",
+      "type": "image/png",
+      "sizes": "512x512"
+    }
+  ],
+  "shortcuts": [
+    {
+      "name": "Read Quran",
+      "short_name": "Quran",
+      "description": "Read Holy Quran",
+      "url": "/",
+      "icons": [
+        { "src": "./icons/shortcuts/shortcutBook.png", "sizes": "192x192" }
+      ]
+    },
+    {
+      "name": "New account",
+      "short_name": "Account",
+      "description": "Create new account",
+      "url": "/account/signup",
+      "icons": [
+        { "src": "./icons/shortcuts/shortcutAccount.png", "sizes": "192x192" }
+      ]
+    }
+  ]
+}
