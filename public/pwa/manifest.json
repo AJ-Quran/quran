@@ -4,7 +4,7 @@
   "scope": "/",
   "id": "/",
   "start_url": "/",
-  "display": "fullscreen",
+  "display": "standalone",
   "theme_color": "#3434ac",
   "background_color": "#3434ac",
   "description": "The Quran - Explore and collaborate on the holy book of Islam. 📖✨",
