@@ -19,6 +19,8 @@ import { avatars } from '../../../utils/getAvatar'
 import { load } from '../../../../../../../../js/db/db'
 import { deviceIsPhone } from '../../../../../../../../js/utils/device'
 
+import './AccountDataEditing.css'
+
 export default function AccountDataEditing({
   account,
   saving,
@@ -29,8 +31,13 @@ export default function AccountDataEditing({
 }) {
   const form = useRef(null)
   const deleteRef = useRef(null)
+  const takePhotoVideo = useRef(null)
+  const takePhotoImg = useRef(null)
+  const takePhotoCanvas = useRef(null)
   const [deleting, setDeleting] = useState(false)
   const [showTooplit, setShowTooplit] = useState(false)
+  const [takingPhoto, setTakingPhoto] = useState(false)
+  const [capturedPhoto, setCapturedPhoto] = useState(false)
   const [tooplitPos, setTooplitPos] = useState({ x: 0, y: 0 })
   const [profileImg, setProfileImg] = useState('')
   const profilePicLimit = 5 * 1024 * 1024
@@ -39,6 +46,43 @@ export default function AccountDataEditing({
   useEffect(() => {
     setProfileImg(account?.img?.img)
   }, [])
+
+  useEffect(() => {
+    let stream
+
+    if (takingPhoto && !capturedPhoto) {
+      navigator.mediaDevices
+        .getUserMedia({ video: true })
+        .then((videoStream) => {
+          stream = videoStream
+          if (takePhotoVideo.current) takePhotoVideo.current.srcObject = stream
+        })
+    } else if (stream) {
+      stream.getTracks().forEach((track) => track.stop())
+      takePhotoVideo.current.srcObject = null
+    }
+
+    return () => {
+      if (stream) stream.getTracks().forEach((track) => track.stop())
+    }
+  }, [takingPhoto, capturedPhoto])
+
+  async function takePhoto() {
+    if (takePhotoVideo.current && takePhotoVideo.current.srcObject) {
+      const video = takePhotoVideo.current
+      const canvas = takePhotoCanvas.current
+
+      canvas.width = video.videoWidth
+      canvas.height = video.videoHeight
+
+      const context = canvas.getContext('2d')
+      context.drawImage(video, 0, 0, canvas.width, canvas.height)
+      const photoURL = canvas.toDataURL('image/jpeg')
+
+      setProfileImg(photoURL)
+      setCapturedPhoto(photoURL)
+    }
+  }
 
   async function saveChanges() {
     setSaving(true)
@@ -182,6 +226,19 @@ export default function AccountDataEditing({
                   <span>Upload</span>
                   <input type="file" accept="image/*" onChange={uploadFile} />
                 </div>
+                <div className="line_x_small line_dark"></div>
+                <div
+                  className="con_ha list_x df_f_ce"
+                  onClick={() => {
+                    setTakingPhoto(true)
+                    setCapturedPhoto(false)
+                  }}
+                >
+                  <span className="material-symbols-outlined fz_normal">
+                    photo_camera
+                  </span>
+                  <span>Take photo</span>
+                </div>
                 {profileImg && (
                   <div className="list_y">
                     <div className="line_x_small line_dark"></div>
@@ -213,19 +270,34 @@ export default function AccountDataEditing({
                     <span>Upload</span>
                     <input type="file" accept="image/*" onChange={uploadFile} />
                   </div>
+                  <div
+                    className="con blur_ha list_x df_ai_ce"
+                    onClick={() => {
+                      setTakingPhoto(true)
+                      setCapturedPhoto(false)
+                    }}
+                  >
+                    <span className="material-symbols-outlined fz_normal">
+                      photo_camera
+                    </span>
+                    <span>Take photo</span>
+                  </div>
                   {profileImg && (
-                    <div
-                      className="con blur_ha list_x df_ai_ce txt_red"
-                      onClick={() => {
-                        setProfileImg('')
-                        setShowTooplit(false)
-                      }}
-                    >
-                      <span className="material-symbols-outlined fz_normal">
-                        delete
-                      </span>
-                      <span>Delete</span>
-                    </div>
+                    <>
+                      <div className="line_x_small"></div>
+                      <div
+                        className="con blur_ha list_x df_ai_ce txt_red"
+                        onClick={() => {
+                          setProfileImg('')
+                          setShowTooplit(false)
+                        }}
+                      >
+                        <span className="material-symbols-outlined fz_normal">
+                          delete
+                        </span>
+                        <span>Delete</span>
+                      </div>
+                    </>
                   )}
                 </div>
               </Tooplit>
@@ -296,6 +368,57 @@ export default function AccountDataEditing({
               </span>
               <span>Delete</span>
             </Button>
+          </div>
+        </Alert>
+      )}
+      {takingPhoto && (
+        <Alert noTitle onHide={() => setTakingPhoto(false)}>
+          <div className="con_bg_df list_y df_ai_ce">
+            <canvas ref={takePhotoCanvas} className="d_n"></canvas>
+            {capturedPhoto && (
+              <>
+                <img
+                  ref={takePhotoImg}
+                  src={capturedPhoto}
+                  className="take_photo_img"
+                  alt="Captured"
+                />
+                <div className="df_jc_sb w_100">
+                  <div
+                    className="con_bg_dr con_ha bd_ra_50 take_photo_btn df_f_ce"
+                    onClick={() => setCapturedPhoto(false)}
+                  >
+                    <span className="material-symbols-outlined">delete</span>
+                  </div>
+                  <div
+                    className="con_bg_gradient con_ha bd_ra_50 take_photo_btn df_f_ce"
+                    onClick={() => {
+                      setTakingPhoto(false)
+                      setShowTooplit(false)
+                    }}
+                  >
+                    <span className="material-symbols-outlined">done</span>
+                  </div>
+                </div>
+              </>
+            )}
+            {!capturedPhoto && (
+              <>
+                <video
+                  ref={takePhotoVideo}
+                  className="take_photo_video"
+                  autoPlay
+                ></video>
+                <div
+                  className="con_bg_gradient con_ha bd_ra_50 take_photo_btn df_f_ce"
+                  onClick={takePhoto}
+                >
+                  <span className="material-symbols-outlined">
+                    photo_camera
+                  </span>
+                </div>
+              </>
+            )}
           </div>
         </Alert>
       )}
