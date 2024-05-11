@@ -1,0 +1,11 @@
+.take_photo_video,
+.take_photo_img {
+  max-width: 300px;
+  max-height: 400px;
+  border-radius: var(--bd-ra);
+}
+
+.take_photo_btn {
+  width: 50px;
+  aspect-ratio: 1;
+}
