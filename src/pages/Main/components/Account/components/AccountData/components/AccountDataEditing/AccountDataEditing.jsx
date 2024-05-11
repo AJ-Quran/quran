@@ -238,7 +238,6 @@ export default function AccountDataEditing({
                     photo_camera
                   </span>
                   <span>Take photo</span>
-                  <input type="file" accept="image/*" onChange={uploadFile} />
                 </div>
                 {profileImg && (
                   <div className="list_y">
