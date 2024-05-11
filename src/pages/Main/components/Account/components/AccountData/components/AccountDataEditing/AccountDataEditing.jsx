@@ -270,19 +270,34 @@ export default function AccountDataEditing({
                     <span>Upload</span>
                     <input type="file" accept="image/*" onChange={uploadFile} />
                   </div>
+                  <div
+                    className="con blur_ha list_x df_ai_ce"
+                    onClick={() => {
+                      setTakingPhoto(true)
+                      setCapturedPhoto(false)
+                    }}
+                  >
+                    <span className="material-symbols-outlined fz_normal">
+                      photo_camera
+                    </span>
+                    <span>Take photo</span>
+                  </div>
                   {profileImg && (
-                    <div
-                      className="con blur_ha list_x df_ai_ce txt_red"
-                      onClick={() => {
-                        setProfileImg('')
-                        setShowTooplit(false)
-                      }}
-                    >
-                      <span className="material-symbols-outlined fz_normal">
-                        delete
-                      </span>
-                      <span>Delete</span>
-                    </div>
+                    <>
+                      <div className="line_x_small"></div>
+                      <div
+                        className="con blur_ha list_x df_ai_ce txt_red"
+                        onClick={() => {
+                          setProfileImg('')
+                          setShowTooplit(false)
+                        }}
+                      >
+                        <span className="material-symbols-outlined fz_normal">
+                          delete
+                        </span>
+                        <span>Delete</span>
+                      </div>
+                    </>
                   )}
                 </div>
               </Tooplit>
