@@ -182,6 +182,14 @@ export default function AccountDataEditing({
                   <span>Upload</span>
                   <input type="file" accept="image/*" onChange={uploadFile} />
                 </div>
+                <div className="line_x_small line_dark"></div>
+                <div className="con_ha list_x df_f_ce" onClick={clickFileInput}>
+                  <span className="material-symbols-outlined fz_normal">
+                    photo_camera
+                  </span>
+                  <span>Take photo</span>
+                  <input type="file" accept="image/*" onChange={uploadFile} />
+                </div>
                 {profileImg && (
                   <div className="list_y">
                     <div className="line_x_small line_dark"></div>
