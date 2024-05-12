@@ -9,3 +9,9 @@
   width: 50px;
   aspect-ratio: 1;
 }
+
+.take_photo_alert > div:has(.take_photo_btn) {
+  width: 100px;
+  margin: 0 auto;
+  animation: widthTo100 0.3s ease forwards;
+}

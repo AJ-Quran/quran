@@ -372,7 +372,7 @@ export default function AccountDataEditing({
       )}
       {takingPhoto && (
         <Alert noTitle onHide={() => setTakingPhoto(false)}>
-          <div className="con_bg_df list_y df_ai_ce">
+          <div className="con_bg_df list_y df_ai_ce take_photo_alert">
             <canvas ref={takePhotoCanvas} className="d_n"></canvas>
             {capturedPhoto && (
               <>
