@@ -3,9 +3,14 @@
   aspect-ratio: 1;
   border-radius: var(--bd-ra);
 
+  & video {
+    transform: rotateY(180deg);
+  }
+
   & video,
   & img {
     width: 100%;
+    aspect-ratio: 1;
     border-radius: 50%;
   }
 }

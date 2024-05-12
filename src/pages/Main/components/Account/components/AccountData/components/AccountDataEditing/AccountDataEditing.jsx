@@ -74,19 +74,24 @@ export default function AccountDataEditing({
   }, [takingPhoto, capturedPhoto])
 
   async function takePhoto() {
-    if (takePhotoVideo.current && takePhotoVideo.current.srcObject) {
-      const video = takePhotoVideo.current
-      const canvas = takePhotoCanvas.current
+    const { current: video } = takePhotoVideo
+    const { current: canvas } = takePhotoCanvas
 
-      canvas.width = video.videoWidth
-      canvas.height = video.videoHeight
+    if (!video || !video.srcObject) return
 
-      const context = canvas.getContext('2d')
-      context.drawImage(video, 0, 0, canvas.width, canvas.height)
-      const photoURL = canvas.toDataURL('image/jpeg')
+    canvas.width = video.videoWidth
+    canvas.height = video.videoHeight
 
-      setCapturedPhoto(photoURL)
-    }
+    const context = canvas.getContext('2d')
+    context.drawImage(video, 0, 0, canvas.width, canvas.height)
+
+    context.translate(canvas.width, 0)
+    context.scale(-1, 1)
+    context.drawImage(video, 0, 0, canvas.width, canvas.height)
+
+    const photoURL = canvas.toDataURL('image/jpeg')
+
+    setCapturedPhoto(photoURL)
   }
 
   async function saveChanges() {
