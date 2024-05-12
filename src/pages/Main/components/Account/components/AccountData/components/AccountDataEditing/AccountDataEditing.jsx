@@ -42,6 +42,7 @@ export default function AccountDataEditing({
   const [profileImg, setProfileImg] = useState('')
   const profilePicLimit = 5 * 1024 * 1024
   const isPhone = deviceIsPhone()
+  const avatarSize = 300
 
   useEffect(() => {
     setProfileImg(account?.img?.img)
@@ -52,7 +53,12 @@ export default function AccountDataEditing({
 
     if (takingPhoto && !capturedPhoto) {
       navigator.mediaDevices
-        .getUserMedia({ video: true })
+        .getUserMedia({
+          video: {
+            width: { exact: avatarSize },
+            height: { exact: avatarSize },
+          },
+        })
         .then((videoStream) => {
           stream = videoStream
           if (takePhotoVideo.current) takePhotoVideo.current.srcObject = stream
@@ -68,20 +74,24 @@ export default function AccountDataEditing({
   }, [takingPhoto, capturedPhoto])
 
   async function takePhoto() {
-    if (takePhotoVideo.current && takePhotoVideo.current.srcObject) {
-      const video = takePhotoVideo.current
-      const canvas = takePhotoCanvas.current
+    const { current: video } = takePhotoVideo
+    const { current: canvas } = takePhotoCanvas
 
-      canvas.width = video.videoWidth
-      canvas.height = video.videoHeight
+    if (!video || !video.srcObject) return
 
-      const context = canvas.getContext('2d')
-      context.drawImage(video, 0, 0, canvas.width, canvas.height)
-      const photoURL = canvas.toDataURL('image/jpeg')
+    canvas.width = video.videoWidth
+    canvas.height = video.videoHeight
 
-      setProfileImg(photoURL)
-      setCapturedPhoto(photoURL)
-    }
+    const context = canvas.getContext('2d')
+    context.drawImage(video, 0, 0, canvas.width, canvas.height)
+
+    context.translate(canvas.width, 0)
+    context.scale(-1, 1)
+    context.drawImage(video, 0, 0, canvas.width, canvas.height)
+
+    const photoURL = canvas.toDataURL('image/jpeg')
+
+    setCapturedPhoto(photoURL)
   }
 
   async function saveChanges() {
@@ -373,19 +383,16 @@ export default function AccountDataEditing({
       )}
       {takingPhoto && (
         <Alert noTitle onHide={() => setTakingPhoto(false)}>
-          <div className="con_bg_df list_y df_ai_ce">
+          <div className="con_bg_df list_y df_ai_ce take_photo_alert">
             <canvas ref={takePhotoCanvas} className="d_n"></canvas>
             {capturedPhoto && (
               <>
-                <img
-                  ref={takePhotoImg}
-                  src={capturedPhoto}
-                  className="take_photo_img"
-                  alt="Captured"
-                />
+                <div className="take_photo_area">
+                  <img ref={takePhotoImg} src={capturedPhoto} alt="Captured" />
+                </div>
                 <div className="df_jc_sb w_100">
                   <div
-                    className="con_bg_dr con_ha bd_ra_50 take_photo_btn df_f_ce"
+                    className="con_bg_dr con_ha bd_ra_50 take_photo_btn df_f_ce txt_red"
                     onClick={() => setCapturedPhoto(false)}
                   >
                     <span className="material-symbols-outlined">delete</span>
@@ -395,6 +402,7 @@ export default function AccountDataEditing({
                     onClick={() => {
                       setTakingPhoto(false)
                       setShowTooplit(false)
+                      setProfileImg(capturedPhoto)
                     }}
                   >
                     <span className="material-symbols-outlined">done</span>
@@ -404,11 +412,9 @@ export default function AccountDataEditing({
             )}
             {!capturedPhoto && (
               <>
-                <video
-                  ref={takePhotoVideo}
-                  className="take_photo_video"
-                  autoPlay
-                ></video>
+                <div className="take_photo_area">
+                  <video ref={takePhotoVideo} autoPlay></video>
+                </div>
                 <div
                   className="con_bg_gradient con_ha bd_ra_50 take_photo_btn df_f_ce"
                   onClick={takePhoto}

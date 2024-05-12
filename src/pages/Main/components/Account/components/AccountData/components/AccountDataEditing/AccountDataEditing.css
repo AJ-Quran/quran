@@ -1,11 +1,28 @@
-.take_photo_video,
-.take_photo_img {
+.take_photo_area {
   max-width: 300px;
-  max-height: 400px;
+  aspect-ratio: 1;
   border-radius: var(--bd-ra);
+
+  & video {
+    transform: rotateY(180deg);
+  }
+
+  & video,
+  & img {
+    width: 100%;
+    aspect-ratio: 1;
+    border-radius: 50%;
+    border: 1px solid var(--main-color-border) !important;
+  }
 }
 
 .take_photo_btn {
   width: 50px;
   aspect-ratio: 1;
+}
+
+.take_photo_alert > div:has(.take_photo_btn) {
+  width: 100px;
+  margin: 0 auto;
+  animation: widthTo100 0.3s ease forwards;
 }
