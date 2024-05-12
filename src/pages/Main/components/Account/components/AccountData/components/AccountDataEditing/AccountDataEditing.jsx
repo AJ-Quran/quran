@@ -42,6 +42,7 @@ export default function AccountDataEditing({
   const [profileImg, setProfileImg] = useState('')
   const profilePicLimit = 5 * 1024 * 1024
   const isPhone = deviceIsPhone()
+  const avatarSize = 300
 
   useEffect(() => {
     setProfileImg(account?.img?.img)
@@ -52,7 +53,12 @@ export default function AccountDataEditing({
 
     if (takingPhoto && !capturedPhoto) {
       navigator.mediaDevices
-        .getUserMedia({ video: true })
+        .getUserMedia({
+          video: {
+            width: { exact: avatarSize },
+            height: { exact: avatarSize },
+          },
+        })
         .then((videoStream) => {
           stream = videoStream
           if (takePhotoVideo.current) takePhotoVideo.current.srcObject = stream
@@ -376,12 +382,9 @@ export default function AccountDataEditing({
             <canvas ref={takePhotoCanvas} className="d_n"></canvas>
             {capturedPhoto && (
               <>
-                <img
-                  ref={takePhotoImg}
-                  src={capturedPhoto}
-                  className="take_photo_img"
-                  alt="Captured"
-                />
+                <div className="take_photo_area">
+                  <img ref={takePhotoImg} src={capturedPhoto} alt="Captured" />
+                </div>
                 <div className="df_jc_sb w_100">
                   <div
                     className="con_bg_dr con_ha bd_ra_50 take_photo_btn df_f_ce"
@@ -404,11 +407,9 @@ export default function AccountDataEditing({
             )}
             {!capturedPhoto && (
               <>
-                <video
-                  ref={takePhotoVideo}
-                  className="take_photo_video"
-                  autoPlay
-                ></video>
+                <div className="take_photo_area">
+                  <video ref={takePhotoVideo} autoPlay></video>
+                </div>
                 <div
                   className="con_bg_gradient con_ha bd_ra_50 take_photo_btn df_f_ce"
                   onClick={takePhoto}
