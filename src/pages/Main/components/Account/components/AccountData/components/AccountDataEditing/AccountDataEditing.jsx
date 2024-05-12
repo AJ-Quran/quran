@@ -392,7 +392,7 @@ export default function AccountDataEditing({
                 </div>
                 <div className="df_jc_sb w_100">
                   <div
-                    className="con_bg_dr con_ha bd_ra_50 take_photo_btn df_f_ce"
+                    className="con_bg_dr con_ha bd_ra_50 take_photo_btn df_f_ce txt_red"
                     onClick={() => setCapturedPhoto(false)}
                   >
                     <span className="material-symbols-outlined">delete</span>
