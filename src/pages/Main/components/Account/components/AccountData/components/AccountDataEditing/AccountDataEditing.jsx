@@ -79,7 +79,6 @@ export default function AccountDataEditing({
       context.drawImage(video, 0, 0, canvas.width, canvas.height)
       const photoURL = canvas.toDataURL('image/jpeg')
 
-      setProfileImg(photoURL)
       setCapturedPhoto(photoURL)
     }
   }
@@ -395,6 +394,7 @@ export default function AccountDataEditing({
                     onClick={() => {
                       setTakingPhoto(false)
                       setShowTooplit(false)
+                      setProfileImg(capturedPhoto)
                     }}
                   >
                     <span className="material-symbols-outlined">done</span>
