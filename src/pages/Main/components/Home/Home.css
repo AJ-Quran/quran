@@ -1,5 +1,6 @@
 .home_page {
   scroll-behavior: smooth;
+  scroll-snap-type: y mandatory;
   overflow: hidden;
 
   &.scroll_y {
@@ -10,6 +11,8 @@
 .home_page_item {
   position: relative;
   overflow: hidden;
+  scroll-snap-align: start;
+  scroll-snap-stop: always;
 }
 
 .main_big_text {
