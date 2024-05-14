@@ -1,6 +1,6 @@
 import { deviceIsPhone } from '../../../../../../js/utils/device'
 
-export default function HomeSubcscribe({}) {
+export default function HomeSubcscribe() {
   const isPhone = deviceIsPhone()
 
   function scrollUp(e) {
